@@ -1,5 +1,6 @@
 import { artistasIndependientes }  from './data/data'; // Asegúrate de que la ruta sea correcta
 import nav, { Attributesnav } from './components/header/header'; // Asegúrate de que la ruta sea correcta
+import "./components/header/header"
 
 // Clase principal de la aplicación
 class AppContainer extends HTMLElement {
@@ -16,7 +17,11 @@ class AppContainer extends HTMLElement {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
                 <link rel="stylesheet" href="../src/index.css">
-                input="holi"
+                <nav-component 
+                explore="Explore" 
+                create="Create"
+                img= "https://www.figma.com/design/ClgCPq3OXLUdvgECBPTyWN/mudy?node-id=38-2&t=hC7D4XBSwqRcIUri-4">
+                </nav-component>
                 
             `;
         }

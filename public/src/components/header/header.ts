@@ -34,6 +34,8 @@ class Nav extends HTMLElement {
             this.shadowRoot.innerHTML = `
                 <div>
                     <img class="img" src="${this.img}" alt="${this.alt}" />
+                    <h3>${this.explore}</h3>
+                    <h3>${this.create}</h3>
                 </div>
             `;
         }
