@@ -16,12 +16,15 @@ class AppContainer extends HTMLElement {
     render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
-                <link rel="stylesheet" href="../src/index.css">
+                <link rel="stylesheet" href="../public/src/index.css">
+                <div class="body">
                 <nav-component 
                 explore="Explore" 
                 create="Create"
-                img= "https://www.figma.com/design/ClgCPq3OXLUdvgECBPTyWN/mudy?node-id=38-2&t=hC7D4XBSwqRcIUri-4">
-                </nav-component>
+                img= "https://raw.githubusercontent.com/kikipou/mudy_final_project/main/mudy-logo.png"
+                profile= "https://i.pinimg.com/564x/73/c1/b4/73c1b4a272425b7295eec9b0f874b8ee.jpg"
+                ></nav-component>
+                </div>
                 
             `;
         }

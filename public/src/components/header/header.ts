@@ -2,14 +2,16 @@ export enum Attributesnav {
     'explore' = 'explore',
     'create' = 'create',
     'img' = 'img',
-    'alt' = 'alt',  // Agregué 'alt' al enumerado para manejar el atributo de imagen
+    'alt' = 'alt', 
+    'profile' = 'profile', // Agregué 'alt' al enumerado para manejar el atributo de imagen
 }
 
 class Nav extends HTMLElement {
     explore?: string;
     create?: string;
     img?: string;
-    alt?: string;  // Definí la propiedad 'alt'
+    alt?: string;
+    profile?: string;  // Definí la propiedad 'alt'
 
     constructor() {
         super();
@@ -32,10 +34,14 @@ class Nav extends HTMLElement {
     render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
-                <div>
+            <link rel="stylesheet" href="../public/src/components/header/header.css">
+                <div class="body">
                     <img class="img" src="${this.img}" alt="${this.alt}" />
-                    <h3>${this.explore}</h3>
-                    <h3>${this.create}</h3>
+                    <div class="items">
+                    <button class="item">${this.explore}</button>
+                    <button class="item">${this.create}</button>
+                    </div>
+                    <img class="img2" src="${this.profile}" alt="${this.alt}" />
                 </div>
             `;
         }
