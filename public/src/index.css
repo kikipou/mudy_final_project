@@ -11,3 +11,9 @@
     margin:0%;
     background-color: rgba(29, 8, 68, 1);
 }
+.searchbar{
+    z-index: 2;
+}
+.nav{
+    z-index: 1;
+}

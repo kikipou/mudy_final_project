@@ -1,6 +1,9 @@
 import { artistasIndependientes }  from './data/data'; // Asegúrate de que la ruta sea correcta
 import nav, { Attributesnav } from './components/header/header'; // Asegúrate de que la ruta sea correcta
 import "./components/header/header"
+import Searchbar, { Attributesbar } from './components/searchbar/searchbar';
+import "./components/searchbar/searchbar"
+ // Asegúrate de que la ruta sea correcta
 
 // Clase principal de la aplicación
 class AppContainer extends HTMLElement {
@@ -18,12 +21,14 @@ class AppContainer extends HTMLElement {
             this.shadowRoot.innerHTML = `
                 <link rel="stylesheet" href="../public/src/index.css">
                 <div class="body">
-                <nav-component 
+                <nav-component class="nav"
+                
                 explore="Explore" 
                 create="Create"
                 img= "https://raw.githubusercontent.com/kikipou/mudy_final_project/main/mudy-logo.png"
                 profile= "https://i.pinimg.com/564x/73/c1/b4/73c1b4a272425b7295eec9b0f874b8ee.jpg"
                 ></nav-component>
+                <searchbar-component search="Search" class="searchbar"></searchbar-component>
                 </div>
                 
             `;

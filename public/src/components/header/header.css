@@ -1,7 +1,7 @@
 .body{
 margin: 0%;
 display: flex;
-    height: 5rem;
+    height: 4rem;
     background-color: rgba(85, 27, 194, 1);
     width: 100%;
 position: fixed;
@@ -10,17 +10,19 @@ position: fixed;
 .img{
     height: 3rem;
     width: 6rem;
-    padding-top: 0.8rem;
+    padding-top: 0.4rem;
+    margin-left: 2rem;
 }
 
 .img2{
-    padding-top: 0.5rem;
+    padding-top: 0.1rem;
     height: 40px;
     width: 40px;
     display: flex;
-    margin-left: 67rem;
+    margin-left: 87rem;
     margin-top: 0.5rem;
     border-radius: 50% 50% 50% 50%;
+    position: fixed;
 }
 
 .items{
