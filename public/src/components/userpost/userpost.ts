@@ -39,11 +39,16 @@ class ArtistPost extends HTMLElement {
             this.shadowRoot.innerHTML = `
               <link rel="stylesheet" href="../public/src/components/userpost/userpost.css">
                 <div class="post">
+                <div id=perfilinfo>
                 <img class="imgperfil" src="${profile}" alt="${artistName}">
                 <p>Uploaded: ${songTime} hours ago</p> <!-- Tiempo desde que se subió la canción -->
+                 </div>
                     <div id="photo">
-                        <img id="img2" src="${photo}" alt="${artistName}">
+
+                   
+                        <img class="img2" src="${photo}" alt="${artistName}">
                     </div>
+                   
                     <div class="info">
                         <div class="titulo">
                              <h1>${songName}</h1>

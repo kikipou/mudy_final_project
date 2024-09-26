@@ -5,6 +5,7 @@ display: flex;
     background-color: rgba(85, 27, 194, 1);
     width: 100%;
     position: fixed;
+    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3);
 /* position: fixed; */
 }
 

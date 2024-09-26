@@ -3,8 +3,28 @@
     height: 40px;
     width: 40px;
    
-    margin-left: 87rem;
+    margin-left: 1rem;
     margin-top: 0.5rem;
     border-radius: 50% 50% 50% 50%;
 
+}
+.post{
+    height: 52rem;
+    width: 40rem;
+    background-color: rgba(55, 16, 129, 1);
+    color: black;
+    margin-bottom: 3rem;
+}
+
+.img2{
+   
+height: 35rem;
+width: 35rem;
+margin-left: 2rem;
+}
+#perfilinfo{
+    color: #ffffff;
+  
+   display: flex;
+   justify-content: row;
 }
