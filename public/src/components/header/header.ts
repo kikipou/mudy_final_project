@@ -1,4 +1,7 @@
+
+import Searchbar, { Attributesbar } from './public/src/components/searchbar/searchbar';
 import '../public/src/components/searchbar/searchbar';
+
 
 
 
@@ -47,8 +50,9 @@ class Nav extends HTMLElement {
                     <button class="item">${this.explore}</button>
                     <button class="item">${this.create}</button>
                     </div>
+                    <searchbar-component
                     <input type="text" id="input" name="nombre" placeholder=${this.search} />
-                    
+                    ></searchbar-component>
                     <img class="img2" src="${this.profile}" alt="${this.alt}" />
                 </div>
             `;

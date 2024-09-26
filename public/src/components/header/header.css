@@ -49,3 +49,6 @@ display: flex;
     font-weight: bolder;
     font-size: 0.8rem;
 }
+#input{
+    margin-left: 30rem;
+}
