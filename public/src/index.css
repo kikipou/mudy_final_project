@@ -23,6 +23,10 @@
 }
 
 .posts-container{
-    
+    padding-top: 5rem;
     margin-left: 25rem;
+}
+
+.heart-button{
+    background:none;
 }
