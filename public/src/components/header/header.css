@@ -4,7 +4,7 @@ display: flex;
     height: 4rem;
     background-color: rgba(85, 27, 194, 1);
     width: 100%;
-position: fixed;
+/* position: fixed; */
 }
 
 .img{
