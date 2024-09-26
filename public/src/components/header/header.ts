@@ -1,9 +1,14 @@
+import '../public/src/components/searchbar/searchbar';
+
+
+
 export enum Attributesnav {
     'explore' = 'explore',
     'create' = 'create',
     'img' = 'img',
     'alt' = 'alt', 
-    'profile' = 'profile', // Agregué 'alt' al enumerado para manejar el atributo de imagen
+    'profile' = 'profile',
+    'search' = 'search', // Agregué 'alt' al enumerado para manejar el atributo de imagen
 }
 
 class Nav extends HTMLElement {
@@ -11,7 +16,8 @@ class Nav extends HTMLElement {
     create?: string;
     img?: string;
     alt?: string;
-    profile?: string;  // Definí la propiedad 'alt'
+    profile?: string;
+    search?: string; // Definí la propiedad 'alt'
 
     constructor() {
         super();
@@ -41,6 +47,8 @@ class Nav extends HTMLElement {
                     <button class="item">${this.explore}</button>
                     <button class="item">${this.create}</button>
                     </div>
+                    <input type="text" id="input" name="nombre" placeholder=${this.search} />
+                    
                     <img class="img2" src="${this.profile}" alt="${this.alt}" />
                 </div>
             `;
