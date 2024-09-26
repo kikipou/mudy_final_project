@@ -37,12 +37,12 @@ class ArtistPost extends HTMLElement {
             const profile = this.getAttribute(Attribute.profile) || 'Time unknown';
 
             this.shadowRoot.innerHTML = `
-              <link rel="stylesheet" href="../src/components/card/card.css">
+              <link rel="stylesheet" href="../public/src/components/userpost/userpost.css">
                 <div class="post">
-                <img id="img" src="${profile}" alt="${artistName}">
+                <img class="imgperfil" src="${profile}" alt="${artistName}">
                 <p>Uploaded: ${songTime} hours ago</p> <!-- Tiempo desde que se subió la canción -->
                     <div id="photo">
-                        <img id="img" src="${photo}" alt="${artistName}">
+                        <img id="img2" src="${photo}" alt="${artistName}">
                     </div>
                     <div class="info">
                         <div class="titulo">
