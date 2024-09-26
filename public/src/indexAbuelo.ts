@@ -8,9 +8,27 @@ import "./components/userpost/userpost"
 // Clase principal de la aplicación
 class AppContainer extends HTMLElement {
 
+    Posts: ArtistPost[] = [];
+
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
+
+        const postsContainer = this.ownerDocument.querySelector('.posts-container');
+        if (postsContainer) {
+            artistasIndependientes.forEach(artista => {
+                const postElement = this.ownerDocument.createElement("artist-post") as ArtistPost;
+
+                // Asignar atributos al componente artist-post
+                postElement.setAttribute(Attribute.photo, artista.fotoalbum);
+                postElement.setAttribute(Attribute.artistName, artista.nombre);
+                postElement.setAttribute(Attribute.songName, artista.cancion);
+                postElement.setAttribute(Attribute.profile, artista.fotoperfil);
+                postElement.setAttribute(Attribute.songTime, artista.horasSubida.toString());
+
+                postsContainer.appendChild(postElement);
+            });
+        }
     }
 
     connectedCallback() {
@@ -27,32 +45,23 @@ class AppContainer extends HTMLElement {
                         create="Create"
                         img="https://raw.githubusercontent.com/kikipou/mudy_final_project/main/mudy-logo.png"
                         profile="https://i.pinimg.com/564x/73/c1/b4/73c1b4a272425b7295eec9b0f874b8ee.jpg"
-                        search="Search">
-                    </nav-component>
+                        search="Search"
+                        ></nav-component>
                     <div class="posts-container"></div>
                 </div>
             `;
-
+            const postContainer = this.shadowRoot.querySelector("#posts-container");
+            this.Posts.forEach(artista => {
+                if (postContainer) {
+                    postContainer.appendChild(artista);
+                }
+            });
             // Agregar los posts de artistas dentro de la clase `posts-container`
-            const postsContainer = this.shadowRoot.querySelector('.posts-container');
-            if (postsContainer) {
-                artistasIndependientes.forEach(artista => {
-                    const postElement = this.ownerDocument.createElement("artist-post") as ArtistPost;
-
-                    // Asignar atributos al componente artist-post
-                    postElement.setAttribute(Attribute.photo, artista.fotoalbum);
-                    postElement.setAttribute(Attribute.artistName, artista.nombre);
-                    postElement.setAttribute(Attribute.songName, artista.cancion);
-                    postElement.setAttribute(Attribute.profile, artista.fotoperfil);
-                    postElement.setAttribute(Attribute.songTime, artista.horasSubida.toString());
-
-                    postsContainer.appendChild(postElement);
-                });
-            }
+           
         }
     }
 }
-
+console.log (AppContainer)
 // Definición del componente principal
 customElements.define('app-container', AppContainer);
 export default AppContainer;
