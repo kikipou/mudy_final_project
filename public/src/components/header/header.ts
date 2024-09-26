@@ -1,8 +1,6 @@
 
-import Searchbar, { Attributesbar } from './public/src/components/searchbar/searchbar';
-import '../public/src/components/searchbar/searchbar';
-
-
+import Searchbar, { Attributesbar } from '../searchbar/searchbar';
+import '../searchbar/searchbar';
 
 
 export enum Attributesnav {

@@ -14,7 +14,10 @@
 }
 .searchbar{
     z-index: 2;
+    position: relative;
 }
 .nav{
     z-index: 1;
+    position: relative;
+
 }

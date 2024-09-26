@@ -14,8 +14,6 @@ class AppContainer extends HTMLElement {
         super();
         this.attachShadow({ mode: 'open' });
 
-        const postsContainer = this.ownerDocument.querySelector('.posts-container');
-        if (postsContainer) {
             artistasIndependientes.forEach(artista => {
                 const postElement = this.ownerDocument.createElement("artist-post") as ArtistPost;
 
@@ -26,9 +24,9 @@ class AppContainer extends HTMLElement {
                 postElement.setAttribute(Attribute.profile, artista.fotoperfil);
                 postElement.setAttribute(Attribute.songTime, artista.horasSubida.toString());
 
-                postsContainer.appendChild(postElement);
+                this.Posts.push(postElement)
+
             });
-        }
     }
 
     connectedCallback() {
@@ -50,7 +48,7 @@ class AppContainer extends HTMLElement {
                     <div class="posts-container"></div>
                 </div>
             `;
-            const postContainer = this.shadowRoot.querySelector("#posts-container");
+            const postContainer = this.shadowRoot.querySelector(".posts-container");
             this.Posts.forEach(artista => {
                 if (postContainer) {
                     postContainer.appendChild(artista);
