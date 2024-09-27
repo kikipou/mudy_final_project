@@ -1,11 +1,17 @@
 #input {
     display: flex;
     margin-top: 1rem;
+    margin-left: 10rem;
     background-color: rgba(0, 236, 193, 1);
-    width: 40rem;
+    width: 30rem;
     border: none;
     padding: 0.4rem 3rem 0.4rem 1rem; /* 0.4rem 3rem 0.4rem 1rem -> 0.25rem 1.875rem 0.25rem 0.625rem */
     border-radius: 1.875rem; /* 30px -> 1.875rem */
     color: #000000;
 }
 
+@media (max-width: 26.875rem) {
+    #input {
+    width: 13rem;
+    }
+}
