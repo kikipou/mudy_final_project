@@ -11,85 +11,98 @@
 }
 .post{
     border-radius: 1.5rem 1.5rem 1.5rem 1.5rem;
-    height: 56rem;
-    width: 40rem;
+    height: 43rem;
+    width: 30rem;
     background-color: rgba(55, 16, 129, 1);
     color: black;
     margin-bottom: 3rem;
+    margin-left:5rem;
 }
 
 .img2{
     border-radius: 1.5rem 1.5rem 1.5rem 1.5rem;  
-height: 35rem;
-width: 37rem;
+height: 26rem;
+width: 27rem;
 margin-left: 1.5rem;
 }
+
 #perfilinfo{
     color: #ffffff;
-
    display: flex;
    justify-content: row;
 }
+
 .info{
     border-radius: 1.5rem 1.5rem 1.5rem 1.5rem;
-    width: 37rem;
+    width: 27rem;
     margin-left: 1.5rem;
     background-color: #ffffff;
 }
+
 .espacio{
     height: 80rem;
 }
+
 .encabezado{
     margin-top: 0.5rem;
     gap: 1rem;
     display: flex;
     justify-content: row;
 }
+
 .heart-button{
     background:none;
     border: none;
-   
+    margin-left: 0.5rem;
 }
 
 .songname{
     display: flex;
     justify-content: center;
     padding-top: 1rem;
+    font-size: 1rem ;
 }
 
 .artist{
     display: flex;
     justify-content: center;
+    font-size: 0.7rem;
     
 }
 .prev-button{
-    padding: 0.3rem 0.7rem 0.3rem 0.7rem;
+    margin-left: 0.1rem;
+    padding: 0.2rem 0.4rem 0.1rem 0.7rem;
     border-radius: 60px 60px 60px 60px;
     background-color: #00ECC1;
     border: none;
+    width: 3rem;
+    height: 3rem;
 }
 .play-button{
-    padding: 0.3rem 0.7rem 0.3rem 0.7rem;
+    padding: 0.2rem 0.4rem 0.1rem 0.4rem;
     border-radius: 60px 60px 60px 60px;
     background-color: #00ECC1;
     border: none;
+    width: 3rem;
+    height: 3rem;
 }
 .next-button{
-    padding: 0.3rem 0.7rem 0.3rem 0.7rem;
+    padding: 0.2rem 0.7rem 0.1rem 0.7rem;
     border-radius: 60px 60px 60px 60px;
     background-color: #00ECC1;
-    border: none;  
+    border: none; 
+    width: 3rem;
+    height: 3rem; 
 }
 .progress-range::-webkit-slider-runnable-track{
-    
-    
     -webkit-appearance: none; /* Quitar el estilo por defecto */
-   color: #00ECC1;
+    color: #00ECC1;
     height: 8px;
     background-color:#00ecc16b; /* Color de fondo de la barra */
     border-radius: 5px;
     outline: none;
-    
+    width: 1rem;
+    height: 0.5rem; 
 }
 .progress-range{
    
@@ -101,7 +114,7 @@ margin-left: 1.5rem;
 }
 .player-controls{
     gap: 2rem;
-    padding: 1rem 1rem 1rem 1rem;
+    padding-right: 7rem;
     display: flex;
     justify-content: row;
 }
@@ -109,6 +122,6 @@ margin-left: 1.5rem;
     gap: 2rem;
     padding: 1rem 1rem 1rem 1rem;
     display: flex;
-    margin-left: 5rem;
+    margin-left: 1rem;
 }
 
