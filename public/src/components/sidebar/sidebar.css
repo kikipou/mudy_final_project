@@ -1,7 +1,6 @@
 .body{
     display: flex;
     justify-content: center;
-    
     height: 5rem;
     width: 55rem;
     margin-left: 17rem;
@@ -9,8 +8,6 @@
     position: fixed;
     bottom: 0;
     background-color:#551bc2;
-    
-    
 }
 .item{
     background: none;
@@ -20,4 +17,19 @@
     padding-left: 3rem;
     padding-right: 3rem;
     padding-top: 0.6rem;
+}
+
+@media (max-width: 26.875rem) {
+
+    .body {
+        height: 5rem;
+        width: 40rem;
+        margin-left: 0rem;
+    }
+
+    .item {
+    font: weight 80px;
+    font-size: 0.7rem;
+    }
+
 }
