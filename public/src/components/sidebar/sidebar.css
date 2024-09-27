@@ -1,0 +1,23 @@
+.body{
+    display: flex;
+    justify-content: center;
+    
+    height: 5rem;
+    width: 55rem;
+    margin-left: 17rem;
+    border-radius: 20px 20px 0px 0px;
+    position: fixed;
+    bottom: 0;
+    background-color:#551bc2;
+    
+    
+}
+.item{
+    background: none;
+    color:#ffffff;
+    border: none;
+    margin-top: 1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 0.6rem;
+}

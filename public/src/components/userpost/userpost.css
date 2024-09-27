@@ -1,0 +1,113 @@
+.imgperfil{
+    padding-top: 0.5rem;
+    height: 30px;
+    width: 30px;
+   margin-right: 1rem;
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+    border-radius: 50% 50% 50% 50%;
+    margin-bottom: 1rem;
+
+}
+.post{
+    border-radius: 1.5rem 1.5rem 1.5rem 1.5rem;
+    height: 56rem;
+    width: 40rem;
+    background-color: rgba(55, 16, 129, 1);
+    color: black;
+    margin-bottom: 3rem;
+}
+
+.img2{
+    border-radius: 1.5rem 1.5rem 1.5rem 1.5rem;  
+height: 35rem;
+width: 37rem;
+margin-left: 1.5rem;
+}
+#perfilinfo{
+    color: #ffffff;
+
+   display: flex;
+   justify-content: row;
+}
+.info{
+    border-radius: 1.5rem 1.5rem 1.5rem 1.5rem;
+    width: 37rem;
+    margin-left: 1.5rem;
+    background-color: #ffffff;
+}
+.espacio{
+    height: 80rem;
+}
+.encabezado{
+    margin-top: 0.5rem;
+    gap: 1rem;
+    display: flex;
+    justify-content: row;
+}
+.heart-button{
+    background:none;
+    border: none;
+   
+}
+
+.songname{
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+}
+
+.artist{
+    display: flex;
+    justify-content: center;
+    
+}
+.prev-button{
+    padding: 0.3rem 0.7rem 0.3rem 0.7rem;
+    border-radius: 60px 60px 60px 60px;
+    background-color: #00ECC1;
+    border: none;
+}
+.play-button{
+    padding: 0.3rem 0.7rem 0.3rem 0.7rem;
+    border-radius: 60px 60px 60px 60px;
+    background-color: #00ECC1;
+    border: none;
+}
+.next-button{
+    padding: 0.3rem 0.7rem 0.3rem 0.7rem;
+    border-radius: 60px 60px 60px 60px;
+    background-color: #00ECC1;
+    border: none;  
+}
+.progress-range::-webkit-slider-runnable-track{
+    
+    
+    -webkit-appearance: none; /* Quitar el estilo por defecto */
+   color: #00ECC1;
+    height: 8px;
+    background-color:#00ecc16b; /* Color de fondo de la barra */
+    border-radius: 5px;
+    outline: none;
+    
+}
+.progress-range{
+   
+    width: 35rem;
+}
+.progress-bar{
+    display: flex;
+    justify-content: center;
+}
+.player-controls{
+    gap: 2rem;
+    padding: 1rem 1rem 1rem 1rem;
+    display: flex;
+    justify-content: row;
+}
+.controles{
+    gap: 2rem;
+    padding: 1rem 1rem 1rem 1rem;
+    display: flex;
+    margin-left: 5rem;
+}

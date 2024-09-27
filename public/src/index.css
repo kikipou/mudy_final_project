@@ -1,0 +1,32 @@
+*{
+    margin:0%;
+    padding: 0%;
+    color:#ffffff;
+    font-family: sans-serif;
+    background-color: rgba(29, 8, 68, 1);
+   
+
+}
+
+.body{
+    margin:0%;
+    background-color: rgba(29, 8, 68, 1);
+}
+.searchbar{
+    z-index: 2;
+    position: relative;
+}
+.nav{
+    z-index: 1;
+    position: relative;
+
+}
+
+.posts-container{
+    padding-top: 5rem;
+    margin-left: 25rem;
+}
+
+.heart-button{
+    background:none;
+}
