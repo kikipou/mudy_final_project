@@ -4,7 +4,8 @@ import "./components/header/header";
 import "./components/userpost/userpost";
 import ArtistPost, { Attribute } from './components/userpost/userpost';
 import "./components/userpost/userpost"
-
+import "../src/components/sidebar/sidebar"
+import Sidebar, { Attributessidebar } from './components/sidebar/sidebar';
 // Clase principal de la aplicación
 class AppContainer extends HTMLElement {
 
@@ -46,6 +47,9 @@ class AppContainer extends HTMLElement {
                         search="Search"
                         ></nav-component>
                     <div class="posts-container"></div>
+                    <sidebar-component 
+                    
+                    ></sidebar-component>
                 </div>
             `;
             const postContainer = this.shadowRoot.querySelector(".posts-container");
