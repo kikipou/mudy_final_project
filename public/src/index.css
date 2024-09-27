@@ -24,9 +24,23 @@
 
 .posts-container{
     padding-top: 5rem;
-    margin-left: 25rem;
+    display: flex;
+    padding-left: 25rem;
+    justify-content: center;
+    flex-direction: column;
+
 }
 
 .heart-button{
     background:none;
 }
+
+@media (max-width: 26.875rem) {
+    .posts-container {
+        justify-content: center;
+        flex-direction: column;
+        display: flex;
+        padding-left: 0rem;
+    }
+  }
+
