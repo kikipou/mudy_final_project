@@ -1,11 +1,10 @@
-#input {
+#input{
     display: flex;
     margin-top: 1rem;
     background-color: rgba(0, 236, 193, 1);
     width: 40rem;
     border: none;
-    padding: 0.25rem 1.875rem 0.25rem 0.625rem; /* 0.4rem 3rem 0.4rem 1rem -> 0.25rem 1.875rem 0.25rem 0.625rem */
-    border-radius: 1.875rem; /* 30px -> 1.875rem */
+    padding: 0.4rem 3rem 0.4rem 1rem;
+    border-radius: 30px 30px 30px 30px;
     color: #000000;
 }
-
