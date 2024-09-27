@@ -89,6 +89,13 @@ class ArtistPost extends HTMLElement {
                                 </button>
                                 </div>
                             </div>
+<<<<<<< HEAD
+=======
+                            
+                           
+    
+                           
+>>>>>>> 7eff1e37b86facac8c7bafe9f6c29ff822471100
                         </div>
                     </div>
                 </div>

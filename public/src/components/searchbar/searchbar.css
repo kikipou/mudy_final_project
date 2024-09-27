@@ -4,6 +4,7 @@
     background-color: rgba(0, 236, 193, 1);
     width: 40rem;
     border: none;
+<<<<<<< HEAD
     padding: 0.4rem 3rem 0.4rem 1rem;
     border-radius: 30px 30px 30px 30px;
     color: #000000;
@@ -14,4 +15,9 @@
         display: flexbox;
         width: 20rem;
     }
+=======
+ padding: 0.4rem 3rem 0.4rem 1rem;
+ border-radius: 30px 30px 30px 30px;
+ color: #000000;
+>>>>>>> 7eff1e37b86facac8c7bafe9f6c29ff822471100
 }

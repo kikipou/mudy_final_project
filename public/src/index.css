@@ -1,9 +1,18 @@
 *{
+<<<<<<< HEAD
     margin: 0%;
+=======
+    margin:0%;
+>>>>>>> 7eff1e37b86facac8c7bafe9f6c29ff822471100
     padding: 0%;
     color:#ffffff;
     font-family: sans-serif;
     background-color: rgba(29, 8, 68, 1);
+<<<<<<< HEAD
+=======
+   
+
+>>>>>>> 7eff1e37b86facac8c7bafe9f6c29ff822471100
 }
 
 .body{
@@ -27,6 +36,7 @@
 
 .heart-button{
     background:none;
+<<<<<<< HEAD
 }
 
 @media (max-width: 26.875rem) {
@@ -57,4 +67,6 @@
     
     
 
+=======
+>>>>>>> 7eff1e37b86facac8c7bafe9f6c29ff822471100
 }

@@ -20,9 +20,15 @@
 
 .img2{
     border-radius: 1.5rem 1.5rem 1.5rem 1.5rem;  
+<<<<<<< HEAD
     height: 35rem;
     width: 37rem;
     margin-left: 1.5rem;
+=======
+height: 35rem;
+width: 37rem;
+margin-left: 1.5rem;
+>>>>>>> 7eff1e37b86facac8c7bafe9f6c29ff822471100
 }
 #perfilinfo{
     color: #ffffff;
@@ -81,9 +87,16 @@
     border: none;  
 }
 .progress-range::-webkit-slider-runnable-track{
+<<<<<<< HEAD
      
     -webkit-appearance: none; /* Quitar el estilo por defecto */
     color: #00ECC1;
+=======
+    
+    
+    -webkit-appearance: none; /* Quitar el estilo por defecto */
+   color: #00ECC1;
+>>>>>>> 7eff1e37b86facac8c7bafe9f6c29ff822471100
     height: 8px;
     background-color:#00ecc16b; /* Color de fondo de la barra */
     border-radius: 5px;
@@ -109,6 +122,7 @@
     padding: 1rem 1rem 1rem 1rem;
     display: flex;
     margin-left: 5rem;
+<<<<<<< HEAD
 }
 
 @media (max-width: 26.875rem) {
@@ -119,4 +133,6 @@
         height: 56rem;
     }
 
+=======
+>>>>>>> 7eff1e37b86facac8c7bafe9f6c29ff822471100
 }

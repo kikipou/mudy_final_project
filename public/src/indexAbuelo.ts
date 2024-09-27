@@ -42,11 +42,20 @@ class AppContainer extends HTMLElement {
                     <nav-component class="nav"
                         explore="Explore" 
                         create="Create"
+<<<<<<< HEAD
                         img="https://raw.githubusercontent.com/kikipou/mudy_final_project/main/mudy-logo.png"
+=======
+                        img="https://github.com/kikipou/mudy_final_project/blob/lau/mudy-logo.png?raw=true"
+                        profile="https://i.pinimg.com/564x/73/c1/b4/73c1b4a272425b7295eec9b0f874b8ee.jpg"
+>>>>>>> 7eff1e37b86facac8c7bafe9f6c29ff822471100
                         search="Search"
                         ></nav-component>
                     <div class="posts-container"></div>
                     <sidebar-component 
+<<<<<<< HEAD
+=======
+                    
+>>>>>>> 7eff1e37b86facac8c7bafe9f6c29ff822471100
                     ></sidebar-component>
                 </div>
             `;
