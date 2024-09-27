@@ -4,7 +4,14 @@
     background-color: rgba(0, 236, 193, 1);
     width: 40rem;
     border: none;
- padding: 0.4rem 3rem 0.4rem 1rem;
- border-radius: 30px 30px 30px 30px;
- color: #000000;
+    padding: 0.4rem 3rem 0.4rem 1rem;
+    border-radius: 30px 30px 30px 30px;
+    color: #000000;
+}
+
+@media (max-width: 26.875rem) {
+    #input {
+        display: flexbox;
+        width: 20rem;
+    }
 }

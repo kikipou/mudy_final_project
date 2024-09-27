@@ -20,9 +20,9 @@
 
 .img2{
     border-radius: 1.5rem 1.5rem 1.5rem 1.5rem;  
-height: 35rem;
-width: 37rem;
-margin-left: 1.5rem;
+    height: 35rem;
+    width: 37rem;
+    margin-left: 1.5rem;
 }
 #perfilinfo{
     color: #ffffff;
@@ -81,10 +81,9 @@ margin-left: 1.5rem;
     border: none;  
 }
 .progress-range::-webkit-slider-runnable-track{
-    
-    
+     
     -webkit-appearance: none; /* Quitar el estilo por defecto */
-   color: #00ECC1;
+    color: #00ECC1;
     height: 8px;
     background-color:#00ecc16b; /* Color de fondo de la barra */
     border-radius: 5px;
@@ -110,4 +109,14 @@ margin-left: 1.5rem;
     padding: 1rem 1rem 1rem 1rem;
     display: flex;
     margin-left: 5rem;
+}
+
+@media (max-width: 26.875rem) {
+
+    .post {
+
+        width: 40rem;
+        height: 56rem;
+    }
+
 }

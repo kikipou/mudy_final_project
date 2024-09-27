@@ -89,10 +89,6 @@ class ArtistPost extends HTMLElement {
                                 </button>
                                 </div>
                             </div>
-                            
-                           
-    
-                           
                         </div>
                     </div>
                 </div>

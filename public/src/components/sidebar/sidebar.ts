@@ -11,7 +11,6 @@ class Sidebar extends HTMLElement {
     library?: string;
     categories?: string;
     logout?: string;
-
     profile?: string;
     // Definí la propiedad 'alt'
 
