@@ -48,8 +48,7 @@ margin-left: 1.5rem;
 .heart-button{
     background:none;
     border: none;
-    padding-left: 1rem;
-    padding-bottom: 1rem;
+   
 }
 
 .songname{
@@ -104,5 +103,11 @@ margin-left: 1.5rem;
     gap: 2rem;
     padding: 1rem 1rem 1rem 1rem;
     display: flex;
-    justify-content: center;
+    justify-content: row;
+}
+.controles{
+    gap: 2rem;
+    padding: 1rem 1rem 1rem 1rem;
+    display: flex;
+    margin-left: 5rem;
 }
