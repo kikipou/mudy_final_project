@@ -28,10 +28,15 @@
         margin-left: 0rem;
     }
 
+    .items {
+        padding-top: 0.4rem;
+        margin-right: 6rem;
+    }
+
     .item {
-    font: weight 80px;
-    font-size: 0.7rem;
-    margin-right: 0rem;
+        font: weight 80px;
+        font-size: 0.7rem;
+        margin-right: 0rem;
     }
 
 }
