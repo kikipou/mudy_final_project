@@ -1,7 +1,7 @@
 .postimgprofile{
     padding-top: 0.5rem;
-    height: 30px;
-    width: 30px;
+    height: 1.875rem;
+    width: 1.875rem;
     margin-right: 1rem;
     margin-left: 1rem;
     margin-top: 0.5rem;
@@ -73,7 +73,7 @@
 .prev-button{
     margin-left: 0.1rem;
     padding: 0.2rem 0.4rem 0.1rem 0.7rem;
-    border-radius: 60px 60px 60px 60px;
+    border-radius: 3.75rem 3.75rem 3.75rem 3.75rem;
     background-color: #00ECC1;
     border: none;
     width: 3rem;
@@ -82,7 +82,7 @@
 
 .play-button{
     padding: 0.2rem 0.4rem 0.1rem 0.4rem;
-    border-radius: 60px 60px 60px 60px;
+    border-radius: 3.75rem 3.75rem 3.75rem 3.75rem;
     background-color: #00ECC1;
     border: none;
     width: 3rem;
@@ -91,7 +91,7 @@
 
 .next-button{
     padding: 0.2rem 0.7rem 0.1rem 0.7rem;
-    border-radius: 60px 60px 60px 60px;
+    border-radius: 3.75rem 3.75rem 3.75rem 3.75rem;
     background-color: #00ECC1;
     border: none; 
     width: 3rem;
@@ -101,9 +101,9 @@
 .progress-range::-webkit-slider-runnable-track{
     -webkit-appearance: none; /* Quitar el estilo por defecto */
     color: #00ECC1;
-    height: 8px;
+    height: 0.5rem;
     background-color:#00ecc16b; /* Color de fondo de la barra */
-    border-radius: 5px;
+    border-radius: 0.313rem;
     outline: none;
     width: 1rem;
     height: 0.5rem; 
