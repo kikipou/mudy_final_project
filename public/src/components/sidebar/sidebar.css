@@ -7,8 +7,9 @@
     border-radius: 20px 20px 0px 0px;
     position: fixed;
     bottom: 0;
-    background-color:#0a070f;
+    background-color:rgba(85, 27, 194, 1);
 }
+
 .item{
     background: none;
     color:#ffffff;

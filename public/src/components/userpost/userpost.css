@@ -2,13 +2,13 @@
     padding-top: 0.5rem;
     height: 30px;
     width: 30px;
-   margin-right: 1rem;
+    margin-right: 1rem;
     margin-left: 1rem;
     margin-top: 0.5rem;
     border-radius: 50% 50% 50% 50%;
     margin-bottom: 1rem;
-
 }
+
 .post{
     border-radius: 1.5rem 1.5rem 1.5rem 1.5rem;
     height: 43rem;
@@ -21,15 +21,15 @@
 
 .img2{
     border-radius: 1.5rem 1.5rem 1.5rem 1.5rem;  
-height: 26rem;
-width: 27rem;
-margin-left: 1.5rem;
+    height: 26rem;
+    width: 27rem;
+    margin-left: 1.5rem;
 }
 
 #perfilinfo{
     color: #ffffff;
-   display: flex;
-   justify-content: row;
+    display: flex;
+    justify-content: row;
 }
 
 .info{
@@ -69,6 +69,7 @@ margin-left: 1.5rem;
     font-size: 0.7rem;
     
 }
+
 .prev-button{
     margin-left: 0.1rem;
     padding: 0.2rem 0.4rem 0.1rem 0.7rem;
@@ -78,6 +79,7 @@ margin-left: 1.5rem;
     width: 3rem;
     height: 3rem;
 }
+
 .play-button{
     padding: 0.2rem 0.4rem 0.1rem 0.4rem;
     border-radius: 60px 60px 60px 60px;
@@ -86,6 +88,7 @@ margin-left: 1.5rem;
     width: 3rem;
     height: 3rem;
 }
+
 .next-button{
     padding: 0.2rem 0.7rem 0.1rem 0.7rem;
     border-radius: 60px 60px 60px 60px;
@@ -94,6 +97,7 @@ margin-left: 1.5rem;
     width: 3rem;
     height: 3rem; 
 }
+
 .progress-range::-webkit-slider-runnable-track{
     -webkit-appearance: none; /* Quitar el estilo por defecto */
     color: #00ECC1;
@@ -104,24 +108,26 @@ margin-left: 1.5rem;
     width: 1rem;
     height: 0.5rem; 
 }
+
 .progress-range{
-   
     width: 35rem;
 }
+
 .progress-bar{
     display: flex;
     justify-content: center;
 }
+
 .player-controls{
     gap: 2rem;
     padding-right: 7rem;
     display: flex;
     justify-content: row;
 }
+
 .controles{
     gap: 2rem;
     padding: 1rem 1rem 1rem 1rem;
     display: flex;
     margin-left: 1rem;
 }
-

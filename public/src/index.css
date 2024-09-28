@@ -4,22 +4,21 @@
     color:#ffffff;
     font-family: sans-serif;
     background-color: rgba(29, 8, 68, 1);
-   
-
 }
 
 .body{
     margin:0%;
     background-color: rgba(29, 8, 68, 1);
 }
+
 .searchbar{
     z-index: 2;
     position: relative;
 }
+
 .nav{
     z-index: 1;
     position: relative;
-
 }
 
 .posts-container{
@@ -28,7 +27,6 @@
     padding-left: 25rem;
     justify-content: center;
     flex-direction: column;
-
 }
 
 .heart-button{
@@ -36,6 +34,7 @@
 }
 
 @media (max-width: 26.875rem) {
+    
     .posts-container {
         justify-content: center;
         flex-direction: column;
@@ -43,5 +42,5 @@
         padding-left: 0rem;
         padding-right: 1rem;
     }
-  }
+}
 
