@@ -17,8 +17,6 @@ class AppContainer extends HTMLElement {
 
             artistasIndependientes.forEach(artista => {
                 const postElement = this.ownerDocument.createElement("artist-post") as ArtistPost;
-
-                // Asignar atributos al componente artist-post
                 postElement.setAttribute(Attribute.photo, artista.fotoalbum);
                 postElement.setAttribute(Attribute.artistName, artista.nombre);
                 postElement.setAttribute(Attribute.songName, artista.cancion);
@@ -26,7 +24,6 @@ class AppContainer extends HTMLElement {
                 postElement.setAttribute(Attribute.songTime, artista.horasSubida.toString());
 
                 this.Posts.push(postElement)
-
             });
     }
 
@@ -42,6 +39,7 @@ class AppContainer extends HTMLElement {
                     <nav-component class="nav"
                         explore="Explore" 
                         create="Create"
+<<<<<<< HEAD
                         img="https://github.com/kikipou/mudy_final_project/blob/lau/mudy-logo.png?raw=true"
                         
                         search="Search"
@@ -50,6 +48,15 @@ class AppContainer extends HTMLElement {
                     <div class="posts-container"></div>
                     </div>
                     <sidebar-component 
+=======
+                        img="https://github.com/kikipou/mudy_final_project/blob/cata/mudy-logo.png?raw=true"
+                        search="Search"
+                        ></nav-component>
+                            <div class=posts>
+                            <div class="posts-container"></div>
+                            </div>
+                        <sidebar-component 
+>>>>>>> cata
                     ></sidebar-component>
                 </div>
             `;
@@ -59,12 +66,9 @@ class AppContainer extends HTMLElement {
                     postContainer.appendChild(artista);
                 }
             });
-            // Agregar los posts de artistas dentro de la clase posts-container
-           
         }
     }
 }
 console.log (AppContainer)
-// Definición del componente principal
 customElements.define('app-container', AppContainer);
 export default AppContainer;

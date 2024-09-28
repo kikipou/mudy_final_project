@@ -11,7 +11,8 @@
 }
 
 @media (max-width: 26.875rem) {
+    
     #input {
-    width: 13rem;
+        width: 11.5rem;
     }
 }
