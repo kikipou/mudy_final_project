@@ -76,8 +76,9 @@
         }
 
         #input{
-            margin-left: 3rem;
-            width: 0.1rem;
+            width: 2rem;
             color: #000000;
+            margin-left: -5rem;
+            padding-right: 2rem;
         }
     }

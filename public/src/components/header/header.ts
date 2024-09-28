@@ -51,7 +51,6 @@ class Nav extends HTMLElement {
                     <searchbar-component
                     <input type="text" id="input" name="nombre" placeholder=${this.search} />
                     ></searchbar-component>
-                    <img class="img2" src="${this.profile}" alt="${this.alt}" />
                 </div>
             `;
         }
