@@ -8,7 +8,7 @@ export enum Attributesnav {
     'img' = 'img',
     'alt' = 'alt', 
     'profile' = 'profile',
-    'search' = 'search', // Agregué 'alt' al enumerado para manejar el atributo de imagen
+    'search' = 'search',
 }
 
 class Nav extends HTMLElement {
