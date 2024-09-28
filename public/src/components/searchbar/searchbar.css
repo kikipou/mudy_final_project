@@ -8,6 +8,7 @@
     padding: 0.4rem 3rem 0.4rem 1rem; /* 0.4rem 3rem 0.4rem 1rem -> 0.25rem 1.875rem 0.25rem 0.625rem */
     border-radius: 1.875rem; /* 30px -> 1.875rem */
     color: #000000;
+    font-family: 'Montserrat';
 }
 
 @media (max-width: 26.875rem) {
