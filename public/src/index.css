@@ -27,6 +27,7 @@
     padding-left: 25rem;
     justify-content: center;
     flex-direction: column;
+    width: 39rem;
 }
 
 .heart-button{
