@@ -16,16 +16,6 @@
         margin-left: 2rem;
     }
     
-    .img2{
-        padding-top: 0.1rem;
-        height: 40px;
-        width: 40px;
-        display: flex;
-        margin-left: 87rem;
-        margin-top: 0.5rem;
-        border-radius: 50% 50% 50% 50%;
-        position: fixed;
-    }
     
     .items{
         display: flex; /* Activa el modo Flexbox */

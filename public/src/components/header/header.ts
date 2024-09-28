@@ -8,7 +8,6 @@ export enum Attributesnav {
     'create' = 'create',
     'img' = 'img',
     'alt' = 'alt', 
-    'profile' = 'profile',
     'search' = 'search', // Agregué 'alt' al enumerado para manejar el atributo de imagen
 }
 
@@ -17,7 +16,6 @@ class Nav extends HTMLElement {
     create?: string;
     img?: string;
     alt?: string;
-    profile?: string;
     search?: string; // Definí la propiedad 'alt'
 
     constructor() {
@@ -51,7 +49,6 @@ class Nav extends HTMLElement {
                     <searchbar-component
                     <input type="text" id="input" name="nombre" placeholder=${this.search} />
                     ></searchbar-component>
-                    <img class="img2" src="${this.profile}" alt="${this.alt}" />
                 </div>
             `;
         }
