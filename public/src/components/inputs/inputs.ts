@@ -12,7 +12,7 @@ class RegisterInput extends HTMLElement {
     render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
-                <link rel="stylesheet" href="../public/src/inputs.css">
+                <link rel="stylesheet" href="./inputs.css">
                     <h1 class="title">Mudy</h1>
                         <form id="register-form">
                             <input id="name" placeholder="Name" required />
