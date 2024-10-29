@@ -1,4 +1,3 @@
-
 import Searchbar, { Attributesbar } from '../searchbar/searchbar';
 import '../searchbar/searchbar';
 
