@@ -1,0 +1,13 @@
+*{
+    font-family: Montserrat;
+}
+
+#register-form {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 20px;
+    background-color: #000000;
+    border-radius: 2rem;
+    margin: 10px 0px;
+    width: 80rem;
+}
