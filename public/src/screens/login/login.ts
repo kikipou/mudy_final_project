@@ -52,6 +52,7 @@ class LoginPage extends HTMLElement {
 			save.innerText = 'Iniciar sesión';
 			save.addEventListener('click', this.submitForm);
 			this.shadowRoot.appendChild(save);
+			
 		}
 	}
 }
