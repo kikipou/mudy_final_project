@@ -57,25 +57,25 @@ export const getUser = async () => {
 };
 
 export const registerUser = async (credentials: any) => {
-    try {
-        const { auth, db} = await getFirebaseInstance();
-        const { createUserWithEmailAndPassword} = await import('firebase/auth');
-        const { doc, setDoc} = await import('firebase/firestore');
+	try {
+		const { auth, db } = await getFirebaseInstance();
+		const { createUserWithEmailAndPassword } = await import('firebase/auth');
+		const { doc, setDoc } = await import('firebase/firestore');
 
-        const userCredential = await createUserWithEmailAndPassword(auth, credentials.email, credentials.password);
+		const userCredential = await createUserWithEmailAndPassword(auth, credentials.email, credentials.password);
 
-        const where = doc(db, 'users', userCredential.user.uid);
-        const data = {
-            age: credentials.age,
-            name: credentials.name,
-        };
+		const where = doc(db, 'users', userCredential.user.uid);
+		const data = {
+			age: credentials.age,
+			name: credentials.name,
+		};
 
-        await setDoc(where, data);
-        return true;
-    }   catch (error) {
-        console.error(error);
-        return false;
-    }
+		await setDoc(where, data);
+		return true;
+	} catch (error) {
+		console.error(error);
+		return false;
+	}
 };
 
 export const loginUser = async (email: string, password: string) => {
