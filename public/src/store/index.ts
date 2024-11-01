@@ -1,12 +1,17 @@
 import { reducer } from './reducer';
 import Storage from '../utils/storage';
-import { AppState, Observer } from '../types/store';
+import { AppState, Observer, Screens } from '../types/store';
 import { onAuthStateChanged } from 'firebase/auth';
 import { getFirebaseInstance } from '../utils/firebase';
+import { navigate } from './actions';
 
 const onAuth = async () => {
     const { auth } = await getFirebaseInstance();
-    onAuthStateChanged(auth, (user) => { 
+    onAuthStateChanged(auth, (user) => {
+        if(user){
+            user.uid !==null ? dispatch(setUserCredentials(user.uid)) : '';
+            dispatch(navigate(Screens.DASHBOARD))
+        } 
     });
 }
 
@@ -14,7 +19,7 @@ const onAuth = async () => {
 const initialState: AppState = {
 	screen: 'REGISTER',
 	products: [],
-    user: '',
+    user: {},
 };
 
 export let appState = initialState;
