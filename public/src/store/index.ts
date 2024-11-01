@@ -22,7 +22,7 @@ const onAuth = async () => {
 
 //El estado global, appState
 const initialState: AppState = {
-	screen: 'REGISTER',
+	screen: 'LOGIN',
 	products: [],
     user: {},
 };

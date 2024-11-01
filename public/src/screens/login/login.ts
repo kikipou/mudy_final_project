@@ -46,10 +46,10 @@ class LoginPage extends HTMLElement {
 			pName.addEventListener('change', this.changeEmail);
 			this.shadowRoot.appendChild(pName);
 
-			const pPassword = this.ownerDocument.createElement('input');
-			pPassword.placeholder = 'Contraseña';
-			pPassword.addEventListener('change', this.changePassword);
-			this.shadowRoot.appendChild(pPassword);
+			const pPrice = this.ownerDocument.createElement('input');
+			pPrice.placeholder = 'Contraseña';
+			pPrice.addEventListener('change', this.changePassword);
+			this.shadowRoot.appendChild(pPrice);
 
 			const save = this.ownerDocument.createElement('button');
 			save.innerText = 'Iniciar sesión';

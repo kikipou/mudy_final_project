@@ -43,6 +43,7 @@ class RegisterPage extends HTMLElement {
 
 	async submitForm() {
 		const resp = await registerUser(credentials);
+		console.log(resp)
 		resp ? dispatch(navigate(Screens.LOGIN)) : alert('User could not be created');
 	}
 
