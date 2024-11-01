@@ -82,10 +82,10 @@ class RegisterPage extends HTMLElement {
 			save.addEventListener('click', this.submitForm);
 			this.shadowRoot.appendChild(save);
 
-			const backToLogin = this.ownerDocument.createElement('button');
+			const loginBack = this.ownerDocument.createElement('button');
 			save.innerText = 'Log In';
 			save.addEventListener('click', this.submitForm);
-			this.shadowRoot.appendChild(backToLogin);
+			this.shadowRoot.appendChild(loginBack);
 		}
 	}
 }

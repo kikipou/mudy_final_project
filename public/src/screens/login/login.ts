@@ -31,6 +31,10 @@ class LoginPage extends HTMLElement {
 		loginUser(credentials.email, credentials.password);
 	}
 
+	backToRegister() {
+		dispatch(navigate(Screens.REGISTER));
+	}
+
 
     async render() {
 		if (this.shadowRoot) {
@@ -53,6 +57,10 @@ class LoginPage extends HTMLElement {
 			save.addEventListener('click', this.submitForm);
 			this.shadowRoot.appendChild(save);
 			
+			const registerBack = this.ownerDocument.createElement('button');
+			save.innerText = 'Log In';
+			save.addEventListener('click', this.submitForm);
+			this.shadowRoot.appendChild(registerBack);
 		}
 	}
 }
