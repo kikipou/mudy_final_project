@@ -14,6 +14,6 @@ export enum Screens {
 
 export enum Actions {
 	'NAVIGATE' = 'NAVIGATE',
-	'GETPRODUCTS' = 'GETPRODUCTS',
+	'GETUSERS' = 'GETUSERS',
 	'SETUSERCREDENTIALS' = 'SETUSERCREDENTIALS',
 }

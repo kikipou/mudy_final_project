@@ -9,10 +9,10 @@ export const navigate = (screen: Screens) => {
 };
 
 export const getUsersAction = async () => {
-	const products = await getUser(); //Firestore
+	const users = await getUser(); //Firestore
 	return {
-		action: Actions.GETPRODUCTS,
-		payload: products,
+		action: Actions.GETUSERS,
+		payload: users,
 	};
 };
 
