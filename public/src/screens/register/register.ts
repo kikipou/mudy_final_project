@@ -37,13 +37,13 @@ class RegisterPage extends HTMLElement {
 		credentials.name = e.target.value;
 	}
 
+	backToLogin() {
+		dispatch(navigate(Screens.LOGIN));
+	}
+
 	async submitForm() {
 		const resp = await registerUser(credentials);
 		resp ? dispatch(navigate(Screens.LOGIN)) : alert('User could not be created');
-	}
-	
-	backToLogin() {
-		dispatch(navigate(Screens.LOGIN));
 	}
 
     async render() {
@@ -83,8 +83,8 @@ class RegisterPage extends HTMLElement {
 			this.shadowRoot.appendChild(save);
 
 			const loginBack = this.ownerDocument.createElement('button');
-			save.innerText = 'Log In';
-			save.addEventListener('click', this.submitForm);
+			loginBack.innerText = 'Go to Log In';
+			loginBack.addEventListener('click', () => this.backToLogin());
 			this.shadowRoot.appendChild(loginBack);
 		}
 	}

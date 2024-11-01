@@ -27,14 +27,13 @@ class LoginPage extends HTMLElement {
 		credentials.password = e.target.value;
 	}
 
-	submitForm() {
-		loginUser(credentials.email, credentials.password);
-	}
-
 	backToRegister() {
 		dispatch(navigate(Screens.REGISTER));
 	}
 
+	submitForm() {
+		loginUser(credentials.email, credentials.password);
+	}
 
     async render() {
 		if (this.shadowRoot) {
@@ -58,8 +57,8 @@ class LoginPage extends HTMLElement {
 			this.shadowRoot.appendChild(save);
 			
 			const registerBack = this.ownerDocument.createElement('button');
-			save.innerText = 'Log In';
-			save.addEventListener('click', this.submitForm);
+			registerBack.innerText = 'Go to Register';
+			registerBack.addEventListener('click', () => this.backToRegister());
 			this.shadowRoot.appendChild(registerBack);
 		}
 	}
