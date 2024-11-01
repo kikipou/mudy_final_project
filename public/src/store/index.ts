@@ -7,6 +7,8 @@ import { navigate, setUserCredentials } from './actions';
 
 const onAuth = async () => {
     const { auth } = await getFirebaseInstance();
+    console.log('in auth', auth);
+
     onAuthStateChanged(auth, (user) => {
         if(user){
             user.uid !==null ? dispatch(setUserCredentials(user.uid)) : ''; //Guarda el id del usuario
