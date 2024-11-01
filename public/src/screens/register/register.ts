@@ -4,6 +4,7 @@ import { Screens } from '../../types/store';
 import { registerUser } from '../../utils/firebase';
 
 const credentials = {
+	username: '',
 	email: '',
 	password: '',
 	name: '',
@@ -20,6 +21,10 @@ class RegisterPage extends HTMLElement {
         this.render();
     }
 
+	changeUsername(e: any) {
+		credentials.username = e.target.value;
+	}
+
     changeEmail(e: any) {
 		credentials.email = e.target.value;
 	}
@@ -34,32 +39,37 @@ class RegisterPage extends HTMLElement {
 
 	async submitForm() {
 		const resp = await registerUser(credentials);
-		resp ? dispatch(navigate(Screens.LOGIN)) : alert('No se pudo crear el usuario');
+		resp ? dispatch(navigate(Screens.LOGIN)) : alert('User could not be created');
 	}
 
     async render() {
 		if (this.shadowRoot) {
 			const title = this.ownerDocument.createElement('h1');
-			title.innerText = 'Registro';
+			title.innerText = 'Register';
 			this.shadowRoot.appendChild(title);
 
+			const pUsername = this.ownerDocument.createElement('input');
+			pUsername.placeholder = 'Username';
+			pUsername.addEventListener('change', this.changeEmail);
+			this.shadowRoot.appendChild(pUsername);
+
 			const pEmail = this.ownerDocument.createElement('input');
-			pEmail.placeholder = 'Correo electronico';
+			pEmail.placeholder = 'Email';
 			pEmail.addEventListener('change', this.changeEmail);
 			this.shadowRoot.appendChild(pEmail);
 
-			const pPrice = this.ownerDocument.createElement('input');
-			pPrice.placeholder = 'Contraseña';
-			pPrice.addEventListener('change', this.changePassword);
-			this.shadowRoot.appendChild(pPrice);
+			const pPassword = this.ownerDocument.createElement('input');
+			pPassword.placeholder = 'Password';
+			pPassword.addEventListener('change', this.changePassword);
+			this.shadowRoot.appendChild(pPassword);
 
 			const pName = this.ownerDocument.createElement('input');
-			pName.placeholder = 'Nombre completo';
+			pName.placeholder = 'Name';
 			pName.addEventListener('change', this.changeName);
 			this.shadowRoot.appendChild(pName);
 
 			const save = this.ownerDocument.createElement('button');
-			save.innerText = 'Registrarme';
+			save.innerText = 'Sign Up';
 			save.addEventListener('click', this.submitForm);
 			this.shadowRoot.appendChild(save);
 		}

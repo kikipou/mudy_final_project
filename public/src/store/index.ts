@@ -1,7 +1,7 @@
 import { reducer } from './reducer';
 import Storage from '../utils/storage';
 import { AppState, Observer, Screens } from '../types/store';
-import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getFirebaseInstance } from '../utils/firebase';
 import { navigate, setUserCredentials } from './actions';
 
@@ -12,9 +12,9 @@ const onAuth = async () => {
     onAuthStateChanged(auth, (user) => {
         if(user){
             user.uid !==null ? dispatch(setUserCredentials(user.uid)) : ''; //Guarda el id del usuario
-            dispatch(navigate(Screens.DASHBOARD)) //Para navegar
+            dispatch(navigate(Screens.REGISTER)) //Para navegar
         }else{
-            dispatch(navigate(Screens.LOGIN))
+            dispatch(navigate(Screens.REGISTER))
             console.log('Redirigido al login')
         }
     });

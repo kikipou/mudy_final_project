@@ -66,7 +66,7 @@ export const registerUser = async (credentials: any) => {
 
 		const where = doc(db, 'users', userCredential.user.uid);
 		const data = {
-			age: credentials.age,
+			username: credentials. username,
 			name: credentials.name,
 		};
 
