@@ -15,7 +15,7 @@ const onAuth = async () => {
             dispatch(navigate(Screens.DASHBOARD)) //Para navegar
         }else{
             dispatch(navigate(Screens.LOGIN))
-            console.log('Redirigido al login')
+            console.log('Redirect to login')
         }
     });
 };
@@ -24,7 +24,7 @@ onAuth();
 
 //El estado global, appState
 const initialState: AppState = {
-	screen: 'REGISTER',
+	screen: 'LOGIN',
 	products: [],
     user: {},
 };

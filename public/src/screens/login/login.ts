@@ -42,17 +42,17 @@ class LoginPage extends HTMLElement {
 			this.shadowRoot.appendChild(title);
 
 			const pName = this.ownerDocument.createElement('input');
-			pName.placeholder = 'Correo electrónico';
+			pName.placeholder = 'Email';
 			pName.addEventListener('change', this.changeEmail);
 			this.shadowRoot.appendChild(pName);
 
-			const pPrice = this.ownerDocument.createElement('input');
-			pPrice.placeholder = 'Contraseña';
-			pPrice.addEventListener('change', this.changePassword);
-			this.shadowRoot.appendChild(pPrice);
+			const pPassword = this.ownerDocument.createElement('input');
+			pPassword.placeholder = 'Password';
+			pPassword.addEventListener('change', this.changePassword);
+			this.shadowRoot.appendChild(pPassword);
 
 			const save = this.ownerDocument.createElement('button');
-			save.innerText = 'Iniciar sesión';
+			save.innerText = 'Log In';
 			save.addEventListener('click', this.submitForm);
 			this.shadowRoot.appendChild(save);
 			
