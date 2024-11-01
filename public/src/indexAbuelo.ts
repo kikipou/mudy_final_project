@@ -1,6 +1,6 @@
-import RegisterPage from './screens/register/register';
-import Dashboard from './screens/dashboard/dashboard';
-import LoginPage from './screens/login/login';
+import './screens/register/register';
+import './screens/dashboard/dashboard';
+import './screens/login/login';
 import { addObserver, appState } from './store';
 import { Screens } from './types/store';
 
@@ -13,6 +13,7 @@ class AppContainer extends HTMLElement {
 
 	connectedCallback() {
 		this.render();
+		console.log(appState)
 	}
 
 	render() {
