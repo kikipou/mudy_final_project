@@ -1,7 +1,7 @@
-import { dispatch } from '../store';
-import { navigate } from '../store/actions';
-import { Screens } from '../types/store';
-import { registerUser } from '../utils/firebase';
+import { dispatch } from '../../store';
+import { navigate } from '../../store/actions';
+import { Screens } from '../../types/store';
+import { registerUser } from '../../utils/firebase';
 
 const credentials = {
 	email: '',

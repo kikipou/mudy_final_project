@@ -1,5 +1,3 @@
-import { browserLocalPersistence } from '@firebase/auth';
-
 let db: any;
 let auth: any;
 

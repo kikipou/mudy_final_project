@@ -1,6 +1,6 @@
-import './screens/register';
-import './screens/dashboard';
-import './screens/login';
+import RegisterPage from './screens/register/register';
+import Dashboard from './screens/dashboard/dashboard';
+import LoginPage from './screens/login/login';
 import { addObserver, appState } from './store';
 import { Screens } from './types/store';
 
