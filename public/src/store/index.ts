@@ -20,6 +20,17 @@ const onAuth = async () => {
     });
 };
 
+//El estado global, appState
+const initialState: AppState = {
+	screen: 'REGISTER',
+	products: [],
+    user: {},
+};
+
+export let appState = initialState;
+
+let observers: Observer[] = [];
+
 onAuth();
 
 export const signOutUser = async () => {
@@ -32,18 +43,6 @@ export const signOutUser = async () => {
         console.error("Error al cerrar sesión:", error);
     }
 };
-
-//El estado global, appState
-const initialState: AppState = {
-	screen: 'REGISTER',
-	products: [],
-    user: {},
-};
-
-export let appState = initialState;
-
-let observers: Observer[] = [];
-
 
 //Crear el dispatch
 export const dispatch = (action: any) => {

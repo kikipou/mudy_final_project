@@ -27,10 +27,13 @@ class LoginPage extends HTMLElement {
 		credentials.password = e.target.value;
 	}
 
+	backToRegister() {
+		dispatch(navigate(Screens.REGISTER));
+	}
+
 	submitForm() {
 		loginUser(credentials.email, credentials.password);
 	}
-
 
     async render() {
 		if (this.shadowRoot) {
@@ -43,15 +46,20 @@ class LoginPage extends HTMLElement {
 			pName.addEventListener('change', this.changeEmail);
 			this.shadowRoot.appendChild(pName);
 
-			const pPrice = this.ownerDocument.createElement('input');
-			pPrice.placeholder = 'Contraseña';
-			pPrice.addEventListener('change', this.changePassword);
-			this.shadowRoot.appendChild(pPrice);
+			const pPassword = this.ownerDocument.createElement('input');
+			pPassword.placeholder = 'Contraseña';
+			pPassword.addEventListener('change', this.changePassword);
+			this.shadowRoot.appendChild(pPassword);
 
 			const save = this.ownerDocument.createElement('button');
 			save.innerText = 'Iniciar sesión';
 			save.addEventListener('click', this.submitForm);
 			this.shadowRoot.appendChild(save);
+			
+			const registerBack = this.ownerDocument.createElement('button');
+			registerBack.innerText = 'Go to Register';
+			registerBack.addEventListener('click', () => this.backToRegister());
+			this.shadowRoot.appendChild(registerBack);
 		}
 	}
 }
