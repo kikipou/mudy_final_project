@@ -12,7 +12,7 @@ const onAuth = async () => {
     onAuthStateChanged(auth, (user) => {
         if(user){
             user.uid !==null ? dispatch(setUserCredentials(user.uid)) : ''; //Guarda el id del usuario
-            dispatch(navigate(Screens.REGISTER)) //Para navegar
+            dispatch(navigate(Screens.DASHBOARD)) //Para navegar
         }else{
             dispatch(navigate(Screens.LOGIN))
             console.log('Redirigido al login')
