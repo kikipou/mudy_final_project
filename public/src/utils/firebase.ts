@@ -19,7 +19,7 @@ export const getFirebaseInstance = async () => {
 
         const app = initializeApp(firebaseConfig);
         db = getFirestore(app);
-        auth = getFirestore(app);
+        auth = getAuth(app);
     }
     return { db, auth };
 };
