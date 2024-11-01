@@ -1,3 +1,13 @@
+// import { dispatch } from '../store';
+// import { navigate } from '../store/actions';
+// import { Screens } from '../types/store';
+// import { loginUser } from '../utils/firebase';
+
+const credentials = {
+	email: '',
+	password: '',
+};
+
 class LoginPage extends HTMLElement {
 
     constructor() {
@@ -8,6 +18,19 @@ class LoginPage extends HTMLElement {
     connectedCallback() {
         this.render();
     }
+
+    changeEmail(e: any) {
+		credentials.email = e.target.value;
+	}
+
+	changePassword(e: any) {
+		credentials.password = e.target.value;
+	}
+
+	submitForm() {
+		loginUser(credentials.email, credentials.password);
+	}
+
 
     render() {
         if (this.shadowRoot) {
