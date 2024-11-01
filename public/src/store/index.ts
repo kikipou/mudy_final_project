@@ -1,21 +1,26 @@
 import { reducer } from './reducer';
-
 import Storage from '../utils/storage';
 import { AppState, Observer } from '../types/store';
+import { onAuthStateChanged } from 'firebase/auth';
+import { getFirebaseInstance } from '../utils/firebase';
+
+const onAuth = async () => {
+    const { auth } = await getFirebaseInstance();
+    onAuthStateChanged(auth, (user) => { 
+    });
+}
 
 //El estado global, appState
 const initialState: AppState = {
 	screen: 'REGISTER',
 	products: [],
+    user: '',
 };
 
-export let appState = Storage.get('STORE', initialState);
+export let appState = initialState;
 
 let observers: Observer[] = [];
 
-const persistStore = (state: any) => {
-	Storage.set('STORE', state);
-};
 
 //Crear el dispatch
 export const dispatch = (action: any) => {
@@ -23,7 +28,6 @@ export const dispatch = (action: any) => {
 	const newState = reducer(action, clone);
 	appState = newState;
 
-	persistStore(newState);
 	observers.forEach((o: any) => o.render());
 };
 

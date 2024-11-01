@@ -3,7 +3,7 @@ export type Observer = { render: () => void } & HTMLElement;
 export type AppState = {
 	screen: string;
 	products: [];
-	user: '';
+	user: {};
 };
 
 export enum Screens {

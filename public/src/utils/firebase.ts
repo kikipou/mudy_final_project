@@ -3,7 +3,7 @@ import { browserLocalPersistence } from '@firebase/auth';
 let db: any;
 let auth: any;
 
-const getFirebaseInstance = async () => {
+export const getFirebaseInstance = async () => {
     if (!db) {
         const { initializeApp } = await import('firebase/app');
         const { getFirestore } = await import('firebase/firestore');
