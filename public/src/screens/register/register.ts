@@ -7,7 +7,6 @@ const credentials = {
 	email: '',
 	password: '',
 	name: '',
-	age: '',
 };
 
 class RegisterPage extends HTMLElement {
@@ -31,10 +30,6 @@ class RegisterPage extends HTMLElement {
 
 	changeName(e: any) {
 		credentials.name = e.target.value;
-	}
-
-	changeAge(e: any) {
-		credentials.age = e.target.value;
 	}
 
 	async submitForm() {
@@ -62,11 +57,6 @@ class RegisterPage extends HTMLElement {
 			pName.placeholder = 'Nombre completo';
 			pName.addEventListener('change', this.changeName);
 			this.shadowRoot.appendChild(pName);
-
-			const pAge = this.ownerDocument.createElement('input');
-			pAge.placeholder = 'Edad';
-			pAge.addEventListener('change', this.changeAge);
-			this.shadowRoot.appendChild(pAge);
 
 			const save = this.ownerDocument.createElement('button');
 			save.innerText = 'Registrarme';
