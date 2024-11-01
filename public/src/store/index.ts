@@ -1,7 +1,7 @@
 import { reducer } from './reducer';
 import Storage from '../utils/storage';
 import { AppState, Observer, Screens } from '../types/store';
-import {  onAuthStateChanged } from 'firebase/auth';
+import {  getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getFirebaseInstance } from '../utils/firebase';
 import { navigate, setUserCredentials } from './actions';
 
@@ -21,6 +21,17 @@ const onAuth = async () => {
 };
 
 onAuth();
+
+export const signOutUser = async () => {
+    const auth = getAuth();
+    try {
+        await auth.signOut();
+        console.log("Sesión cerrada exitosamente");
+        // Aquí puedes redirigir al usuario a una pantalla de login, por ejemplo
+    } catch (error) {
+        console.error("Error al cerrar sesión:", error);
+    }
+};
 
 //El estado global, appState
 const initialState: AppState = {
