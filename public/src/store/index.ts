@@ -9,8 +9,8 @@ const onAuth = async () => {
     const { auth } = await getFirebaseInstance();
     onAuthStateChanged(auth, (user) => {
         if(user){
-            user.uid !==null ? dispatch(setUserCredentials(user.uid)) : '';
-            dispatch(navigate(Screens.DASHBOARD))
+            user.uid !==null ? dispatch(setUserCredentials(user.uid)) : ''; //Guarda el id del usuario
+            dispatch(navigate(Screens.DASHBOARD)) //Para navegar
         }else{
             dispatch(navigate(Screens.LOGIN))
         }
@@ -21,7 +21,7 @@ onAuth();
 
 //El estado global, appState
 const initialState: AppState = {
-	screen: 'REGISTER',
+	screen: 'LOGIN',
 	products: [],
     user: {},
 };
