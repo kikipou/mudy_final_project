@@ -1,4 +1,4 @@
-import { dispatch } from '../store';
+import { dispatch } from '../store/firebase'
 import { navigate } from '../store/actions';
 import { Screens } from '../types/store';
 import { loginUser } from '../utils/firebase';
@@ -32,21 +32,29 @@ class LoginPage extends HTMLElement {
 	}
 
 
-    render() {
-        if (this.shadowRoot) {
-            this.shadowRoot.innerHTML = `
-                <link rel="stylesheet" href="./register.css">
-                <div class="body">
-                    <nav-component class="nav"
-                        img="https://github.com/kikipou/mudy_final_project/blob/cata/mudy-logo.png?raw=true"
-                        ></nav-component>
-                        <sidebar-component 
-                    ></sidebar-component>
-                </div>
-            `;
-        }
-    }
+    async render() {
+		if (this.shadowRoot) {
+			const title = this.ownerDocument.createElement('h1');
+			title.innerText = 'Login';
+			this.shadowRoot.appendChild(title);
+
+			const pName = this.ownerDocument.createElement('input');
+			pName.placeholder = 'Correo electrónico';
+			pName.addEventListener('change', this.changeEmail);
+			this.shadowRoot.appendChild(pName);
+
+			const pPrice = this.ownerDocument.createElement('input');
+			pPrice.placeholder = 'Contraseña';
+			pPrice.addEventListener('change', this.changePassword);
+			this.shadowRoot.appendChild(pPrice);
+
+			const save = this.ownerDocument.createElement('button');
+			save.innerText = 'Iniciar sesión';
+			save.addEventListener('click', this.submitForm);
+			this.shadowRoot.appendChild(save);
+		}
+	}
 }
-console.log (LoginPage)
-customElements.define('register-page', LoginPage);
+
+customElements.define('login-page', LoginPage);
 export default LoginPage;

@@ -15,7 +15,9 @@ const onAuth = async () => {
             dispatch(navigate(Screens.LOGIN))
         }
     });
-}
+};
+
+onAuth();
 
 //El estado global, appState
 const initialState: AppState = {
