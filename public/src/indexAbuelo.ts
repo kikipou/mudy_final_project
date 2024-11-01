@@ -1,69 +1,45 @@
-import { artistasIndependientes } from './data/data'; // Asegúrate de que la ruta sea correcta
-import nav, { Attributesnav } from './components/header/header'; // Asegúrate de que la ruta sea correcta
-import "./components/header/header";
-import "./components/userpost/userpost";
-import ArtistPost, { Attribute } from './components/userpost/userpost';
-import "./components/userpost/userpost"
-import "../src/components/sidebar/sidebar"
-import Sidebar, { Attributessidebar } from './components/sidebar/sidebar';
-// Clase principal de la aplicación
+import './screens/register/register';
+import './screens/dashboard/dashboard';
+import './screens/login/login';
+import { addObserver, appState } from './store';
+import { Screens } from './types/store';
+
 class AppContainer extends HTMLElement {
+	constructor() {
+		super();
+		this.attachShadow({ mode: 'open' });
+		addObserver(this);
+	}
 
-    Posts: ArtistPost[] = [];
+	connectedCallback() {
+		this.render();
+		console.log(appState)
+	}
 
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
+	render() {
+		if (this.shadowRoot) {
+			this.shadowRoot.innerHTML = '';
+			switch (appState.screen) {
+				case Screens.REGISTER:
+					const register = this.ownerDocument.createElement('register-page');
+					this.shadowRoot.appendChild(register);
+					break;
 
-            artistasIndependientes.forEach(artista => {
-                const postElement = this.ownerDocument.createElement("artist-post") as ArtistPost;
+				case Screens.LOGIN:
+					const login = this.ownerDocument.createElement('login-page');
+					this.shadowRoot.appendChild(login);
+					break;
 
-                // Asignar atributos al componente artist-post
-                postElement.setAttribute(Attribute.photo, artista.fotoalbum);
-                postElement.setAttribute(Attribute.artistName, artista.nombre);
-                postElement.setAttribute(Attribute.songName, artista.cancion);
-                postElement.setAttribute(Attribute.profile, artista.fotoperfil);
-                postElement.setAttribute(Attribute.songTime, artista.horasSubida.toString());
+				case Screens.DASHBOARD:
+					const dashboard = this.ownerDocument.createElement('dashboard-page');
+					this.shadowRoot.appendChild(dashboard);
+					break;
 
-                this.Posts.push(postElement)
-
-            });
-    }
-
-    connectedCallback() {
-        this.render();
-    }
-
-    render() {
-        if (this.shadowRoot) {
-            this.shadowRoot.innerHTML = `
-                <link rel="stylesheet" href="../public/src/index.css">
-                <div class="body">
-                    <nav-component class="nav"
-                        explore="Explore" 
-                        create="Create"
-                        img="https://raw.githubusercontent.com/kikipou/mudy_final_project/main/mudy-logo.png"
-                        profile="https://i.pinimg.com/564x/73/c1/b4/73c1b4a272425b7295eec9b0f874b8ee.jpg"
-                        search="Search"
-                        ></nav-component>
-                    <div class="posts-container"></div>
-                    <sidebar-component 
-                    
-                    ></sidebar-component>
-                </div>
-            `;
-            const postContainer = this.shadowRoot.querySelector(".posts-container");
-            this.Posts.forEach(artista => {
-                if (postContainer) {
-                    postContainer.appendChild(artista);
-                }
-            });
-            // Agregar los posts de artistas dentro de la clase `posts-container`
-           
-        }
-    }
+				default:
+					break;
+			}
+		}
+	}
 }
-console.log (AppContainer)
-// Definición del componente principal
+
 customElements.define('app-container', AppContainer);
-export default AppContainer;

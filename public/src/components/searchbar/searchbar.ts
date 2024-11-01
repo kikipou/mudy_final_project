@@ -29,11 +29,7 @@ class Searchbar extends HTMLElement {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
             <link rel="stylesheet" href="../public/src/components/searchbar/searchbar.css">
-
-<input type="text" id="input" name="nombre" placeholder="Search" />
-                
-                    
-              
+            <input type="text" id="input" name="nombre" placeholder="Search" />  
             `;
         }
     }

@@ -1,7 +1,5 @@
-
 import Searchbar, { Attributesbar } from '../searchbar/searchbar';
 import '../searchbar/searchbar';
-
 
 export enum Attributesnav {
     'explore' = 'explore',
@@ -9,7 +7,7 @@ export enum Attributesnav {
     'img' = 'img',
     'alt' = 'alt', 
     'profile' = 'profile',
-    'search' = 'search', // Agregué 'alt' al enumerado para manejar el atributo de imagen
+    'search' = 'search',
 }
 
 class Nav extends HTMLElement {
@@ -18,7 +16,7 @@ class Nav extends HTMLElement {
     img?: string;
     alt?: string;
     profile?: string;
-    search?: string; // Definí la propiedad 'alt'
+    search?: string;
 
     constructor() {
         super();
@@ -43,15 +41,14 @@ class Nav extends HTMLElement {
             this.shadowRoot.innerHTML = `
             <link rel="stylesheet" href="../public/src/components/header/header.css">
                 <div class="body">
-                    <img class="img" src="${this.img}" alt="${this.alt}" />
-                    <div class="items">
-                    <button class="item">${this.explore}</button>
-                    <button class="item">${this.create}</button>
-                    </div>
+                    <img class="img" src="${this.img}"  />
+                        <div class="items">
+                            <button class="item">${this.explore}</button>
+                            <button class="item">${this.create}</button>
+                        </div>
                     <searchbar-component
                     <input type="text" id="input" name="nombre" placeholder=${this.search} />
                     ></searchbar-component>
-                    <img class="img2" src="${this.profile}" alt="${this.alt}" />
                 </div>
             `;
         }
