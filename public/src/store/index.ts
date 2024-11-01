@@ -3,7 +3,7 @@ import Storage from '../utils/storage';
 import { AppState, Observer, Screens } from '../types/store';
 import { onAuthStateChanged } from 'firebase/auth';
 import { getFirebaseInstance } from '../utils/firebase';
-import { navigate } from './actions';
+import { navigate, setUserCredentials } from './actions';
 
 const onAuth = async () => {
     const { auth } = await getFirebaseInstance();
@@ -11,7 +11,9 @@ const onAuth = async () => {
         if(user){
             user.uid !==null ? dispatch(setUserCredentials(user.uid)) : '';
             dispatch(navigate(Screens.DASHBOARD))
-        } 
+        }else{
+            dispatch(navigate(Screens.LOGIN))
+        }
     });
 }
 
