@@ -1,7 +1,7 @@
 import { reducer } from './reducer';
 import Storage from '../utils/storage';
 import { AppState, Observer, Screens } from '../types/store';
-import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword } from 'firebase/auth';
+import {  onAuthStateChanged } from 'firebase/auth';
 import { getFirebaseInstance } from '../utils/firebase';
 import { navigate, setUserCredentials } from './actions';
 
