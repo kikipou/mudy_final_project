@@ -59,5 +59,5 @@ class Dashboard extends HTMLElement {
     }
 }
 console.log (Dashboard)
-customElements.define('app-container', Dashboard);
+customElements.define('dashboard-page', Dashboard);
 export default Dashboard;

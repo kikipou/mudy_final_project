@@ -20,17 +20,17 @@ class AppContainer extends HTMLElement {
 			this.shadowRoot.innerHTML = '';
 			switch (appState.screen) {
 				case Screens.REGISTER:
-					const register = this.ownerDocument.createElement('app-register');
+					const register = this.ownerDocument.createElement('register-page');
 					this.shadowRoot.appendChild(register);
 					break;
 
 				case Screens.LOGIN:
-					const login = this.ownerDocument.createElement('app-login');
+					const login = this.ownerDocument.createElement('login-page');
 					this.shadowRoot.appendChild(login);
 					break;
 
 				case Screens.DASHBOARD:
-					const dashboard = this.ownerDocument.createElement('app-dashboard');
+					const dashboard = this.ownerDocument.createElement('dashboard-page');
 					this.shadowRoot.appendChild(dashboard);
 					break;
 
