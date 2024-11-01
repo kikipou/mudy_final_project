@@ -1,10 +1,6 @@
 import { artistasIndependientes } from '../../data/data'; // Asegúrate de que la ruta sea correcta
 import nav, { Attributesnav } from '../../components/header/header'; // Asegúrate de que la ruta sea correcta
-import "./components/header/header";
-import "./components/userpost/userpost";
 import ArtistPost, { Attribute } from '../../components/userpost/userpost';
-import "./components/userpost/userpost"
-import "../src/components/sidebar/sidebar"
 import Sidebar, { Attributessidebar } from '../../components/sidebar/sidebar';
 // Clase principal de la aplicación
 class Dashboard extends HTMLElement {
