@@ -1,5 +1,5 @@
 *{
-    margin:0%;
+    margin: 0%;
     padding: 0%;
     color:#ffffff;
     font-family: 'Montserrat';
@@ -7,7 +7,10 @@
 }
 
 .body{
-    margin:0%;
+    margin: 0%;
+    padding: 0%;
+    height: 100%;
+    width: 100%;
     background-color: rgba(29, 8, 68, 1);
     font-family: 'Montserrat';
 }
@@ -24,6 +27,7 @@
 }
 
 .posts-container{
+    
     padding-top: 5rem;
     display: flex;
     padding-left: 25rem;
