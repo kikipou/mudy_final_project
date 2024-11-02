@@ -15,12 +15,10 @@ const onAuth = async () => {
             dispatch(navigate(Screens.DASHBOARD)) //Para navegar
         }else{
             dispatch(navigate(Screens.LOGIN))
-            console.log('Redirect to login')
+            console.log('Redirigido al login')
         }
     });
 };
-
-onAuth();
 
 //El estado global, appState
 const initialState: AppState = {

@@ -41,13 +41,16 @@ class LoginPage extends HTMLElement {
 			title.innerText = 'Login';
 			this.shadowRoot.appendChild(title);
 
-			const pName = this.ownerDocument.createElement('input');
-			pName.placeholder = 'Email';
-			pName.addEventListener('change', this.changeEmail);
-			this.shadowRoot.appendChild(pName);
+			const pEmail = this.ownerDocument.createElement('input');
+			pEmail.placeholder = 'Email';
+			pEmail.required = true;
+			pEmail.addEventListener('change', this.changeEmail);
+			this.shadowRoot.appendChild(pEmail);
 
 			const pPassword = this.ownerDocument.createElement('input');
 			pPassword.placeholder = 'Password';
+			pPassword.type = 'password';
+			pPassword.required = true;
 			pPassword.addEventListener('change', this.changePassword);
 			this.shadowRoot.appendChild(pPassword);
 
