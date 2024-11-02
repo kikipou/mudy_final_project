@@ -49,22 +49,17 @@ class Sidebar extends HTMLElement {
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
                 <div class="body">
                     <div class="items">
-                        <button class="item">
-                            <i class="fa-solid fa-user" style="color: #ffffff;"></i>  
+                        <button class="profile-button">
+                            <i class="fa-solid fa-user user-icon"></i>
                         </button>
-                        <button class="item">
-                            <i class="fa-solid fa-bookmark" style="color: #ffffff;"></i>
+                        <button class="library-button">
+                            <i class="fa-solid fa-bookmark" library-icon"></i>
                         </button>
-                        <button class="item">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#FFFFFF">
-                            <path d="M12 3v13.34c-.59-.22-1.23-.34-1.88-.34-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V8h4V3h-6z"/>
-                            </svg>
+                        <button class="categories-button">
+                            <i class="fa-solid fa-music" categories-icon"></i>
                         </button>
-                        <button class="item logout-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#FFFFFF">
-                            <path d="M16 13l-4-4v3H3v2h9v3l4-4z"/>
-                            <path d="M21 3H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7V5h14v14z"/>
-                            </svg>
+                        <button class="logout-button">
+                            <i class="fa-solid fa-right-from-bracket logout-icon"></i>
                         </button>
                     </div>
                 </div>
