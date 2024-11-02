@@ -1,7 +1,3 @@
-import {signOutUser} from '../../store/index'
-import { dispatch } from '../../store/index';
-import { navigate } from '../../store/actions';
-import { Screens } from '../../types/store';
 import { logOut } from '../../utils/firebase';
 
 export enum Attributessidebar {
