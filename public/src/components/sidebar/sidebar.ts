@@ -36,9 +36,9 @@ class Sidebar extends HTMLElement {
     async handleLogout() {
         try {
             await logOut();
-            alert("Sesión cerrada exitosamente");
+            alert("Session successfully closed");
         } catch (error) {
-            console.error("Error al cerrar sesión:", error);
+            console.error("Error logging out:", error);
         }
     }
 
