@@ -97,3 +97,16 @@ export const loginUser = async (email: string, password: string) => {
         console.error(error);
     }
 };
+
+import { getAuth, signOut } from 'firebase/auth';
+
+export const signOutUser = async () => {
+    const auth = getAuth();
+    try {
+        await auth.signOut();
+        console.log("Sesión cerrada exitosamente");
+        // Aquí puedes redirigir al usuario a una pantalla de login, por ejemplo
+    } catch (error) {
+        console.error("Error al cerrar sesión:", error);
+    }
+};
