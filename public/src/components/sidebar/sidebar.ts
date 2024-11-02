@@ -46,15 +46,14 @@ class Sidebar extends HTMLElement {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
                 <link rel="stylesheet" href="../public/src/components/sidebar/sidebar.css">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
                 <div class="body">
                     <div class="items">
                         <button class="item">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-3.315 0-10 1.672-10 5v2h20v-2c0-3.328-6.685-5-10-5z" fill="#FFFFFF"/></svg>  
+                            <i class="fa-solid fa-user" style="color: #ffffff;"></i>  
                         </button>
                         <button class="item">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#FFFFFF">
-                            <path d="M3 4v17h2V6h12V4H3zm4 2v17h13V6H7zm2 2h9v13H9V8zm1 2v9h7v-9h-7z"/>
-                            </svg>
+                            <i class="fa-solid fa-bookmark" style="color: #ffffff;"></i>
                         </button>
                         <button class="item">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#FFFFFF">

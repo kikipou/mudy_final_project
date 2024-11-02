@@ -10,11 +10,13 @@
     background-color:rgba(85, 27, 194, 1);
 }
 
-.item{
+.item {
+    width: 5rem;
+    height: 5rem;
     background: none;
     color: #ffffff;
     border: none;
-    margin-top: 0.7rem;
+    margin-top: 0rem;
     padding-left: 3rem;
     padding-right: 3rem;
     padding-top: 0.6rem;
