@@ -98,7 +98,7 @@ export const loginUser = async (email: string, password: string) => {
     }
 };
 
-import { getAuth, signOut } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 
 export const signOutUser = async () => {
     const auth = getAuth();
