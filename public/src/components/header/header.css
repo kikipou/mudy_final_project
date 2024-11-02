@@ -41,6 +41,7 @@
     font: weight 6.25rem;
     font-size: 0.8rem;
     font-family: 'Montserrat';
+    cursor: pointer;
 }
 
 .item:hover{
