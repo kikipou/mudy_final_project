@@ -1,3 +1,9 @@
+import {signOutUser} from '../../store/index'
+import { dispatch } from '../../store/index';
+import { navigate } from '../../store/actions';
+import { Screens } from '../../types/store';
+import { logOut } from '../../utils/firebase';
+
 export enum Attributessidebar {
     'library' = 'library',
     'categories' = 'categories',
@@ -10,7 +16,6 @@ class Sidebar extends HTMLElement {
     library?: string;
     categories?: string;
     logout?: string;
-
     profile?: string;
     // Definí la propiedad 'alt'
 
@@ -30,6 +35,15 @@ class Sidebar extends HTMLElement {
 
     connectedCallback() {
         this.render();
+    }
+
+    async handleLogout() {
+        try {
+            await logOut();
+            alert("Sesión cerrada exitosamente");
+        } catch (error) {
+            console.error("Error al cerrar sesión:", error);
+        }
     }
 
     render() {
@@ -56,9 +70,19 @@ class Sidebar extends HTMLElement {
                             <path d="M21 3H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7V5h14v14z"/>
                             </svg>
                         </button>
+                        <button class="item logout-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#FFFFFF">
+                            <path d="M16 13l-4-4v3H3v2h9v3l4-4z"/>
+                            <path d="M21 3H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7V5h14v14z"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
             `;
+
+            // Añadir evento de clic al último botón para cerrar sesión
+            const logoutButton = this.shadowRoot.querySelector('.logout-button') as HTMLButtonElement;
+            logoutButton?.addEventListener('click', () => this.handleLogout());
         }
     }
 }
