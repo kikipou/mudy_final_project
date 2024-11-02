@@ -104,10 +104,10 @@ export const signOutUser = async () => {
     const auth = getAuth();
     try {
         await auth.signOut();
-        console.log("Sesión cerrada exitosamente");
+        console.log("Session successfully closed");
         // Aquí puedes redirigir al usuario a una pantalla de login, por ejemplo
     } catch (error) {
-        console.error("Error al cerrar sesión:", error);
+        console.error("Error logging out:", error);
     }
 };
 
@@ -117,8 +117,8 @@ export const logOut = async () => {
   
     try {
       await signOut(auth); 
-      console.log("Usuario deslogueado exitosamente");
+      console.log("Succesfully log out");
     } catch (error) {
-      console.error("Error al cerrar sesión:", error);
+      console.error("Error logging out:", error);
     }
   }

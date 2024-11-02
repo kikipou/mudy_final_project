@@ -15,7 +15,7 @@ const onAuth = async () => {
             dispatch(navigate(Screens.DASHBOARD)) //Para navegar
         }else{
             dispatch(navigate(Screens.LOGIN))
-            console.log('Redirigido al login')
+            console.log('Redirect to log in')
         }
     });
 };
@@ -31,6 +31,7 @@ export let appState = initialState;
 
 let observers: Observer[] = [];
 
+onAuth();
 
 //Crear el dispatch
 export const dispatch = (action: any) => {
