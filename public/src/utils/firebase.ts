@@ -121,4 +121,23 @@ export const logOut = async () => {
     } catch (error) {
       console.error("Error logging out:", error);
     }
-  }
+};
+
+export const getUserName = async () => {
+	try {
+		const { db } = await getFirebaseInstance();
+		const { collection, getDocs } = await import('firebase/firestore');
+
+		const where = collection(db, 'users');
+		const querySnapshot = await getDocs(where);
+		const data: any[] = [];
+
+		querySnapshot.forEach((doc) => {
+			data.push(doc.data());
+		});
+
+		return data;
+	} catch (error) {
+		console.error('Error getting documents', error);
+	}
+};
