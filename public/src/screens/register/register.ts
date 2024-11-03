@@ -4,10 +4,10 @@ import { Screens } from '../../types/store';
 import { registerUser } from '../../utils/firebase';
 
 const credentials = {
-	username: '',
 	email: '',
 	password: '',
 	name: '',
+	username: '',
 };
 
 class RegisterPage extends HTMLElement {
@@ -55,7 +55,7 @@ class RegisterPage extends HTMLElement {
 			const pUsername = this.ownerDocument.createElement('input');
 			pUsername.placeholder = 'Username';
 			pUsername.required = true;
-			pUsername.addEventListener('change', this.changeEmail);
+			pUsername.addEventListener('change', this.changeUsername);
 			this.shadowRoot.appendChild(pUsername);
 
 			const pEmail = this.ownerDocument.createElement('input');
