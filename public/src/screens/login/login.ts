@@ -3,6 +3,7 @@ import { navigate } from '../../store/actions';
 import { Screens } from '../../types/store';
 import { loginUser } from '../../utils/firebase';
 import  '../../components/buttons/buttons';
+import '../../components/inputs/inputs'
 
 const credentials = {
 	email: '',
@@ -45,6 +46,7 @@ class LoginPage extends HTMLElement {
 				<input id="password-input" placeholder="Password" type="password" required>
 				<button-component id="login-button" text="Log In"></button-component>
 				<button id="register-button">Go to Register</button>
+				<input-component text="Email">
 				
 				</form>
 			`;
