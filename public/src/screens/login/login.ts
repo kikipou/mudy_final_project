@@ -40,11 +40,13 @@ class LoginPage extends HTMLElement {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
 				<h1>Login</h1>
+				<form>
 				<input id="email-input" placeholder="Email" required>
 				<input id="password-input" placeholder="Password" type="password" required>
-				<button id="login-button">Log In</button>
+				<button-component id="login-button" text="Log In"></button-component>
 				<button id="register-button">Go to Register</button>
-				<button-component></button-component>
+				
+				</form>
 			`;
 
 			// Asignación de eventos
