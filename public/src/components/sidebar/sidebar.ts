@@ -1,3 +1,6 @@
+import { dispatch } from '../../store';
+import { navigate } from '../../store/actions';
+import { Screens } from '../../types/store';
 import { logOut } from '../../utils/firebase';
 
 export enum Attributessidebar {
@@ -65,8 +68,14 @@ class Sidebar extends HTMLElement {
                 </div>
             `;
 
-            // Añadir evento de clic al último botón para cerrar sesión
+            const profileButton = this.shadowRoot.querySelector('.profile-button') as HTMLButtonElement;
+            const libraryButton = this.shadowRoot.querySelector('.library-button') as HTMLButtonElement;
+            const categoriesButton = this.shadowRoot.querySelector('.categories-button') as HTMLButtonElement;
             const logoutButton = this.shadowRoot.querySelector('.logout-button') as HTMLButtonElement;
+
+            profileButton?.addEventListener('click', () => dispatch(navigate(Screens.PROFILE)));
+            libraryButton?.addEventListener('click', () => dispatch(navigate(Screens.MYLIBRARY)));
+            categoriesButton?.addEventListener('click', () => dispatch(navigate(Screens.CATEGORIES)));
             logoutButton?.addEventListener('click', () => this.handleLogout());
         }
     }
