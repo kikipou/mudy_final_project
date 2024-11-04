@@ -8,6 +8,7 @@ const credentials = {
 	email: '',
 	password: '',
 	name: '',
+	
 };
 
 class RegisterPage extends HTMLElement {
@@ -43,8 +44,7 @@ class RegisterPage extends HTMLElement {
 
 	async submitForm() {
 		const resp = await registerUser(credentials);
-		console.log(resp)
-		resp ? dispatch(navigate(Screens.LOGIN)) : alert('User could not be created');
+		resp ? dispatch(navigate(Screens.LOGIN)) : alert('Could not create user');
 	}
 
     async render() {
@@ -56,7 +56,7 @@ class RegisterPage extends HTMLElement {
 			const pUsername = this.ownerDocument.createElement('input');
 			pUsername.placeholder = 'Username';
 			pUsername.required = true;
-			pUsername.addEventListener('change', this.changeEmail);
+			pUsername.addEventListener('change', this.changeUsername);
 			this.shadowRoot.appendChild(pUsername);
 
 			const pEmail = this.ownerDocument.createElement('input');

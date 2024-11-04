@@ -1,5 +1,5 @@
 import { Actions, Screens } from '../types/store';
-import { getUser } from '../utils/firebase';
+import { getUser, getUserName } from '../utils/firebase';
 
 export const navigate = (screen: Screens) => {
 	return {
@@ -19,6 +19,14 @@ export const getUsersAction = async () => {
 export const setUserCredentials = (user: string) => {
 	return {
 		action: Actions.SETUSERCREDENTIALS,
+		payload: user,
+	};
+};
+
+export const getUserNameAction = async () => {
+	const user = await getUserName();
+	return {
+		action: Actions.GETUSERNAME,
 		payload: user,
 	};
 };

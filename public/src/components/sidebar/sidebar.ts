@@ -1,5 +1,4 @@
-import {signOutUser} from '../../store/index'
-import { dispatch } from '../../store/index';
+import { dispatch } from '../../store';
 import { navigate } from '../../store/actions';
 import { Screens } from '../../types/store';
 import { logOut } from '../../utils/firebase';
@@ -16,7 +15,6 @@ class Sidebar extends HTMLElement {
     library?: string;
     categories?: string;
     logout?: string;
-
     profile?: string;
     // Definí la propiedad 'alt'
 
@@ -41,45 +39,43 @@ class Sidebar extends HTMLElement {
     async handleLogout() {
         try {
             await logOut();
-            alert("Sesión cerrada exitosamente");
+            alert("Session successfully closed");
         } catch (error) {
-            console.error("Error al cerrar sesión:", error);
+            console.error("Error logging out:", error);
         }
     }
-    
-    
 
     render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
                 <link rel="stylesheet" href="../public/src/components/sidebar/sidebar.css">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
                 <div class="body">
                     <div class="items">
-                        <button class="item">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-3.315 0-10 1.672-10 5v2h20v-2c0-3.328-6.685-5-10-5z" fill="#FFFFFF"/></svg>  
+                        <button class="profile-button">
+                            <i class="fa-solid fa-user user-icon"></i>
                         </button>
-                        <button class="item">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#FFFFFF">
-                            <path d="M3 4v17h2V6h12V4H3zm4 2v17h13V6H7zm2 2h9v13H9V8zm1 2v9h7v-9h-7z"/>
-                            </svg>
+                        <button class="library-button">
+                            <i class="fa-solid fa-bookmark" library-icon"></i>
                         </button>
-                        <button class="item">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#FFFFFF">
-                            <path d="M12 3v13.34c-.59-.22-1.23-.34-1.88-.34-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V8h4V3h-6z"/>
-                            </svg>
+                        <button class="categories-button">
+                            <i class="fa-solid fa-music" categories-icon"></i>
                         </button>
-                        <button class="item logout-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#FFFFFF">
-                            <path d="M16 13l-4-4v3H3v2h9v3l4-4z"/>
-                            <path d="M21 3H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7V5h14v14z"/>
-                            </svg>
+                        <button class="logout-button">
+                            <i class="fa-solid fa-right-from-bracket logout-icon"></i>
                         </button>
                     </div>
                 </div>
             `;
 
-            // Añadir evento de clic al último botón para cerrar sesión
+            const profileButton = this.shadowRoot.querySelector('.profile-button') as HTMLButtonElement;
+            const libraryButton = this.shadowRoot.querySelector('.library-button') as HTMLButtonElement;
+            const categoriesButton = this.shadowRoot.querySelector('.categories-button') as HTMLButtonElement;
             const logoutButton = this.shadowRoot.querySelector('.logout-button') as HTMLButtonElement;
+
+            profileButton?.addEventListener('click', () => dispatch(navigate(Screens.PROFILE)));
+            libraryButton?.addEventListener('click', () => dispatch(navigate(Screens.MYLIBRARY)));
+            categoriesButton?.addEventListener('click', () => dispatch(navigate(Screens.CATEGORIES)));
             logoutButton?.addEventListener('click', () => this.handleLogout());
         }
     }
@@ -87,3 +83,123 @@ class Sidebar extends HTMLElement {
 
 customElements.define('sidebar-component', Sidebar);
 export default Sidebar;
+
+// import { dispatch } from '../../store/index';
+// import { navigate } from '../../store/actions';
+// import { Screens } from '../../types/store';
+// import { logOut } from '../../utils/firebase';
+
+// class Sidebar extends HTMLElement {
+//     private _open: boolean = false;
+
+//     constructor() {
+//         super();
+//         this.attachShadow({ mode: 'open' });
+//     }
+
+//     connectedCallback() {
+//         document.addEventListener('sidebar-toggle', this.toggle);
+//         document.addEventListener('click', this.handleOutsideClick, true);
+//     }
+
+//     disconnectedCallback() {
+//         document.removeEventListener('sidebar-toggle', this.toggle);
+//         document.removeEventListener('click', this.handleOutsideClick, true);
+//     }
+    
+//     toggle = () => {
+//         this._open = !this._open;
+//         this.render();
+//     }
+    
+//     handleOutsideClick = (event: MouseEvent) => {
+//         if (this._open && !this.shadowRoot?.contains(event.target as Node)) {
+//             this._open = false;
+//             this.render();
+//         }
+//     }
+
+//     async handleLogout() {
+//         try {
+//             await logOut();
+//             alert("Session successfully closed");
+//         } catch (error) {
+//             console.error("Error logging out:", error);
+//         }
+//     }
+    
+//     render() {
+//         if (this.shadowRoot) {
+//             this.shadowRoot.innerHTML = `
+//                 <style>
+//                     :host {
+//                         display: block;
+//                         width: 250px;
+//                         height: 100%;
+//                         position: fixed;
+//                         top: 0;
+//                         left: ${this._open ? '0' : '-250px'};
+//                         bottom: 0;
+//                         transition: left 0.3s ease;
+//                         background-color: #551bc2;
+//                         color: white;
+//                         box-shadow: 4px 0 5px rgba(0,0,0,0.5);
+//                         z-index: 1000;
+//                     }
+//                     ul {
+//                         list-style: none;
+//                         margin: 0;
+//                         padding: 20px 0;
+//                     }
+//                     li {
+//                         padding: 15px 20px;
+//                         border-bottom: 1px solid #444;
+//                     }
+//                     li:last-child {
+//                         border-bottom: none;
+//                     }
+//                     button {
+//                         color: white;
+//                         background: none;
+//                         border: none;
+//                         text-align: left;
+//                         width: 100%;
+//                         padding: 15px 20px;
+//                         cursor: pointer;
+//                     }
+//                     button:hover {
+//                         background-color: #1D0844;
+//                     }
+//                 </style>
+//                 <ul>
+//                     <li><button id="profile">Menu</button></li>
+//                     <li><button id="mylibrary">Main</button></li>
+//                     <li><button id="categories">Profile</button></li>
+//                     <li><button id="logout">Log Out</button></li>
+//                 </ul>
+//             `;
+
+//             // Corregido el selector a #logout
+//             const logoutButton = this.shadowRoot.querySelector('#logout') as HTMLButtonElement;
+//             logoutButton?.addEventListener('click', () => this.handleLogout());
+
+//             this.addEventListeners();
+//         }
+//     }
+
+//     addEventListeners() {
+//         this.shadowRoot?.querySelector('#profile')?.addEventListener('click', () => {
+//             console.log("Profile button clicked");
+//             dispatch(navigate(Screens.PROFILE));
+//         });
+//         this.shadowRoot?.querySelector('#mylibrary')?.addEventListener('click', () => {
+//             dispatch(navigate(Screens.MYLIBRARY));
+//         });
+//         this.shadowRoot?.querySelector('#categories')?.addEventListener('click', () => {
+//             dispatch(navigate(Screens.CATEGORIES));
+//         });
+//     }
+// }
+
+// customElements.define('sidebar-component', Sidebar);
+// export default Sidebar;

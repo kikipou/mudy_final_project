@@ -67,7 +67,7 @@ export const registerUser = async (credentials: any) => {
 
 		const where = doc(db, 'users', userCredential.user.uid);
 		const data = {
-			age: credentials.age,
+			username: credentials.username,
 			name: credentials.name,
 		};
 
@@ -99,14 +99,46 @@ export const loginUser = async (email: string, password: string) => {
     }
 };
 
-export const logOut = async () => {
-  const { auth } = await getFirebaseInstance();
-  const { signOut } = await import('firebase/auth');
+import { getAuth } from 'firebase/auth';
 
-  try {
-    await signOut(auth); 
-    console.log("Usuario deslogueado exitosamente");
-  } catch (error) {
-    console.error("Error al cerrar sesión:", error);
-  }
-}
+export const signOutUser = async () => {
+    const auth = getAuth();
+    try {
+        await auth.signOut();
+        console.log("Session successfully closed");
+        // Aquí puedes redirigir al usuario a una pantalla de login, por ejemplo
+    } catch (error) {
+        console.error("Error logging out:", error);
+    }
+};
+
+export const logOut = async () => {
+    const { auth } = await getFirebaseInstance();
+    const { signOut } = await import('firebase/auth');
+  
+    try {
+      await signOut(auth); 
+      console.log("Succesfully log out");
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
+};
+
+export const getUserName = async () => {
+	try {
+		const { db } = await getFirebaseInstance();
+		const { collection, getDocs } = await import('firebase/firestore');
+
+		const where = collection(db, 'users');
+		const querySnapshot = await getDocs(where);
+		const data: any[] = [];
+
+		querySnapshot.forEach((doc) => {
+			data.push(doc.data());
+		});
+
+		return data;
+	} catch (error) {
+		console.error('Error getting documents', error);
+	}
+};

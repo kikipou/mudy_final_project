@@ -22,6 +22,12 @@ export const reducer = (currentAction: any, currentState: any) => {
 				user: payload,
 			};
 
+		case Actions.GETUSERNAME:
+				return {
+					...currentState,
+					user: payload,
+				};
+
 		default:
 			return currentState;
 	}

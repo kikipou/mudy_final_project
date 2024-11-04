@@ -10,14 +10,52 @@
     background-color:rgba(85, 27, 194, 1);
 }
 
-.item{
+.profile-button {
+    font-size: 1.5rem;
     background: none;
     color: #ffffff;
     border: none;
-    margin-top: 0.7rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
-    padding-top: 0.6rem;
+    margin-top: 1.3rem;
+    margin-right: 3rem;
+    margin-left: 3rem;
+    padding-bottom: 10rem;
+    cursor: pointer;
+}
+
+.library-button {
+    font-size: 1.5rem;
+    background: none;
+    color: #ffffff;
+    border: none;
+    margin-top: 1.3rem;
+    margin-right: 4rem;
+    margin-left: 3rem;
+    padding-bottom: 10rem;
+    cursor: pointer;
+}
+
+.categories-button {
+    font-size: 1.5rem;
+    background: none;
+    color: #ffffff;
+    border: none;
+    margin-top: 1.3rem;
+    margin-left: 2rem;
+    margin-right: 4rem;
+    padding-bottom: 10rem;
+    cursor: pointer;
+}
+
+.logout-button {
+    font-size: 1.5rem;
+    background: none;
+    color: #ffffff;
+    border: none;
+    margin-top: 1.3rem;
+    margin-left: 2rem;
+    margin-right: 3rem;
+    padding-bottom: 10rem;
+    cursor: pointer;
 }
 
 @media (max-width: 26.875rem) {

@@ -11,7 +11,7 @@
 .img{
     height: 2rem;
     width: 4rem;
-    padding-top: 0.9rem;
+    padding-top: 1.1rem;
     margin-left: 2rem;
 }
     
@@ -34,16 +34,35 @@
     margin-top: 0rem;
 }
 
-.item{
+.explore-button{
     color: #ffffff;
     background: none;
     border: none;
     font: weight 6.25rem;
     font-size: 0.8rem;
     font-family: 'Montserrat';
+    cursor: pointer;
 }
 
-.item:hover{
+.create-button{
+    color: #ffffff;
+    background: none;
+    border: none;
+    font: weight 6.25rem;
+    font-size: 0.8rem;
+    font-family: 'Montserrat';
+    cursor: pointer;
+}
+
+.explore-button:hover{
+    color: #ffffff;
+    background: none;
+    border: none;
+    font-weight: bolder;
+    font-size: 0.8rem;
+}
+
+.create-button:hover{
     color: #ffffff;
     background: none;
     border: none;
