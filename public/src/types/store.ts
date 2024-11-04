@@ -7,9 +7,12 @@ export type AppState = {
 };
 
 export enum Screens {
+	'REGISTER' = 'REGISTER',
 	'LOGIN' = 'LOGIN',
 	'DASHBOARD' = 'DASHBOARD',
-	'REGISTER' = 'REGISTER',
+	'PROFILE' = 'PROFILE',
+	'MYLIBRARY' = 'MYLYBRARY',
+	'CATEGORIES' = 'CATEGORIES',
 }
 
 export enum Actions {
