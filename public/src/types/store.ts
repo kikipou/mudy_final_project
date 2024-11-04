@@ -13,6 +13,7 @@ export enum Screens {
 	'PROFILE' = 'PROFILE',
 	'MYLIBRARY' = 'MYLYBRARY',
 	'CATEGORIES' = 'CATEGORIES',
+	'PUBLISH' = 'PUBLISH'
 }
 
 export enum Actions {

@@ -34,7 +34,7 @@
     margin-top: 0rem;
 }
 
-.item{
+.explore-button{
     color: #ffffff;
     background: none;
     border: none;
@@ -44,7 +44,25 @@
     cursor: pointer;
 }
 
-.item:hover{
+.create-button{
+    color: #ffffff;
+    background: none;
+    border: none;
+    font: weight 6.25rem;
+    font-size: 0.8rem;
+    font-family: 'Montserrat';
+    cursor: pointer;
+}
+
+.explore-button:hover{
+    color: #ffffff;
+    background: none;
+    border: none;
+    font-weight: bolder;
+    font-size: 0.8rem;
+}
+
+.create-button:hover{
     color: #ffffff;
     background: none;
     border: none;

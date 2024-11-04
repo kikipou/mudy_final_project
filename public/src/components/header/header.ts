@@ -1,3 +1,6 @@
+import { dispatch } from '../../store';
+import { navigate } from '../../store/actions';
+import { Screens } from '../../types/store';
 import Searchbar, { Attributesbar } from '../searchbar/searchbar';
 import '../searchbar/searchbar';
 
@@ -41,14 +44,20 @@ class Nav extends HTMLElement {
                 <div class="body">
                     <img class="img" src="${this.img}"/>
                         <div class="items">
-                            <button class="item">${this.explore}</button>
-                            <button class="item">${this.create}</button>
+                            <button class="explore-button">${this.explore}</button>
+                            <button class="create-button">${this.create}</button>
                         </div>
                     <searchbar-component
                     <input type="text" id="input" name="nombre" placeholder=${this.search} />
                     ></searchbar-component>
                 </div>
-            `;              
+            `;
+            
+            const exploreButton = this.shadowRoot.querySelector('.explore-button') as HTMLButtonElement;
+            const createButton = this.shadowRoot.querySelector('.create-button') as HTMLButtonElement;
+
+            exploreButton?.addEventListener('click', () => dispatch(navigate(Screens.DASHBOARD)));
+            createButton?.addEventListener('click', () => dispatch(navigate(Screens.PUBLISH)));
         }
     }
 }
