@@ -9,7 +9,7 @@
 }
 .login{
     background: linear-gradient(to bottom,
-    #240d4e 40%,
+    #180933 30%,
     #551bc2 );
     height: 42.4rem;
     width: 100%;
@@ -19,12 +19,12 @@
     flex-direction: column;
     gap: 1rem;
     justify-items: center;
-    margin: 5rem 0rem 0rem 35rem;
+    margin: 5rem 0rem 0rem 36rem;
     padding-top: 5rem;
 }
 .register{
     color: #ffff;
-    padding-left: 4.2rem;
+    padding-left: 2rem;
 }
 #register-button{
     color:#72FFBB;
@@ -32,9 +32,9 @@
     border: none;
 }
 .img{
-    height: 10rem;
-    width: 20rem;
+    height: 8rem;
+    width: 16rem;
 }
 #login-button{
-    margin-left: 4rem;
+    margin-left: 2rem;
 }
