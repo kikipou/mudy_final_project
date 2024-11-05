@@ -44,10 +44,11 @@ class LoginPage extends HTMLElement {
 			
 				<div class="login">
 				<form class="form">
+				<img class="img" src="https://github.com/kikipou/mudy_final_project/blob/cata/mudy-logo.png?raw=true"/>
                 <input id="email-input" placeholder="Email" required>
 				<input id="password-input" placeholder="Password" type="password" required>
 				<button-component id="login-button" text="Log In"></button-component>
-				<div class"register>
+				<div class="register">
 				<p>Not registered yet?</p>
 				<button id="register-button">Go to Register</button>
 				</div>
