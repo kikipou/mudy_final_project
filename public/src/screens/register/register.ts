@@ -2,17 +2,16 @@ import { dispatch } from '../../store';
 import { navigate } from '../../store/actions';
 import { Screens } from '../../types/store';
 import { registerUser } from '../../utils/firebase';
+import '../../components/buttons/buttons';
 
 const credentials = {
 	username: '',
 	email: '',
 	password: '',
 	name: '',
-	
 };
 
 class RegisterPage extends HTMLElement {
-
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
@@ -22,73 +21,66 @@ class RegisterPage extends HTMLElement {
         this.render();
     }
 
-	changeUsername(e: any) {
-		credentials.username = e.target.value;
-	}
+    changeUsername(e: Event) {
+        credentials.username = (e.target as HTMLInputElement).value;
+    }
 
-    changeEmail(e: any) {
-		credentials.email = e.target.value;
-	}
+    changeEmail(e: Event) {
+        credentials.email = (e.target as HTMLInputElement).value;
+    }
 
-	changePassword(e: any) {
-		credentials.password = e.target.value;
-	}
+    changePassword(e: Event) {
+        credentials.password = (e.target as HTMLInputElement).value;
+    }
 
-	changeName(e: any) {
-		credentials.name = e.target.value;
-	}
+    changeName(e: Event) {
+        credentials.name = (e.target as HTMLInputElement).value;
+    }
 
-	backToLogin() {
-		dispatch(navigate(Screens.LOGIN));
-	}
+    backToLogin() {
+        dispatch(navigate(Screens.LOGIN));
+    }
 
-	async submitForm() {
-		const resp = await registerUser(credentials);
-		resp ? dispatch(navigate(Screens.LOGIN)) : alert('Could not create user');
-	}
+    async submitForm() {
+        const resp = await registerUser(credentials);
+        resp ? dispatch(navigate(Screens.LOGIN)) : alert('Could not create user');
+    }
 
-    async render() {
-		if (this.shadowRoot) {
-			const title = this.ownerDocument.createElement('h1');
-			title.innerText = 'Register';
-			this.shadowRoot.appendChild(title);
+    render() {
+        if (this.shadowRoot) {
+            this.shadowRoot.innerHTML = `
+			<link rel="stylesheet" href="../public/src/screens/register/register.css">
+            
+				<div class="register">
+                <form >
+				<div class="info">
+				<img class="img" src="https://github.com/kikipou/mudy_final_project/blob/cata/mudy-logo.png?raw=true"/>
+                    <input id="username-input" placeholder="Username" required>
+                    <input id="email-input" placeholder="Email" type="email" required>
+                    <input id="password-input" placeholder="Password" type="password" required>
+                    <input id="name-input" placeholder="Name" required>
+					<button id="register-button">Sign Up</button>
+					<div class="Login">
+					<p>Already registered?</p>
+                    <button type="button" id="login-back-button">Go to Log In</button>
+					</div>
+					</div>
+                </form>
+				</div>
+            `;
 
-			const pUsername = this.ownerDocument.createElement('input');
-			pUsername.placeholder = 'Username';
-			pUsername.required = true;
-			pUsername.addEventListener('change', this.changeUsername);
-			this.shadowRoot.appendChild(pUsername);
-
-			const pEmail = this.ownerDocument.createElement('input');
-			pEmail.placeholder = 'Email';
-			pEmail.required = true;
-			pEmail.addEventListener('change', this.changeEmail);
-			this.shadowRoot.appendChild(pEmail);
-
-			const pPassword = this.ownerDocument.createElement('input');
-			pPassword.placeholder = 'Password';
-			pPassword.type = 'password';
-			pPassword.required = true;
-			pPassword.addEventListener('change', this.changePassword);
-			this.shadowRoot.appendChild(pPassword);
-
-			const pName = this.ownerDocument.createElement('input');
-			pName.placeholder = 'Name';
-			pName.required = true;
-			pName.addEventListener('change', this.changeName);
-			this.shadowRoot.appendChild(pName);
-
-			const save = this.ownerDocument.createElement('button');
-			save.innerText = 'Sign Up';
-			save.addEventListener('click', this.submitForm);
-			this.shadowRoot.appendChild(save);
-
-			const loginBack = this.ownerDocument.createElement('button');
-			loginBack.innerText = 'Go to Log In';
-			loginBack.addEventListener('click', () => this.backToLogin());
-			this.shadowRoot.appendChild(loginBack);
-		}
-	}
+            // Asignación de eventos
+            this.shadowRoot.querySelector('#username-input')?.addEventListener('change', this.changeUsername.bind(this));
+            this.shadowRoot.querySelector('#email-input')?.addEventListener('change', this.changeEmail.bind(this));
+            this.shadowRoot.querySelector('#password-input')?.addEventListener('change', this.changePassword.bind(this));
+            this.shadowRoot.querySelector('#name-input')?.addEventListener('change', this.changeName.bind(this));
+            this.shadowRoot.querySelector('#register-button')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.submitForm();
+            });
+            this.shadowRoot.querySelector('#login-back-button')?.addEventListener('click', () => this.backToLogin());
+        }
+    }
 }
 
 customElements.define('register-page', RegisterPage);
