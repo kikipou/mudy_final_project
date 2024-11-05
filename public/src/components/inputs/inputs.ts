@@ -1,11 +1,13 @@
 export enum Attributesinput {
     'text' = 'text',
-    'uid'='id'
+    'uid'='uid',
+    'type'='type',
  }
  
  class Input extends HTMLElement {
      text?: string;
      uid?:string
+     type?:string
     
  
      constructor() {
@@ -31,7 +33,7 @@ export enum Attributesinput {
              this.shadowRoot.innerHTML = `
              <link rel="stylesheet" href="../public/src/components/inputs/inputs.css">
                  
-            <input id=${this.uid} placeholder=${this.text}>
+            <input type=${this.type} placeholder=${this.text}>
                           
                         
                

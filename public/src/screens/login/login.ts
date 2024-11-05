@@ -2,7 +2,7 @@ import { dispatch } from '../../store';
 import { navigate } from '../../store/actions';
 import { Screens } from '../../types/store';
 import { loginUser } from '../../utils/firebase';
-import  '../../components/buttons/buttons';
+import '../../components/buttons/buttons';
 import '../../components/inputs/inputs'
 
 const credentials = {
@@ -12,16 +12,16 @@ const credentials = {
 
 class LoginPage extends HTMLElement {
 
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
-    }
+	constructor() {
+		super();
+		this.attachShadow({ mode: 'open' });
+	}
 
-    connectedCallback() {
-        this.render();
-    }
+	connectedCallback() {
+		this.render();
+	}
 
-    changeEmail(e: any) {
+	changeEmail(e: any) {
 		credentials.email = e.target.value;
 	}
 
@@ -37,18 +37,19 @@ class LoginPage extends HTMLElement {
 		loginUser(credentials.email, credentials.password);
 	}
 
-    async render() {
+	async render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
-				<h1>Login</h1>
-				<form>
-				<input id="email-input" placeholder="Email" required>
+			<link rel="stylesheet" href="../public/src/screens/login/login.css">
+			
+				<div class="login">
+				<form class="form">
+                <input id="email-input" placeholder="Email" required>
 				<input id="password-input" placeholder="Password" type="password" required>
 				<button-component id="login-button" text="Log In"></button-component>
 				<button id="register-button">Go to Register</button>
-				<input-component text="Email">
-				
 				</form>
+				</div>
 			`;
 
 			// Asignación de eventos
