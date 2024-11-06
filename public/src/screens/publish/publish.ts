@@ -12,7 +12,7 @@ class Publish extends HTMLElement {
     render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
-                <link rel="stylesheet" href="../public/src/screens/dashboard/dashboard.css">
+                <link rel="stylesheet" href="../public/src/screens/publish/publish.css">
                 <div class="body">
                     <nav-component class="nav"
                         explore="Explore" 
