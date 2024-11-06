@@ -1,0 +1,86 @@
+*{
+    margin: 0%;
+    display: flex;
+    justify-items: center;
+    font-weight: lighter;
+    font-size: small;
+}
+.register{
+    background: linear-gradient(to bottom,
+    #551bc2 30%,
+    #180933);
+    height: 43.5rem;
+    width: 100%;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+    margin-left: 36rem;
+    padding-top: 5rem;
+}
+.img{
+    height: 8rem;
+    width: 16rem;
+}
+#register-button{
+    background-color: #00ECC1;
+    color:#551BC2;
+    font-weight: 800;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+    padding: 0.5rem 5rem 0.5rem 6rem;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+#username-input{
+    background-color: #551BC280;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+    padding: 0.5rem 5rem 0.5rem 1rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+#email-input{
+    background-color: #551BC280;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+    padding: 0.5rem 5rem 0.5rem 1rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+#password-input{
+    background-color: #551BC280;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+    padding: 0.5rem 5rem 0.5rem 1rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+#name-input{
+    background-color: #551BC280;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+    padding: 0.5rem 5rem 0.5rem 1rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+.Login{
+    color: #ffff;
+    padding-left: 1rem;
+}
+#login-back-button{
+    color:#72FFBB;
+    background:none;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}

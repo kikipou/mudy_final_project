@@ -1,0 +1,10 @@
+.button{
+    background-color: #00ECC1;
+    color:#551BC2;
+    font-weight: 800;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+    padding: 0.5rem 5rem 0.5rem 5rem;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}

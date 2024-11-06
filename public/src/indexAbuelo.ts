@@ -35,6 +35,11 @@ class AppContainer extends HTMLElement {
 					this.shadowRoot.appendChild(dashboard);
 					break;
 
+				case Screens.PUBLISH:
+					const publish = this.ownerDocument.createElement('publish-page');
+					this.shadowRoot.appendChild(publish);
+					break;
+
 				default:
 					break;
 			}

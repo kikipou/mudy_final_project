@@ -2,6 +2,8 @@ import { dispatch } from '../../store';
 import { navigate } from '../../store/actions';
 import { Screens } from '../../types/store';
 import { loginUser } from '../../utils/firebase';
+import '../../components/buttons/buttons';
+import '../../components/inputs/inputs'
 
 const credentials = {
 	email: '',
@@ -10,16 +12,16 @@ const credentials = {
 
 class LoginPage extends HTMLElement {
 
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
-    }
+	constructor() {
+		super();
+		this.attachShadow({ mode: 'open' });
+	}
 
-    connectedCallback() {
-        this.render();
-    }
+	connectedCallback() {
+		this.render();
+	}
 
-    changeEmail(e: any) {
+	changeEmail(e: any) {
 		credentials.email = e.target.value;
 	}
 
@@ -35,34 +37,30 @@ class LoginPage extends HTMLElement {
 		loginUser(credentials.email, credentials.password);
 	}
 
-    async render() {
+	async render() {
 		if (this.shadowRoot) {
-			const title = this.ownerDocument.createElement('h1');
-			title.innerText = 'Login';
-			this.shadowRoot.appendChild(title);
-
-			const pEmail = this.ownerDocument.createElement('input');
-			pEmail.placeholder = 'Email';
-			pEmail.required = true;
-			pEmail.addEventListener('change', this.changeEmail);
-			this.shadowRoot.appendChild(pEmail);
-
-			const pPassword = this.ownerDocument.createElement('input');
-			pPassword.placeholder = 'Password';
-			pPassword.type = 'password';
-			pPassword.required = true;
-			pPassword.addEventListener('change', this.changePassword);
-			this.shadowRoot.appendChild(pPassword);
-
-			const save = this.ownerDocument.createElement('button');
-			save.innerText = 'Log In';
-			save.addEventListener('click', this.submitForm);
-			this.shadowRoot.appendChild(save);
+			this.shadowRoot.innerHTML = `
+			<link rel="stylesheet" href="../public/src/screens/login/login.css">
 			
-			const registerBack = this.ownerDocument.createElement('button');
-			registerBack.innerText = 'Go to Register';
-			registerBack.addEventListener('click', () => this.backToRegister());
-			this.shadowRoot.appendChild(registerBack);
+				<div class="login">
+				<form class="form">
+				<img class="img" src="https://github.com/kikipou/mudy_final_project/blob/cata/mudy-logo.png?raw=true"/>
+                <input id="email-input" placeholder="Email" required>
+				<input id="password-input" placeholder="Password" type="password" required>
+				<button-component id="login-button" text="Log In"></button-component>
+				<div class="register">
+				<p>Not registered yet?</p>
+				<button id="register-button">Go to Register</button>
+				</div>
+				</form>
+				</div>
+			`;
+
+			// Asignación de eventos
+			this.shadowRoot.querySelector('#email-input')?.addEventListener('change', this.changeEmail.bind(this));
+			this.shadowRoot.querySelector('#password-input')?.addEventListener('change', this.changePassword.bind(this));
+			this.shadowRoot.querySelector('#login-button')?.addEventListener('click', this.submitForm.bind(this));
+			this.shadowRoot.querySelector('#register-button')?.addEventListener('click', this.backToRegister.bind(this));
 		}
 	}
 }

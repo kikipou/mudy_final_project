@@ -1,0 +1,61 @@
+*{
+    margin: 0%;
+    display: flex;
+    justify-items: center;
+    font-weight: lighter;
+    font-size: small;
+}
+.login{
+    background: linear-gradient(to bottom,
+    #180933 30%,
+    #551bc2 );
+    height: 43.5rem;
+    width: 100%;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-items: center;
+    margin: 5rem 0rem 0rem 36rem;
+    padding-top: 5rem;
+}
+.register{
+    color: #ffff;
+    padding-left: 1rem;
+}
+#register-button{
+    color:#72FFBB;
+    background:none;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    
+}
+.img{
+    height: 8rem;
+    width: 16rem;
+}
+#login-button{
+    margin-left: 2rem;
+}
+#email-input{
+    background-color: #551BC280;
+    color: #9063e2;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+    padding: 0.5rem 5rem 0.5rem 1rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+#password-input{
+    background-color: #551BC280;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+    padding: 0.5rem 5rem 0.5rem 1rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}

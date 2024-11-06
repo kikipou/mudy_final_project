@@ -23,6 +23,7 @@ class Publish extends HTMLElement {
                             <div class=posts>
                             <div class="posts-container"></div>
                             </div>
+                            <h1>HOLA</h1>
                         <sidebar-component 
                     ></sidebar-component>
                 </div>
