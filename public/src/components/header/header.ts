@@ -44,8 +44,8 @@ class Nav extends HTMLElement {
                 <div class="body">
                     <img class="img" src="${this.img}"/>
                         <div class="items">
-                            <button class="explore-button">${this.explore}</button>
-                            <button class="create-button">${this.create}</button>
+                            <button id="explore-button">${this.explore}</button>
+                            <button id="create-button">${this.create}</button>
                         </div>
                     <searchbar-component
                     <input type="text" id="input" name="nombre" placeholder=${this.search} />
@@ -53,8 +53,8 @@ class Nav extends HTMLElement {
                 </div>
             `;
             
-            const exploreButton = this.shadowRoot.querySelector('.explore-button') as HTMLButtonElement;
-            const createButton = this.shadowRoot.querySelector('.create-button') as HTMLButtonElement;
+            const exploreButton = this.shadowRoot.querySelector('#explore-button') as HTMLButtonElement;
+            const createButton = this.shadowRoot.querySelector('#create-button') as HTMLButtonElement;
 
             exploreButton?.addEventListener('click', () => dispatch(navigate(Screens.DASHBOARD)));
             createButton?.addEventListener('click', () => dispatch(navigate(Screens.PUBLISH)));

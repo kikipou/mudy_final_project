@@ -44,7 +44,7 @@
     cursor: pointer;
 }
 
-.create-button{
+#create-button{
     color: #ffffff;
     background: none;
     border: none;
