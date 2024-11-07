@@ -1,3 +1,6 @@
+import '../../components/header/header';
+import '../../components/sidebar/sidebar';
+
 class Publish extends HTMLElement {
 
     constructor() {

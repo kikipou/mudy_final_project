@@ -1,8 +1,8 @@
-import { artistasIndependientes } from '../../data/data'; // Asegúrate de que la ruta sea correcta
-import '../../components/header/header'; // Asegúrate de que la ruta sea correcta
+import { artistasIndependientes } from '../../data/data';
+import '../../components/header/header';
 import ArtistPost, { Attribute } from '../../components/userpost/userpost';
 import '../../components/sidebar/sidebar';
-// Clase principal de la aplicación
+
 class Dashboard extends HTMLElement {
 
     Posts: ArtistPost[] = [];
