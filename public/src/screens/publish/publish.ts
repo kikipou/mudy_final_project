@@ -1,5 +1,7 @@
 import '../../components/header/header';
 import '../../components/sidebar/sidebar';
+import '../../components/buttons/buttons';
+import '../../components/inputs/inputs'
 
 class Publish extends HTMLElement {
 
@@ -12,28 +14,28 @@ class Publish extends HTMLElement {
         this.render();
     }
 
-    render() {
-        if (this.shadowRoot) {
-            this.shadowRoot.innerHTML = `
-                <link rel="stylesheet" href="../public/src/screens/publish/publish.css">
-                <div class="body">
-                    <nav-component class="nav"
-                        explore="Explore" 
-                        create="Create"
-                        img="https://github.com/kikipou/mudy_final_project/blob/cata/mudy-logo.png?raw=true"
-                        search="Search"
-                        ></nav-component>
-                            <div class=posts>
-                            <div class="posts-container"></div>
-                            </div>
-                            <h1>HOLA</h1>
-                        <sidebar-component 
-                    ></sidebar-component>
-                </div>
-            `;
-        }
-    }
+    // changeImage(event: any) {
+    //     console.log(event)
+    // }
+
+    async render() {
+		if (this.shadowRoot) {
+
+                const title = this.ownerDocument.createElement('h1');
+			    title.innerText = 'Publish';
+			    this.shadowRoot.appendChild(title);
+
+                const pImage = this.ownerDocument.createElement('input');
+                pImage.type = 'file';
+                pImage.addEventListener('change', () => {
+                    console.log(pImage.files);
+                    const file = pImage.files?.[0];
+                });
+                this.shadowRoot.appendChild(pImage);
+		}
+	}
 }
+
 console.log (Publish)
 customElements.define('publish-page', Publish);
 export default Publish;

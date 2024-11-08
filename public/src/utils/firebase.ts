@@ -1,12 +1,15 @@
+import { appState } from '../store';
 
 let db: any;
 let auth: any;
+let storage: any;
 
 export const getFirebaseInstance = async () => {
     if (!db) {
         const { initializeApp } = await import('firebase/app');
         const { getFirestore } = await import('firebase/firestore');
         const { getAuth } = await import('firebase/auth');
+        const { getStorage } = await import('firebase/storage');
 
         const firebaseConfig = {
         apiKey: "AIzaSyD7vRWGFDuTK5STpcVSlINpHk-ZNirv0n8",
@@ -21,8 +24,9 @@ export const getFirebaseInstance = async () => {
         const app = initializeApp(firebaseConfig);
         db = getFirestore(app);
         auth = getAuth(app);
+        storage = getStorage();
     }
-    return { db, auth };
+    return { db, auth, storage };
 };
 
 export const addUser = async (user: any) => {
@@ -98,6 +102,33 @@ export const loginUser = async (email: string, password: string) => {
         console.error(error);
     }
 };
+
+export const uploadFile = async (file: File, id: string) => {
+	const { storage } = await getFirebaseInstance();
+	const { ref, uploadBytes } = await import('firebase/storage');
+
+	const storageRef = ref(storage, 'imagesProfile/' + id);
+	uploadBytes(storageRef, file).then((snapshot) => {
+		console.log('File uploaded');
+	});
+};
+
+export const getFile = async (id: string) => {
+	const { storage } = await getFirebaseInstance();
+	const { ref, getDownloadURL } = await import('firebase/storage');
+
+	const storageRef = ref(storage, 'imagesProfile/' + id);
+	const urlImg = await getDownloadURL(ref(storageRef))
+		.then((url) => {
+			return url;
+		})
+		.catch((error) => {
+			console.error(error);
+		});
+
+	return urlImg;
+};
+
 
 import { getAuth } from 'firebase/auth';
 
