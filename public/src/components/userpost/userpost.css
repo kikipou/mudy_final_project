@@ -11,7 +11,7 @@
 
 .post{
     border-radius: 1.5rem 1.5rem 1.5rem 1.5rem;
-    height: 43rem;
+    height: 45rem;
     width: 30rem;
     background-color: rgba(55, 16, 129, 1);
     color: black;
@@ -121,7 +121,7 @@
 
 .player-controls{
     gap: 2rem;
-    padding-right: 7rem;
+    padding-left: 5rem;
     display: flex;
     justify-content: row;
 }
