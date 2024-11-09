@@ -29,6 +29,103 @@ export const getFirebaseInstance = async () => {
     return { db, auth, storage };
 };
 
+export const addPost = async (post: any) => {
+	try {
+		const { db } = await getFirebaseInstance();
+		const { collection, addDoc } = await import('firebase/firestore');
+
+		const where = collection(db, 'posts');
+		const registerPost = {
+			title: post.title,
+			genre: post.genre,
+			tags: post.tags,
+			coverimg: post.coverimg,
+			userUid: appState.user,
+		};
+		await addDoc(where, registerPost);
+		console.log('Succesfully added');
+	} catch (error) {
+		console.error('Error adding document', error);
+	}
+};
+
+export const getPosts = async () => {
+	try {
+		const { db } = await getFirebaseInstance();
+		const { collection, getDocs } = await import('firebase/firestore');
+
+		const where = collection(db, 'posts');
+		const querySnapshot = await getDocs(where);
+		const data: any[] = [];
+
+		querySnapshot.forEach((doc) => {
+			data.push(doc.data());
+		});
+
+		return data;
+	} catch (error) {
+		console.error('Error getting documents', error);
+	}
+};
+
+export const uploadPost = async (file: File, userId: string, uniqueFileName: string) => {
+    const { storage } = await getFirebaseInstance();
+    const { ref, uploadBytes } = await import('firebase/storage');
+
+    // Crea la referencia en Firebase Storage con el nombre único
+    const storageRef = ref(storage, uniqueFileName);
+
+    try {
+        // Sube el archivo a Firebase Storage
+        await uploadBytes(storageRef, file);
+        console.log('File uploaded successfully:', uniqueFileName);
+    } catch (error) {
+        console.error('Error uploading file:', error);
+    }
+};
+
+
+export const getPost = async (fileName: string) => {
+    const { storage } = await getFirebaseInstance();
+    const { ref, getDownloadURL } = await import('firebase/storage');
+
+    // Referencia a la imagen subida, utilizando el nombre de archivo único
+    const storageRef = ref(storage, fileName);
+
+    try {
+        // Obtiene la URL de descarga del archivo
+        const urlImg = await getDownloadURL(storageRef);
+        return urlImg;
+    } catch (error) {
+        console.error('Error getting image URL:', error);
+    }
+};
+
+// export const uploadPost = async (file: File) => {
+// 	const { storage } = await getFirebaseInstance();
+// 	const { ref, uploadBytes } = await import('firebase/storage');
+
+// 	const storageRef = ref(storage, 'imagesPost/');
+// 	uploadBytes(storageRef, file).then((snapshot) => {
+// 		console.log('File uploaded');
+// 	});
+// };
+
+// export const getPost = async () => {
+// 	const { storage } = await getFirebaseInstance();
+// 	const { ref, getDownloadURL } = await import('firebase/storage');
+
+// 	const storageRef = ref(storage, 'imagesPost/');
+// 	const urlImg = await getDownloadURL(ref(storageRef))
+// 		.then((url) => {
+// 			return url;
+// 		})
+// 		.catch((error) => {
+// 			console.error(error);
+// 		});
+// 	return urlImg;
+// };
+
 export const addUser = async (user: any) => {
     try {
         const { db } = await getFirebaseInstance();
@@ -125,10 +222,8 @@ export const getFile = async (id: string) => {
 		.catch((error) => {
 			console.error(error);
 		});
-
 	return urlImg;
 };
-
 
 import { getAuth } from 'firebase/auth';
 
@@ -162,6 +257,26 @@ export const getUserName = async () => {
 
 		const where = collection(db, 'users');
 		const querySnapshot = await getDocs(where);
+		const data: any[] = [];
+
+		querySnapshot.forEach((doc) => {
+			data.push(doc.data());
+		});
+
+		return data;
+	} catch (error) {
+		console.error('Error getting documents', error);
+	}
+};
+
+export const getPostsByUser = async () => {
+	try {
+		const { db } = await getFirebaseInstance();
+		const { collection, getDocs, query, where } = await import('firebase/firestore');
+
+		const ref = collection(db, 'posts');
+		const q = query(ref, where('userUid', '==', appState.user));
+		const querySnapshot = await getDocs(q);
 		const data: any[] = [];
 
 		querySnapshot.forEach((doc) => {

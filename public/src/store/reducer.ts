@@ -16,6 +16,18 @@ export const reducer = (currentAction: any, currentState: any) => {
 				users: payload,
 			};
 
+		case Actions.GETPOSTS:
+			return {
+				...currentState,
+				products: payload,
+			};
+	
+		case Actions.GETPOSTSBYUSER:
+			return {
+				...currentState,
+				productsByUser: payload,
+			};
+
 		case Actions.SETUSERCREDENTIALS:
 			return {
 				...currentState,

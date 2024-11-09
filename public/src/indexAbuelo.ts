@@ -15,6 +15,8 @@ class AppContainer extends HTMLElement {
 	connectedCallback() {
 		this.render();
 		console.log(appState)
+		console.log('screen', appState.screen);
+		
 	}
 
 	render() {

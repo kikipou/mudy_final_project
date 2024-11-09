@@ -8,6 +8,7 @@ import { navigate, setUserCredentials } from './actions';
 const onAuth = async () => {
     const { auth } = await getFirebaseInstance();
     console.log('in auth', auth);
+    
 
     onAuthStateChanged(auth, (user) => {
         if(user){
@@ -23,8 +24,9 @@ const onAuth = async () => {
 //El estado global, appState
 const initialState: AppState = {
 	screen: 'LOGIN',
-	products: [],
-    user: {},
+	posts: [],
+    user: '',
+    postsByUser: [],
 };
 
 export let appState = initialState;

@@ -2,6 +2,10 @@ import { artistasIndependientes } from '../../data/data';
 import '../../components/header/header';
 import ArtistPost, { Attribute } from '../../components/userpost/userpost';
 import '../../components/sidebar/sidebar';
+import { Post } from '../../types/post';
+import { addPost, getPosts, uploadPost, getPost } from '../../utils/firebase';
+import { addObserver, appState, dispatch } from '../../store';
+import { getPostsAction } from '../../store/actions';
 
 class Dashboard extends HTMLElement {
 
@@ -10,21 +14,38 @@ class Dashboard extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
-
-            artistasIndependientes.forEach(artista => {
-                const postElement = this.ownerDocument.createElement("artist-post") as ArtistPost;
-                postElement.setAttribute(Attribute.photo, artista.fotoalbum);
-                postElement.setAttribute(Attribute.artistName, artista.nombre);
-                postElement.setAttribute(Attribute.songName, artista.cancion);
-                postElement.setAttribute(Attribute.profile, artista.fotoperfil);
-                postElement.setAttribute(Attribute.songTime, artista.horasSubida.toString());
-
-                this.Posts.push(postElement)
-            });
     }
 
     connectedCallback() {
         this.render();
+        this.loadSongs();
+    }
+
+    async loadSongs() {
+        const songs = await getPosts();
+        const songListContainer = this.shadowRoot?.querySelector("#song-list");
+        console.log('container', songListContainer);
+        if(songListContainer){
+            songs?.forEach((songData) => {
+                console.log('songdata', songData);
+                
+
+                const songprops = document.createElement("artist-post") as ArtistPost;
+                songprops.setAttribute("songName", songData.title);
+                songprops.setAttribute("genre", songData.genre);
+                songprops.setAttribute("albumcover", songData.albumcover);
+                songListContainer.appendChild(songprops);
+    
+            });
+
+        }
+        this.render()
+        
+        
+        
+        
+        
+        console.log('songs dash', songs);
     }
 
     render() {
@@ -38,19 +59,14 @@ class Dashboard extends HTMLElement {
                         img="https://github.com/kikipou/mudy_final_project/blob/cata/mudy-logo.png?raw=true"
                         search="Search"
                         ></nav-component>
-                            <div class=posts>
-                            <div class="posts-container"></div>
-                            </div>
+                            
+                            <div id="song-list"></div>
+                            <artist-post songname='hola' albumcover='link'></artist-post>
                         <sidebar-component 
                     ></sidebar-component>
                 </div>
             `;
-            const postContainer = this.shadowRoot.querySelector(".posts-container");
-            this.Posts.forEach(artista => {
-                if (postContainer) {
-                    postContainer.appendChild(artista);
-                }
-            });
+            
         }
     }
 }
