@@ -3,7 +3,7 @@ import '../../components/header/header';
 import ArtistPost, { Attribute } from '../../components/userpost/userpost';
 import '../../components/sidebar/sidebar';
 import { Post } from '../../types/post';
-import { addPost, getPosts, uploadPost, getPost } from '../../utils/firebase';
+import { addPost, getPostsInfo, uploadPost, getPost } from '../../utils/firebase';
 import { addObserver, appState, dispatch } from '../../store';
 import { getPostsAction } from '../../store/actions';
 
@@ -22,7 +22,7 @@ class Dashboard extends HTMLElement {
     }
 
     async loadSongs() {
-        const songs = await getPosts();
+        const songs = await getPostsInfo();
         const songListContainer = this.shadowRoot?.querySelector("#song-list");
         console.log('container', songListContainer);
         if(songListContainer){

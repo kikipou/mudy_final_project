@@ -49,7 +49,7 @@ export const addPost = async (post: any) => {
 	}
 };
 
-export const getPosts = async () => {
+export const getPostsInfo = async () => {
 	try {
 		const { db } = await getFirebaseInstance();
 		const { collection, getDocs } = await import('firebase/firestore');
