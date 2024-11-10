@@ -52,20 +52,20 @@ class RegisterPage extends HTMLElement {
 			<link rel="stylesheet" href="../public/src/screens/register/register.css">
             
 				<div class="register">
-                <form >
-				<div class="info">
-				<img class="img" src="https://github.com/kikipou/mudy_final_project/blob/cata/mudy-logo.png?raw=true"/>
-                    <input id="username-input" placeholder="Username" required>
-                    <input id="email-input" placeholder="Email" type="email" required>
-                    <input id="password-input" placeholder="Password" type="password" required>
-                    <input id="name-input" placeholder="Name" required>
-					<button id="register-button">Sign Up</button>
-					<div class="Login">
-					<p>Already registered?</p>
-                    <button type="button" id="login-back-button">Go to Log In</button>
-					</div>
-					</div>
-                </form>
+                    <form >
+                        <div class="info">
+                            <img class="img" src="https://github.com/kikipou/mudy_final_project/blob/cata/mudy-logo.png?raw=true"/>
+                                <input id="username-input" placeholder="Username" required>
+                                <input id="email-input" placeholder="Email" type="email" required>
+                                <input id="password-input" placeholder="Password" type="password" required>
+                                <input id="name-input" placeholder="Name" required>
+                                <button id="register-button">Sign Up</button>
+                                    <div class="Login">
+                                        <p>Already registered?</p>
+                                        <button type="button" id="login-back-button">Go to Log In</button>
+                                    </div>
+                            </div>
+                    </form>
 				</div>
             `;
 
