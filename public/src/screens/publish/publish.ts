@@ -62,7 +62,7 @@ class Publish extends HTMLElement {
     async render() {
 		if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
-             <link rel="stylesheet" href="../public/src/screens/publish/publish.css">
+            <link rel="stylesheet" href="../public/src/screens/publish/publish.css">
               <div class="publish">
                   <nav-component class="nav"
                       explore="Explore" 

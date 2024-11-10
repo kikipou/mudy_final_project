@@ -7,4 +7,6 @@
     padding: 0.5rem 5rem 0.5rem 5rem;
     font-family: 'Montserrat', sans-serif;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    flex-direction: column;
 }
