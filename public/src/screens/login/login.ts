@@ -18,7 +18,12 @@ class LoginPage extends HTMLElement {
 	}
 
 	connectedCallback() {
-		this.render();
+		const userActive = localStorage.getItem('user')
+		if (!userActive) {
+			this.render()
+		} else {
+			dispatch(navigate(Screens.DASHBOARD))
+		}
 	}
 
 	changeEmail(e: any) {
@@ -41,18 +46,17 @@ class LoginPage extends HTMLElement {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
 			<link rel="stylesheet" href="../public/src/screens/login/login.css">
-			
 				<div class="login">
-				<form class="form">
-				<img class="img" src="https://github.com/kikipou/mudy_final_project/blob/cata/mudy-logo.png?raw=true"/>
-                <input id="email-input" placeholder="Email" required>
-				<input id="password-input" placeholder="Password" type="password" required>
-				<button-component id="login-button" text="Log In"></button-component>
-				<div class="register">
-				<p>Not registered yet?</p>
-				<button id="register-button">Go to Register</button>
-				</div>
-				</form>
+					<form class="form">
+						<img class="img" src="https://github.com/kikipou/mudy_final_project/blob/cata/mudy-logo.png?raw=true"/>
+						<input id="email-input" placeholder="Email" required>
+						<input id="password-input" placeholder="Password" type="password" required>
+						<button-component id="login-button" text="Log In"></button-component>
+							<div class="register">
+								<p>Not registered yet?</p>
+								<button id="register-button">Go to Register</button>
+							</div>
+					</form>
 				</div>
 			`;
 

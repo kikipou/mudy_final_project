@@ -39,9 +39,15 @@
 #login-button{
     margin-left: 2rem;
 }
+
+input::placeholder {
+    color: #A676FF;
+    opacity: 0.5;
+}
+
 #email-input{
     background-color: #551BC280;
-    color: #9063e2;
+    color: #ffffff;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     border: none;
