@@ -18,12 +18,7 @@ class LoginPage extends HTMLElement {
 	}
 
 	connectedCallback() {
-		const userActive = localStorage.getItem('user')
-		if (!userActive) {
-			this.render()
-		} else {
-			dispatch(navigate(Screens.DASHBOARD))
-		}
+		this.render();
 	}
 
 	changeEmail(e: any) {
