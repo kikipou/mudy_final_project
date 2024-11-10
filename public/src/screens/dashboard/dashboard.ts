@@ -27,7 +27,7 @@ class Dashboard extends HTMLElement {
                 postElement.setAttribute(Attribute.genre, postData.genre || "Unknown genre");
                 postElement.setAttribute(Attribute.tags, postData.tags || "Unknown tags");
                 postElement.setAttribute(Attribute.coverimg, postData.coverimg || "Image not found");                
-                postListContainer.appendChild(postElement); // Añadir el post al contenedor
+                postListContainer.appendChild(postElement);
             });
         }
     }
