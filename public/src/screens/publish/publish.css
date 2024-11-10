@@ -6,30 +6,30 @@
     background-color: rgba(29, 8, 68, 1);
 }
 
-.publish{
+.publish {
     margin:0%;
     background-color: rgba(29, 8, 68, 1);
     font-family: 'Montserrat';
 }
 
-.searchbar{
+.searchbar {
     z-index: 2;
     position: relative;
 }
 
-.nav{
+.nav {
     z-index: 1;
     position: relative;
     font-family: 'Montserrat';
 }
 
-.form{
+.form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     justify-items: center;
     margin: 5rem 0rem 0rem 36rem;
-    padding-top: 5rem;
+    padding-top: 25rem;
 }
 
 input::placeholder {
@@ -37,8 +37,7 @@ input::placeholder {
     opacity: 0.5;
 }
 
-
-#name-input{
+#name-input {
     background-color: #551bc280;
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
@@ -49,7 +48,7 @@ input::placeholder {
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
 }
 
-#genre-input{
+#genre-input {
     background-color: #551BC280;
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
@@ -60,7 +59,7 @@ input::placeholder {
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
 }
 
-#tags-input{
+#tags-input {
     background-color: #551BC280;
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;

@@ -43,9 +43,7 @@ class Dashboard extends HTMLElement {
                         img="https://github.com/kikipou/mudy_final_project/blob/cata/mudy-logo.png?raw=true"
                         search="Search"
                     ></nav-component>
-                    
                     <div id="artist-post"></div> <!-- Contenedor para los posts -->
-                    
                     <sidebar-component></sidebar-component>
                 </div>
             `;
