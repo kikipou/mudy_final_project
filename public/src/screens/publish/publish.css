@@ -36,6 +36,33 @@
     background:none;
 }
 
+/* Estilos para el input de tipo file */
+#coverimg-input {
+    display: none; /* Ocultar el input real */
+}
+
+/* Botón personalizado para el input de archivo */
+.custom-file-button {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.custom-file-button:hover {
+    background-color: #0056b3;
+}
+
+/* Imagen de vista previa */
+#postImg {
+    max-width: 100%;
+    margin-top: 10px;
+}
+
 @media (max-width: 26.875rem) {
     
     .posts-container {

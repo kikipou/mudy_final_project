@@ -1,6 +1,6 @@
 import { Actions, Screens } from '../types/store';
 import { getUser, getUserName } from '../utils/firebase';
-import { getPosts, getPostsByUser } from '../utils/firebase';
+import { getPostsInfo, getPostsByUser } from '../utils/firebase';
 
 export const navigate = (screen: Screens) => {
 	return {
@@ -18,7 +18,7 @@ export const getUsersAction = async () => {
 };
 
 export const getPostsAction = async () => {
-	const posts = await getPosts(); //Firestore
+	const posts = await getPostsInfo(); //Firestore
 	return {
 		action: Actions.GETPOSTS,
 		payload: posts,

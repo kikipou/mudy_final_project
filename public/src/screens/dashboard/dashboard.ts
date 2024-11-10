@@ -1,15 +1,9 @@
-import { artistasIndependientes } from '../../data/data';
 import '../../components/header/header';
 import ArtistPost, { Attribute } from '../../components/userpost/userpost';
 import '../../components/sidebar/sidebar';
-import { Post } from '../../types/post';
-import { addPost, getPostsInfo, uploadPost, getPost } from '../../utils/firebase';
-import { addObserver, appState, dispatch } from '../../store';
-import { getPostsAction } from '../../store/actions';
+import { getPostsInfo } from '../../utils/firebase';
 
 class Dashboard extends HTMLElement {
-
-    Posts: ArtistPost[] = [];
 
     constructor() {
         super();
@@ -18,34 +12,24 @@ class Dashboard extends HTMLElement {
 
     connectedCallback() {
         this.render();
-        this.loadSongs();
+        this.loadPosts();
     }
 
-    async loadSongs() {
-        const songs = await getPostsInfo();
-        const songListContainer = this.shadowRoot?.querySelector("#song-list");
-        console.log('container', songListContainer);
-        if(songListContainer){
-            songs?.forEach((songData) => {
-                console.log('songdata', songData);
+    async loadPosts() {
+        const posts = await getPostsInfo(); // Obtiene la lista de posts desde Firebase
+        const postListContainer = this.shadowRoot?.querySelector("#artist-post");
+
+        if (postListContainer) {
+            posts?.forEach((postData) => {
+                const postElement = document.createElement("artist-post") as ArtistPost;
                 
-
-                const songprops = document.createElement("artist-post") as ArtistPost;
-                songprops.setAttribute("songName", songData.title);
-                songprops.setAttribute("genre", songData.genre);
-                songprops.setAttribute("albumcover", songData.albumcover);
-                songListContainer.appendChild(songprops);
-    
+                postElement.setAttribute(Attribute.title, postData.title || "Title not found");
+                postElement.setAttribute(Attribute.genre, postData.genre || "Unknown genre");
+                postElement.setAttribute(Attribute.tags, postData.tags || "Unknown tags");
+                postElement.setAttribute(Attribute.coverimg, postData.coverimg || "Image not found");                
+                postListContainer.appendChild(postElement); // Añadir el post al contenedor
             });
-
         }
-        this.render()
-        
-        
-        
-        
-        
-        console.log('songs dash', songs);
     }
 
     render() {
@@ -58,18 +42,16 @@ class Dashboard extends HTMLElement {
                         create="Create"
                         img="https://github.com/kikipou/mudy_final_project/blob/cata/mudy-logo.png?raw=true"
                         search="Search"
-                        ></nav-component>
-                            
-                            <div id="song-list"></div>
-                            <artist-post songname='hola' albumcover='link'></artist-post>
-                        <sidebar-component 
-                    ></sidebar-component>
+                    ></nav-component>
+                    
+                    <div id="artist-post"></div> <!-- Contenedor para los posts -->
+                    
+                    <sidebar-component></sidebar-component>
                 </div>
             `;
-            
         }
     }
 }
-console.log (Dashboard)
+
 customElements.define('dashboard-page', Dashboard);
 export default Dashboard;

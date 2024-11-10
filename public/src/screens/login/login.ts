@@ -3,7 +3,7 @@ import { navigate } from '../../store/actions';
 import { Screens } from '../../types/store';
 import { loginUser } from '../../utils/firebase';
 import '../../components/buttons/buttons';
-import '../../components/inputs/inputs'
+import '../../components/inputs/inputs';
 
 const credentials = {
 	email: '',

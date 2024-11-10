@@ -76,7 +76,7 @@ class Publish extends HTMLElement {
                           <input id="tags-input" placeholder="Tags" required>
                           <input id="coverimg-input" type="file" required>
                           <img id="postImg" src="">
-                          <button id="publish-button">Publish</button>
+                          <button-component id="publish-button" text="Publish"></button-component>
                         </form>
               </div>
             `;
