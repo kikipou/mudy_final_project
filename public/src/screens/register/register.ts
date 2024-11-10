@@ -58,7 +58,7 @@ class RegisterPage extends HTMLElement {
                                 <input id="username-input" placeholder="Username" required>
                                 <input id="email-input" placeholder="Email" type="email" required>
                                 <input id="password-input" placeholder="Password" type="password" required>
-                                <input id="name-input" placeholder="Name" required>
+                                <input id="name-input" placeholder="Full name" required>
                                 <button id="register-button">Sign Up</button>
                                     <div class="Login">
                                         <p>Already registered?</p>
