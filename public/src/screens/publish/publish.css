@@ -1,39 +1,81 @@
 *{
-    margin:0%;
-    padding: 0%;
-    color:#ffffff;
+    margin: 0%;
+    display: flex;
+    justify-items: center;
     font-family: 'Montserrat';
     background-color: rgba(29, 8, 68, 1);
 }
 
-.body{
+.publish {
     margin:0%;
     background-color: rgba(29, 8, 68, 1);
     font-family: 'Montserrat';
+    height: 100%;
+    width: 100%;
 }
 
-.searchbar{
+.searchbar {
     z-index: 2;
     position: relative;
 }
 
-.nav{
+.nav {
     z-index: 1;
     position: relative;
     font-family: 'Montserrat';
 }
 
-.posts-container{
-    padding-top: 5rem;
+.form {
     display: flex;
-    padding-left: 25rem;
-    justify-content: center;
     flex-direction: column;
-    width: 39rem;
+    gap: 1rem;
+    justify-items: center;
+    margin: 5rem 0rem 0rem 36rem;
+    padding-top: 10rem;
 }
 
-.heart-button{
-    background:none;
+input::placeholder {
+    color: #A676FF;
+    opacity: 0.5;
+}
+
+#name-input {
+    background-color: #551bc280;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+    padding: 0.5rem 5rem 0.5rem 1rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+#genre-input {
+    background-color: #551BC280;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+    padding: 0.5rem 5rem 0.5rem 1rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+#tags-input {
+    background-color: #551BC280;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+    padding: 0.5rem 5rem 0.5rem 1rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen de vista previa */
+#postImg {
+    max-width: 100%;
+    margin-top: 10px;
 }
 
 @media (max-width: 26.875rem) {

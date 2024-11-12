@@ -6,24 +6,24 @@
     background-color: rgba(29, 8, 68, 1);
 }
 
-.body{
+.body {
     margin:0%;
     background-color: rgba(29, 8, 68, 1);
     font-family: 'Montserrat';
 }
 
-.searchbar{
+.searchbar {
     z-index: 2;
     position: relative;
 }
 
-.nav{
+.nav {
     z-index: 1;
     position: relative;
     font-family: 'Montserrat';
 }
 
-.posts-container{
+.posts-list {
     padding-top: 5rem;
     display: flex;
     padding-left: 25rem;
@@ -32,7 +32,7 @@
     width: 39rem;
 }
 
-.heart-button{
+.heart-button {
     background:none;
 }
 

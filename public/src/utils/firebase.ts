@@ -1,12 +1,16 @@
+import { appState } from '../store';
+import { getAuth } from 'firebase/auth';
 
 let db: any;
 let auth: any;
+let storage: any;
 
 export const getFirebaseInstance = async () => {
     if (!db) {
         const { initializeApp } = await import('firebase/app');
         const { getFirestore } = await import('firebase/firestore');
         const { getAuth } = await import('firebase/auth');
+        const { getStorage } = await import('firebase/storage');
 
         const firebaseConfig = {
         apiKey: "AIzaSyD7vRWGFDuTK5STpcVSlINpHk-ZNirv0n8",
@@ -21,40 +25,9 @@ export const getFirebaseInstance = async () => {
         const app = initializeApp(firebaseConfig);
         db = getFirestore(app);
         auth = getAuth(app);
+        storage = getStorage();
     }
-    return { db, auth };
-};
-
-export const addUser = async (user: any) => {
-    try {
-        const { db } = await getFirebaseInstance();
-        const { collection, addDoc } = await import ('firebase/firestore');
-
-        const where = collection(db, 'users');
-        await addDoc(where, user);
-        console.log('Succesfully added');
-    }   catch (error) {
-        console.error('Error adding document', error);
-    }
-};
-
-export const getUser = async () => {
-    try {
-        const { db } = await getFirebaseInstance();
-        const { collection, getDocs } = await import ('firebase/firestore');
-
-        const where = collection(db, 'users');
-        const querySnapshot = await getDocs(where);
-        const data: any[] = [];
-
-        querySnapshot.forEach((doc) => {
-            data.push(doc.data());
-        });
-
-        return data;
-    }   catch (error) {
-        console.error('Error getting documents', error);
-    }
+    return { db, auth, storage };
 };
 
 export const registerUser = async (credentials: any) => {
@@ -99,7 +72,37 @@ export const loginUser = async (email: string, password: string) => {
     }
 };
 
-import { getAuth } from 'firebase/auth';
+export const addUser = async (user: any) => {
+    try {
+        const { db } = await getFirebaseInstance();
+        const { collection, addDoc } = await import ('firebase/firestore');
+
+        const where = collection(db, 'users');
+        await addDoc(where, user);
+        console.log('Succesfully added');
+    }   catch (error) {
+        console.error('Error adding document', error);
+    }
+};
+
+export const getUser = async () => {
+    try {
+        const { db } = await getFirebaseInstance();
+        const { collection, getDocs } = await import ('firebase/firestore');
+
+        const where = collection(db, 'users');
+        const querySnapshot = await getDocs(where);
+        const data: any[] = [];
+
+        querySnapshot.forEach((doc) => {
+            data.push(doc.data());
+        });
+
+        return data;
+    }   catch (error) {
+        console.error('Error getting documents', error);
+    }
+};
 
 export const signOutUser = async () => {
     const auth = getAuth();
@@ -141,4 +144,145 @@ export const getUserName = async () => {
 	} catch (error) {
 		console.error('Error getting documents', error);
 	}
+};
+
+export const getPostsByUser = async () => {
+	try {
+		const { db } = await getFirebaseInstance();
+		const { collection, getDocs, query, where } = await import('firebase/firestore');
+
+		const ref = collection(db, 'posts');
+		const q = query(ref, where('userUid', '==', appState.user));
+		const querySnapshot = await getDocs(q);
+		const data: any[] = [];
+
+		querySnapshot.forEach((doc) => {
+			data.push(doc.data());
+		});
+
+		return data;
+	} catch (error) {
+		console.error('Error getting documents', error);
+	}
+};
+
+export const getPostsInfo = async () => {
+	try {
+		const { db } = await getFirebaseInstance();
+		const { collection, getDocs } = await import('firebase/firestore');
+
+		const where = collection(db, 'posts');
+		const querySnapshot = await getDocs(where);
+		const data: any[] = [];
+
+		querySnapshot.forEach((doc) => {
+			data.push(doc.data());
+		});
+
+		return data;
+	} catch (error) {
+		console.error('Error getting documents', error);
+	}
+};
+
+export const uploadPost = async (file: File, userId: string, uniqueFileName: string) => {
+    const { storage } = await getFirebaseInstance();
+    const { ref, uploadBytes } = await import('firebase/storage');
+
+    // Crea la referencia en Firebase Storage con el nombre único
+    const storageRef = ref(storage, uniqueFileName);
+
+    try {
+        // Sube el archivo a Firebase Storage
+        await uploadBytes(storageRef, file);
+        console.log('File uploaded successfully:', uniqueFileName);
+    } catch (error) {
+        console.error('Error uploading file:', error);
+    }
+};
+
+export const addPost = async (post: any) => {
+	try {
+		const { db } = await getFirebaseInstance();
+		const { collection, addDoc } = await import('firebase/firestore');
+
+		const where = collection(db, 'posts');
+		const registerPost = {
+			title: post.title,
+			genre: post.genre,
+			tags: post.tags,
+			coverimg: post.coverimg,
+			userUid: appState.user,
+		};
+		await addDoc(where, registerPost);
+		console.log('Succesfully added');
+	} catch (error) {
+		console.error('Error adding document', error);
+	}
+};
+
+export const getPost = async (fileName: string) => {
+    const { storage } = await getFirebaseInstance();
+    const { ref, getDownloadURL } = await import('firebase/storage');
+
+    // Referencia a la imagen subida, utilizando el nombre de archivo único
+    const storageRef = ref(storage, fileName);
+
+    try {
+        // Obtiene la URL de descarga del archivo
+        const urlImg = await getDownloadURL(storageRef);
+        return urlImg;
+    } catch (error) {
+        console.error('Error getting image URL:', error);
+    }
+};
+
+// export const uploadPost = async (file: File) => {
+// 	const { storage } = await getFirebaseInstance();
+// 	const { ref, uploadBytes } = await import('firebase/storage');
+
+// 	const storageRef = ref(storage, 'imagesPost/');
+// 	uploadBytes(storageRef, file).then((snapshot) => {
+// 		console.log('File uploaded');
+// 	});
+// };
+
+// export const getPost = async () => {
+// 	const { storage } = await getFirebaseInstance();
+// 	const { ref, getDownloadURL } = await import('firebase/storage');
+
+// 	const storageRef = ref(storage, 'imagesPost/');
+// 	const urlImg = await getDownloadURL(ref(storageRef))
+// 		.then((url) => {
+// 			return url;
+// 		})
+// 		.catch((error) => {
+// 			console.error(error);
+// 		});
+// 	return urlImg;
+// };
+
+export const uploadFile = async (file: File, id: string) => {
+	const { storage } = await getFirebaseInstance();
+	const { ref, uploadBytes } = await import('firebase/storage');
+
+	const storageRef = ref(storage, 'imagesProfile/' + id);
+	uploadBytes(storageRef, file).then((snapshot) => {
+		console.log('File uploaded');
+	});
+};
+
+export const getFile = async (id: string) => {
+	const { storage } = await getFirebaseInstance();
+	const { ref, getDownloadURL } = await import('firebase/storage');
+
+	const storageRef = ref(storage, 'imagesProfile/' + id);
+	const urlImg = await getDownloadURL(ref(storageRef))
+		.then((url) => {
+			return url;
+		})
+		.catch((error) => {
+			console.error(error);
+		});
+	return urlImg;
 };

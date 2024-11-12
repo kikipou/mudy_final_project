@@ -1,14 +1,13 @@
-
-
 export enum Attribute {
-    'photo' = 'photo',
-    'artistName' = 'artistName',
-    'songName' = 'songName',
-    'songTime' = 'songTime',
-    'profile' = 'profile'
+    'title' = 'title',
+    'genre' = 'genre',
+    'tags' = 'tags',
+    'coverimg' = 'coverimg',
+    'heartCount' = 'heartCount'
 }
 
 class ArtistPost extends HTMLElement {
+
     private heartCount: number = 0; // Contador para el botón de corazón
 
     constructor() {
@@ -34,37 +33,28 @@ class ArtistPost extends HTMLElement {
 
     render() {
         if (this.shadowRoot) {
-            const photo = this.getAttribute(Attribute.photo) || 'Not found';
-            const artistName = this.getAttribute(Attribute.artistName) || 'Unknown Artist';
-            const songName = this.getAttribute(Attribute.songName) || 'Untitled Song';
-            const songTime = this.getAttribute(Attribute.songTime) || 'Time unknown';
-            const profile = this.getAttribute(Attribute.profile) || 'Time unknown';
+            const songName = this.getAttribute(Attribute.title) || 'Untitled Song';
+            const musicGenre = this.getAttribute(Attribute.genre) || 'Unknown genre';
+            const songTags = this.getAttribute(Attribute.tags) || 'No tags';
+            const albumCover = this.getAttribute(Attribute.coverimg) || 'Image not found';
 
             this.shadowRoot.innerHTML = `
                 <link rel="stylesheet" href="../public/src/components/userpost/userpost.css">
                 <div class="post">
-                    <div id="profileinfo">
-                        <img class="postimgprofile" src="${profile}" alt="${artistName}">
-                        <div class="postheader">
-                            <p>${artistName}</p>
-                            <p>-</p>
-                            <p>${songTime}h ago</p> 
-                        </div>
-                    </div>
                     <div id="photo">
-                        <img class="img2" src="${photo}" alt="${artistName}">
+                        <img class="img2" src="${albumCover}" alt="${songName}">
                     </div>
                     <div class="info">
                         <div class="title">
                             <h2 class="songname">${songName}</h2>
                         </div>
                         <div class="subtitle">
-                            <p class="artist">By ${artistName}</p>
+                            <p class="genre">${musicGenre}</p>
+                            <p class="tags">${songTags}</p>
                             <div class="progress-bar">
                                 <input type="range" min="0" max="100" value="20" class="progress-range" width="10" height="6">
                             </div>
                             <div class="player-controls">
-                               
                                 <div class="controls">
                                     <button class="prev-button">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30">
@@ -81,16 +71,14 @@ class ArtistPost extends HTMLElement {
                                             <path d="M10 5v14l8-7-8-7zM6 19h2V5H6v14z" fill="#FFFFFF"/>
                                         </svg>
                                     </button>
-                                    
                                 </div>
-                               
                             </div>
-                              <button class="heart-button">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25" height="25">
-                                        <path class="heart-outline" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" stroke="#371081" stroke-width="2"/>
-                                    </svg>
-                                </button>
-                                <span class="heart-count">${this.heartCount}</span> <!-- Muestra el contador -->
+                            <button class="heart-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25" height="25">
+                                    <path class="heart-outline" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" stroke="#371081" stroke-width="2"/>
+                                </svg>
+                            </button>
+                            <span class="heart-count">${this.heartCount}</span>
                         </div>
                     </div>
                 </div>
@@ -122,8 +110,6 @@ class ArtistPost extends HTMLElement {
             });
         }
     }
-
-   
 };
 
 customElements.define('artist-post', ArtistPost);
