@@ -206,12 +206,23 @@ export const addPost = async (post: any) => {
 		const { db } = await getFirebaseInstance();
 		const { collection, addDoc } = await import('firebase/firestore');
 
+        let imageUrl = ''
+
+        if (post.coverimg) {
+			// Si el post contiene una imagen, la subimos a Firebase Storage.
+			const { ref, uploadBytes, getDownloadURL } = await import('firebase/storage');
+			const storageRef = ref(storage, `images/${appState.user}/${post.title}`);
+			await uploadBytes(storageRef, post.coverimg); // Subimos la imagen.
+			imageUrl = await getDownloadURL(storageRef); // Obtenemos la URL de descarga de la imagen.
+			console.log('img url', imageUrl);
+		}
+
 		const where = collection(db, 'posts');
 		const registerPost = {
 			title: post.title,
 			genre: post.genre,
 			tags: post.tags,
-			coverimg: post.coverimg,
+			coverimg: imageUrl,
 			userUid: appState.user,
 		};
 		await addDoc(where, registerPost);
