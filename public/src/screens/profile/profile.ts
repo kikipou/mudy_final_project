@@ -12,10 +12,10 @@ class Profile extends HTMLElement {
 
     connectedCallback() {
         this.render();
-        this.loadPosts();
+        this.loadmyPosts();
     }
 
-    async loadPosts() {
+    async loadmyPosts() {
         const posts = await getPostsInfo(); // Obtiene la lista de posts desde Firebase
         const postListContainer = this.shadowRoot?.querySelector("#artist-post");
 
