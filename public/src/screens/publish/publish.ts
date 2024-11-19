@@ -81,37 +81,9 @@ class Publish extends HTMLElement {
               </div>
             `;
 
-        // Referencia al input de tipo file y al elemento img
-        const postImg = this.shadowRoot.querySelector('#postImg') as HTMLImageElement;
+      // Referencia al input de tipo file y al elemento img
+      const postImg = this.shadowRoot.querySelector('#postImg') as HTMLImageElement;
 
-        // Asigna el evento al input para subir el archivo cuando cambie
-        // if (pImage && postImg) {
-        //   pImage.addEventListener('change', async () => {
-        //       const file = pImage.files?.[0];
-        //       if (file) {
-        //           // Muestra la imagen inmediatamente usando URL.createObjectURL
-        //           postImg.src = URL.createObjectURL(file);
-                  
-        //           // Genera un identificador único para el archivo (por ejemplo, usando el ID de usuario)
-        //           const userId = 'user123';  // Aquí usa el ID de usuario real o cualquier identificador único
-
-        //           // Genera el nombre único del archivo usando la función
-        //           const uniqueFileName = generateUniqueFileName(userId, file.name);
-
-        //           // Sube el archivo con el nombre único generado
-        //           await uploadPost(file, userId, uniqueFileName);
-
-        //           // Opcional: Limpia el objeto URL creado para liberar memoria
-        //           URL.revokeObjectURL(postImg.src);
-
-        //           // Usa el nombre único para obtener la URL desde Firebase Storage
-        //           const urlImg = await getPost(uniqueFileName);
-                  
-        //           // Actualiza el src de la imagen con la URL obtenida del servidor
-        //           postImg.src = String(urlImg);
-        //       }
-        //   });
-        // }
       // Asignación de eventos
       this.shadowRoot.querySelector('#name-input')?.addEventListener('change', this.changeName.bind(this));
       this.shadowRoot.querySelector('#genre-input')?.addEventListener('change', this.changeGenre.bind(this));

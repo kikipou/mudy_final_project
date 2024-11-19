@@ -248,31 +248,6 @@ export const getPost = async (fileName: string) => {
     }
 };
 
-// export const uploadPost = async (file: File) => {
-// 	const { storage } = await getFirebaseInstance();
-// 	const { ref, uploadBytes } = await import('firebase/storage');
-
-// 	const storageRef = ref(storage, 'imagesPost/');
-// 	uploadBytes(storageRef, file).then((snapshot) => {
-// 		console.log('File uploaded');
-// 	});
-// };
-
-// export const getPost = async () => {
-// 	const { storage } = await getFirebaseInstance();
-// 	const { ref, getDownloadURL } = await import('firebase/storage');
-
-// 	const storageRef = ref(storage, 'imagesPost/');
-// 	const urlImg = await getDownloadURL(ref(storageRef))
-// 		.then((url) => {
-// 			return url;
-// 		})
-// 		.catch((error) => {
-// 			console.error(error);
-// 		});
-// 	return urlImg;
-// };
-
 export const uploadFile = async (file: File, id: string) => {
 	const { storage } = await getFirebaseInstance();
 	const { ref, uploadBytes } = await import('firebase/storage');
