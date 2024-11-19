@@ -36,7 +36,7 @@ class Profile extends HTMLElement {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
                 <link rel="stylesheet" href="../public/src/screens/profile/profile.css">
-                <div class="body">
+                <div class="profile">
                     <nav-component class="nav"
                         explore="Explore" 
                         create="Create"

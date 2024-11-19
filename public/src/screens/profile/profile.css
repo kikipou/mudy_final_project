@@ -6,7 +6,7 @@
     background-color: rgba(29, 8, 68, 1);
 }
 
-.body {
+.profile {
     margin:0%;
     background-color: rgba(29, 8, 68, 1);
     font-family: 'Montserrat';
@@ -23,7 +23,7 @@
     font-family: 'Montserrat';
 }
 
-.posts-list {
+.artist-post {
     padding-top: 5rem;
     display: flex;
     padding-left: 25rem;

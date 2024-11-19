@@ -36,7 +36,7 @@ class Dashboard extends HTMLElement {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
                 <link rel="stylesheet" href="../public/src/screens/dashboard/dashboard.css">
-                <div class="body">
+                <div class="dashboard">
                     <nav-component class="nav"
                         explore="Explore" 
                         create="Create"
