@@ -1,4 +1,5 @@
 export enum Attribute {
+    'username' = 'username',
     'title' = 'title',
     'genre' = 'genre',
     'tags' = 'tags',
@@ -33,6 +34,7 @@ class ArtistPost extends HTMLElement {
 
     render() {
         if (this.shadowRoot) {
+            const userName = this.getAttribute(Attribute.username) || 'Unknown user';
             const songName = this.getAttribute(Attribute.title) || 'Untitled Song';
             const musicGenre = this.getAttribute(Attribute.genre) || 'Unknown genre';
             const songTags = this.getAttribute(Attribute.tags) || 'No tags';
@@ -41,6 +43,9 @@ class ArtistPost extends HTMLElement {
             this.shadowRoot.innerHTML = `
                 <link rel="stylesheet" href="../public/src/components/userpost/userpost.css">
                 <div class="post">
+                <div class="username">
+                            <h6 class="username">${userName}</h6>
+                        </div>
                     <div id="photo">
                         <img class="img2" src="${albumCover}" alt="${songName}">
                     </div>
