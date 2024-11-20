@@ -2,6 +2,16 @@ import '../../components/header/header';
 import ArtistPost, { Attribute } from '../../components/userpost/userpost';
 import '../../components/sidebar/sidebar';
 import { getPostsInfo } from '../../utils/firebase';
+import { getCurrentUserProfile } from '../../utils/firebase';
+import { getPostsForCurrentUser } from '../../utils/firebase';
+
+export interface UserProfile {
+    uid: string;
+    email: string | null;
+    name?: string; // Opcional
+    avatarUrl?: string; // Opcional
+    [key: string]: any; // Para datos adicionales de Firestore
+}
 
 class Profile extends HTMLElement {
 
@@ -12,43 +22,78 @@ class Profile extends HTMLElement {
 
     connectedCallback() {
         this.render();
-        this.loadmyPosts();
+        this.loadUserProfile();
+        this.loadUserPosts();
     }
 
-    async loadmyPosts() {
-        const posts = await getPostsInfo(); // Obtiene la lista de posts desde Firebase
-        const postListContainer = this.shadowRoot?.querySelector("#artist-post");
+    async loadUserProfile() {
+        try {
+            const userProfile: UserProfile = await getCurrentUserProfile();
+            console.log('Datos del usuario:', userProfile);
 
-        if (postListContainer) {
-            posts?.forEach((postData) => {
-                const postElement = document.createElement("artist-post") as ArtistPost;
-                
-                postElement.setAttribute(Attribute.title, postData.title || "Title not found");
-                postElement.setAttribute(Attribute.genre, postData.genre || "Unknown genre");
-                postElement.setAttribute(Attribute.tags, postData.tags || "Unknown tags");
-                postElement.setAttribute(Attribute.coverimg, postData.coverimg || "Image not found");                
-                postListContainer.appendChild(postElement);
+            const userNameElement = this.shadowRoot?.querySelector('#user-name');
+            const userEmailElement = this.shadowRoot?.querySelector('#user-email');
+            const userAvatarElement = this.shadowRoot?.querySelector('#user-avatar');
+
+            if (userNameElement) userNameElement.textContent = userProfile.name || 'Sin nombre';
+            if (userEmailElement) userEmailElement.textContent = userProfile.email || 'Correo no disponible';
+            if (userAvatarElement) userAvatarElement.setAttribute('src', userProfile.avatarUrl || 'default-avatar.png');
+        } catch (error) {
+            console.error('Error cargando el perfil del usuario:', error);
+            window.location.href = '/login.html';
+        }
+    }
+
+    async loadUserPosts() {
+        try {
+            const userPosts = await getPostsForCurrentUser();
+            const postsContainer = this.shadowRoot?.getElementById('posts-container');
+
+            if (!postsContainer) {
+                console.error('Contenedor de posts no encontrado');
+                return;
+            }
+
+            postsContainer.innerHTML = ''; // Limpiar contenido previo
+
+            userPosts.forEach((post) => {
+                const postElement = document.createElement('div');
+                postElement.classList.add('post');
+                postElement.innerHTML = `
+                    <h2>${post.title}</h2>
+                    <p>${post.genre}</p>
+                    <img src="${post.coverimg}" alt="Cover Image" />
+                    <p>Tags: ${post.tags.join(', ')}</p>
+                `;
+                postsContainer.appendChild(postElement);
             });
+        } catch (error) {
+            console.error('Error cargando los posts del usuario:', error);
+            // Opcional: muestra un mensaje de error en la interfaz
         }
     }
 
     render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
-                <link rel="stylesheet" href="../public/src/screens/profile/profile.css">
-                <div class="profile">
-                    <nav-component class="nav"
-                        explore="Explore" 
-                        create="Create"
-                        img="https://github.com/kikipou/mudy_final_project/blob/cata/mudy-logo.png?raw=true"
-                        search="Search"
-                    ></nav-component>
-                    <div id="artist-post"></div> <!-- Contenedor para los posts -->
-                    <sidebar-component></sidebar-component>
+                <style>
+                    /* Agrega estilos aquí */
+                </style>
+                <div>
+                    <h1>Perfil del Usuario</h1>
+                    <div>
+                        <img id="user-avatar" src="default-avatar.png" alt="Avatar del usuario" />
+                        <h2 id="user-name">Cargando...</h2>
+                        <p id="user-email">Cargando...</p>
+                    </div>
+                    <div id="posts-container">
+                        <p>Cargando publicaciones...</p>
+                    </div>
                 </div>
             `;
         }
     }
+    
 }
 
 customElements.define('profile-page', Profile);
