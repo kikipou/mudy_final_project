@@ -26,7 +26,10 @@ const initialState: AppState = {
 	screen: 'LOGIN',
 	posts: [],
     user: '',
+    userPosts: [],
     postsByUser: [],
+    currentStateProfile: [],
+    currentUserPosts: [],
 };
 
 export let appState = initialState;
