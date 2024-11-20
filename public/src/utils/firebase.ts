@@ -50,6 +50,8 @@ export const registerUser = async (credentials: any) => {
 		const data = {
 			username: credentials.username,
 			name: credentials.name,
+            musicgenre: credentials.musicgenre,
+            profiledesc: credentials.profiledesc,
 		};
 
 		await setDoc(where, data);
@@ -350,4 +352,45 @@ export const getPostsForCurrentUser = async () => {
         throw error;
     }
 };
+
+export const getUserGenre = async (userId: string) => {
+    try {
+        const { db } = await getFirebaseInstance();
+        const { collection, getDocs, query, where } = await import('firebase/firestore');
+
+        // Crear una consulta para encontrar el documento del usuario específico
+        const usersCollection = collection(db, 'users');
+        const userQuery = query(usersCollection, where('uid', '==', userId));
+        const querySnapshot = await getDocs(userQuery);
+
+        // Extraer los datos del usuario
+        let genre = null;
+        querySnapshot.forEach((doc) => {
+            genre = doc.data().favoriteGenre || null; // Obtén el género musical si existe
+        });
+
+        return genre;
+    } catch (error) {
+        console.error('Error getting the music genre', error);
+        return null;
+    }
+};
+
+export const saveUserGenre = async (userId: string, genre: string) => {
+    try {
+        const { db } = await getFirebaseInstance();
+        const { doc, setDoc } = await import('firebase/firestore');
+
+        // Ruta al documento del usuario
+        const userDocRef = doc(db, 'users', userId);
+
+        // Guardar o actualizar el género musical
+        await setDoc(userDocRef, { favoriteGenre: genre }, { merge: true });
+
+        console.log('Music genre succesfully added');
+    } catch (error) {
+        console.error('Error adding the music genre', error);
+    }
+};
+
 

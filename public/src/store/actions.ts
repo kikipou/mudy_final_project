@@ -1,6 +1,6 @@
 import { Actions, Screens } from '../types/store';
 import { getUser, getUserName, getCurrentUserProfile, getPostsForCurrentUser } from '../utils/firebase';
-import { getPostsInfo, getPostsByUser } from '../utils/firebase';
+import { getPostsInfo, getPostsByUser, getUserGenre } from '../utils/firebase';
 
 export const navigate = (screen: Screens) => {
 	return {
@@ -49,17 +49,25 @@ export const getPostsForCurrentUserAction = async () => {
 	};
 };
 
-export const setUserCredentials = (user: string) => {
-	return {
-		action: Actions.SETUSERCREDENTIALS,
-		payload: user,
-	};
-};
-
 export const getUserNameAction = async () => {
 	const user = await getUserName();
 	return {
 		action: Actions.GETUSERNAME,
+		payload: user,
+	};
+};
+
+// export const getUserGenreAction = async () => {
+// 	const userGenre = await getUserGenre();
+// 	return {
+// 		action: Actions.GETUSERGENRE,
+// 		payload: userGenre,
+// 	};
+// };
+
+export const setUserCredentials = (user: string) => {
+	return {
+		action: Actions.SETUSERCREDENTIALS,
 		payload: user,
 	};
 };

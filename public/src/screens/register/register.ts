@@ -10,6 +10,7 @@ const credentials = {
 	password: '',
 	name: '',
     musicgenre: '',
+    profiledesc: '',
 };
 
 class RegisterPage extends HTMLElement {
@@ -40,6 +41,10 @@ class RegisterPage extends HTMLElement {
 
     changeGenre(e: Event) {
         credentials.musicgenre = (e.target as HTMLInputElement).value;
+    }
+
+    changeDescription(e: Event) {
+        credentials.profiledesc = (e.target as HTMLTextAreaElement).value;
     }
 
     backToLogin() {
@@ -80,12 +85,14 @@ class RegisterPage extends HTMLElement {
                                         <option value="reggae">Reggae</option>
                                         <option value="reggaeton">Reggaeton</option>
                                     </select>
-                                <button id="register-button">Sign Up</button>
-                                    <div class="Login">
-                                        <p>Already registered?</p>
-                                        <button type="button" id="login-back-button">Go to Log In</button>
-                                    </div>
-                            </div>
+                                        <label for="description-input">Profile Description</label>
+                                        <textarea id="description-input" placeholder="Tell the others about yourself..." rows="4" required></textarea>
+                                            <button id="register-button">Sign Up</button>
+                                                <div class="Login">
+                                                    <p>Already registered?</p>
+                                                    <button type="button" id="login-back-button">Go to Log In</button>
+                                                </div>
+                        </div>
                     </form>
 				</div>
             `;
@@ -96,6 +103,7 @@ class RegisterPage extends HTMLElement {
             this.shadowRoot.querySelector('#password-input')?.addEventListener('change', this.changePassword.bind(this));
             this.shadowRoot.querySelector('#name-input')?.addEventListener('change', this.changeName.bind(this));
             this.shadowRoot.querySelector('#genre-select')?.addEventListener('change', this.changeGenre.bind(this));
+            this.shadowRoot.querySelector('#description-input')?.addEventListener('change', this.changeDescription.bind(this));
             this.shadowRoot.querySelector('#register-button')?.addEventListener('click', (e) => {
                 e.preventDefault();
                 this.submitForm();
