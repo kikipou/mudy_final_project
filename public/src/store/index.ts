@@ -29,6 +29,7 @@ const initialState: AppState = {
     userPosts: [],
     postsByUser: [],
     currentStateProfile: [],
+    currentUserPosts: [],
 };
 
 export let appState = initialState;
