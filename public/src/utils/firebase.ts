@@ -5,6 +5,14 @@ let db: any;
 let auth: any;
 let storage: any;
 
+export interface UserProfile {
+    uid: string;
+    email: string | null;
+    name?: string;
+    avatarUrl?: string;
+    [key: string]: any; // Esto permite agregar otros campos dinámicos desde Firestore
+}
+
 export const getFirebaseInstance = async () => {
     if (!db) {
         const { initializeApp } = await import('firebase/app');
@@ -248,31 +256,6 @@ export const getPost = async (fileName: string) => {
     }
 };
 
-// export const uploadPost = async (file: File) => {
-// 	const { storage } = await getFirebaseInstance();
-// 	const { ref, uploadBytes } = await import('firebase/storage');
-
-// 	const storageRef = ref(storage, 'imagesPost/');
-// 	uploadBytes(storageRef, file).then((snapshot) => {
-// 		console.log('File uploaded');
-// 	});
-// };
-
-// export const getPost = async () => {
-// 	const { storage } = await getFirebaseInstance();
-// 	const { ref, getDownloadURL } = await import('firebase/storage');
-
-// 	const storageRef = ref(storage, 'imagesPost/');
-// 	const urlImg = await getDownloadURL(ref(storageRef))
-// 		.then((url) => {
-// 			return url;
-// 		})
-// 		.catch((error) => {
-// 			console.error(error);
-// 		});
-// 	return urlImg;
-// };
-
 export const uploadFile = async (file: File, id: string) => {
 	const { storage } = await getFirebaseInstance();
 	const { ref, uploadBytes } = await import('firebase/storage');
@@ -297,3 +280,74 @@ export const getFile = async (id: string) => {
 		});
 	return urlImg;
 };
+
+export const getCurrentUserProfile = async (): Promise<UserProfile> => {
+    try {
+        const { auth, db } = await getFirebaseInstance();
+        const { onAuthStateChanged } = await import('firebase/auth');
+        const { doc, getDoc } = await import('firebase/firestore');
+
+        return new Promise<UserProfile>((resolve, reject) => {
+            onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    // Obtener información del usuario desde Firestore
+                    const userDocRef = doc(db, 'users', user.uid);
+                    const userDoc = await getDoc(userDocRef);
+
+                    if (userDoc.exists()) {
+                        const userData: UserProfile = {
+                            uid: user.uid,
+                            email: user.email,
+                            ...userDoc.data(),
+                        };
+                        console.log('Usuario autenticado:', userData);
+                        resolve(userData);
+                    } else {
+                        console.error('No se encontró el perfil del usuario en Firestore');
+                        reject('Perfil no encontrado');
+                    }
+                } else {
+                    console.log('No hay usuario autenticado');
+                    reject('Usuario no autenticado');
+                }
+            });
+        });
+    } catch (error) {
+        console.error('Error obteniendo el usuario actual:', error);
+        throw error;
+    }
+};
+
+export const getPostsForCurrentUser = async () => {
+    try {
+        const { auth, db } = await getFirebaseInstance();
+        const { onAuthStateChanged } = await import('firebase/auth');
+        const { collection, query, where, getDocs } = await import('firebase/firestore');
+
+        return new Promise((resolve, reject) => {
+            onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    // Filtrar los posts por el UID del usuario autenticado
+                    const postsCollection = collection(db, 'posts');
+                    const userPostsQuery = query(postsCollection, where('userUid', '==', user.uid));
+                    const querySnapshot = await getDocs(userPostsQuery);
+
+                    const posts: any[] = [];
+                    querySnapshot.forEach((doc) => {
+                        posts.push({ id: doc.id, ...doc.data() });
+                    });
+
+                    console.log('Posts del usuario:', posts);
+                    resolve(posts);
+                } else {
+                    console.log('No hay usuario autenticado');
+                    reject('Usuario no autenticado');
+                }
+            });
+        });
+    } catch (error) {
+        console.error('Error obteniendo los posts del usuario:', error);
+        throw error;
+    }
+};
+

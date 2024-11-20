@@ -2,6 +2,7 @@ import './screens/register/register';
 import './screens/dashboard/dashboard';
 import './screens/login/login';
 import './screens/publish/publish';
+import './screens/profile/profile';
 import { addObserver, appState } from './store';
 import { Screens } from './types/store';
 
@@ -41,6 +42,11 @@ class AppContainer extends HTMLElement {
 				case Screens.PUBLISH:
 					const publish = this.ownerDocument.createElement('publish-page');
 					this.shadowRoot.appendChild(publish);
+					break;
+
+				case Screens.PROFILE:
+					const profile = this.ownerDocument.createElement('profile-page');
+					this.shadowRoot.appendChild(profile);
 					break;
 
 				default:

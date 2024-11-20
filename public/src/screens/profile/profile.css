@@ -1,0 +1,48 @@
+*{
+    margin:0%;
+    padding: 0%;
+    color:#ffffff;
+    font-family: 'Montserrat';
+    background-color: rgba(29, 8, 68, 1);
+}
+
+.profile {
+    margin:0%;
+    background-color: rgba(29, 8, 68, 1);
+    font-family: 'Montserrat';
+}
+
+.searchbar {
+    z-index: 2;
+    position: relative;
+}
+
+.nav {
+    z-index: 1;
+    position: relative;
+    font-family: 'Montserrat';
+}
+
+.artist-post {
+    padding-top: 5rem;
+    display: flex;
+    padding-left: 25rem;
+    justify-content: center;
+    flex-direction: column;
+    width: 39rem;
+}
+
+.heart-button {
+    background:none;
+}
+
+@media (max-width: 26.875rem) {
+    
+    .posts-container {
+        justify-content: center;
+        flex-direction: column;
+        display: flex;
+        padding-left: 0rem;
+        padding-right: 1rem;
+    }
+}

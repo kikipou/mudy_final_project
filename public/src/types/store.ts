@@ -3,8 +3,9 @@ export type Observer = { render: () => void } & HTMLElement;
 export type AppState = {
 	screen: string;
 	posts: [];
+	
 	user: '';
-	postsByUser: [];
+	userPost:string [];
 };
 
 export enum Screens {
