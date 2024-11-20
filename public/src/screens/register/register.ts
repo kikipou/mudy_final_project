@@ -9,6 +9,7 @@ const credentials = {
 	email: '',
 	password: '',
 	name: '',
+    musicgenre: '',
 };
 
 class RegisterPage extends HTMLElement {
@@ -37,6 +38,10 @@ class RegisterPage extends HTMLElement {
         credentials.name = (e.target as HTMLInputElement).value;
     }
 
+    changeGenre(e: Event) {
+        credentials.musicgenre = (e.target as HTMLInputElement).value;
+    }
+
     backToLogin() {
         dispatch(navigate(Screens.LOGIN));
     }
@@ -59,6 +64,22 @@ class RegisterPage extends HTMLElement {
                                 <input id="email-input" placeholder="Email" type="email" required>
                                 <input id="password-input" placeholder="Password" type="password" required>
                                 <input id="name-input" placeholder="Full name" required>
+                                <label for="genre-select">Select your favorite music genre</label>
+                                    <select id="genre-select" required>
+                                        <option value="">-- Select genre --</option>
+                                        <option value="rock">Rock</option>
+                                        <option value="pop">Pop</option>
+                                        <option value="hiphop">Hip-Hop</option>
+                                        <option value="jazz">Jazz</option>
+                                        <option value="classical">Classical</option>
+                                        <option value="indie">Indie</option>
+                                        <option value="rnb">R&B</option>
+                                        <option value="electronic">Electronic</option>
+                                        <option value="rap">Rap</option>
+                                        <option value="trap">Trap</option>
+                                        <option value="reggae">Reggae</option>
+                                        <option value="reggaeton">Reggaeton</option>
+                                    </select>
                                 <button id="register-button">Sign Up</button>
                                     <div class="Login">
                                         <p>Already registered?</p>
@@ -74,6 +95,7 @@ class RegisterPage extends HTMLElement {
             this.shadowRoot.querySelector('#email-input')?.addEventListener('change', this.changeEmail.bind(this));
             this.shadowRoot.querySelector('#password-input')?.addEventListener('change', this.changePassword.bind(this));
             this.shadowRoot.querySelector('#name-input')?.addEventListener('change', this.changeName.bind(this));
+            this.shadowRoot.querySelector('#genre-select')?.addEventListener('change', this.changeGenre.bind(this));
             this.shadowRoot.querySelector('#register-button')?.addEventListener('click', (e) => {
                 e.preventDefault();
                 this.submitForm();
