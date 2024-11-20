@@ -9,6 +9,7 @@ export interface UserProfile {
     uid: string;
     email: string | null;
     name?: string; // Opcional
+    username?: string; // Opcional
     avatarUrl?: string; // Opcional
     [key: string]: any; // Para datos adicionales de Firestore
 }
@@ -36,17 +37,19 @@ class Profile extends HTMLElement {
     async loadUserProfile() {
         try {
             const userProfile: UserProfile = await getCurrentUserProfile();
-            console.log('Datos del usuario:', userProfile);
+            console.log('User data:', userProfile);
 
             const userNameElement = this.shadowRoot?.querySelector('#user-name');
+            const userUserNameElement = this.shadowRoot?.querySelector('#user-username');
             const userEmailElement = this.shadowRoot?.querySelector('#user-email');
             const userAvatarElement = this.shadowRoot?.querySelector('#user-avatar');
 
-            if (userNameElement) userNameElement.textContent = userProfile.name || 'Sin nombre';
+            if (userNameElement) userNameElement.textContent = userProfile.name || 'Unknown name';
+            if (userUserNameElement) userUserNameElement.textContent = userProfile.username || 'Unknown username';
             if (userEmailElement) userEmailElement.textContent = userProfile.email || 'Correo no disponible';
             if (userAvatarElement) userAvatarElement.setAttribute('src', userProfile.avatarUrl || 'default-avatar.png');
         } catch (error) {
-            console.error('Error cargando el perfil del usuario:', error);
+            console.error('Error loading user profile:', error);
             window.location.href = '/login.html';
         }
     }
@@ -91,14 +94,15 @@ class Profile extends HTMLElement {
                         img="https://github.com/kikipou/mudy_final_project/blob/cata/mudy-logo.png?raw=true"
                         search="Search"
                     ></nav-component>
-                        <h1>Perfil del Usuario</h1>
+                        <h1Your profile</h1>
                         <div class="profile-info">
-                            <img id="user-avatar" src="default-avatar.png" alt="Avatar del usuario" />
-                            <h2 id="user-name">Cargando...</h2>
-                            <p id="user-email">Cargando...</p>
+                            <img id="user-avatar" src="default-avatar.png" alt="User profile img" />
+                            <h2 id="user-name">Loading...</h2>
+                            <h2 id="user-username">Loading...</h2>
+                            <p id="user-email">Loading...</p>
                         </div>
                         <div id="posts-container">
-                            <p>Cargando publicaciones...</p>
+                            <p>Loading posts...</p>
                         </div>
                         <sidebar-component></sidebar-component>
                 </div>
