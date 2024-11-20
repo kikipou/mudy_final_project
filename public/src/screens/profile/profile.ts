@@ -83,19 +83,24 @@ class Profile extends HTMLElement {
     render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
-                <style>
-                    /* Agrega estilos aquí */
-                </style>
-                <div>
-                    <h1>Perfil del Usuario</h1>
-                    <div>
-                        <img id="user-avatar" src="default-avatar.png" alt="Avatar del usuario" />
-                        <h2 id="user-name">Cargando...</h2>
-                        <p id="user-email">Cargando...</p>
-                    </div>
-                    <div id="posts-container">
-                        <p>Cargando publicaciones...</p>
-                    </div>
+                <link rel="stylesheet" href="../public/src/screens/profile/profile.css">
+                <div class="profile">
+                    <nav-component class="nav"
+                        explore="Explore" 
+                        create="Create"
+                        img="https://github.com/kikipou/mudy_final_project/blob/cata/mudy-logo.png?raw=true"
+                        search="Search"
+                    ></nav-component>
+                        <h1>Perfil del Usuario</h1>
+                        <div class="profile-info">
+                            <img id="user-avatar" src="default-avatar.png" alt="Avatar del usuario" />
+                            <h2 id="user-name">Cargando...</h2>
+                            <p id="user-email">Cargando...</p>
+                        </div>
+                        <div id="posts-container">
+                            <p>Cargando publicaciones...</p>
+                        </div>
+                        <sidebar-component></sidebar-component>
                 </div>
             `;
         }
