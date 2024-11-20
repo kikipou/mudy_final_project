@@ -6,6 +6,7 @@ export type AppState = {
 	userPosts: [];
 	user: '';
 	postsByUser: [];
+	currentStateProfile: [];
 };
 
 export enum Screens {
@@ -28,5 +29,6 @@ export enum Actions {
 	'GETPOSTS' = 'GETPOSTS',
 	'GETPOSTSBYUSER' = 'GETPOSTSBYUSER',
 	'SETUSERCREDENTIALS' = 'SETUSERCREDENTIALS',
-	'GETUSERNAME' = 'GETUSERNAME'
+	'GETUSERNAME' = 'GETUSERNAME',
+	'GETCURRENTUSERPROFILE' = 'GETCURRENTUSERPROFILE',
 }

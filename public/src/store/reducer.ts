@@ -40,6 +40,12 @@ export const reducer = (currentAction: any, currentState: any) => {
 					user: payload,
 				};
 
+		case Actions.GETCURRENTUSERPROFILE:
+			return {
+				...currentState,
+				user: payload,
+			};
+
 		default:
 			return currentState;
 	}

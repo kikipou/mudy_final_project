@@ -332,13 +332,13 @@ export const getPostsForCurrentUser = async () => {
                     const userPostsQuery = query(postsCollection, where('userUid', '==', user.uid));
                     const querySnapshot = await getDocs(userPostsQuery);
 
-                    const posts: any[] = [];
+                    const userPosts: any[] = [];
                     querySnapshot.forEach((doc) => {
-                        posts.push({ id: doc.id, ...doc.data() });
+                        userPosts.push({ id: doc.id, ...doc.data() });
                     });
 
-                    console.log('Posts del usuario:', posts);
-                    resolve(posts);
+                    console.log('Posts del usuario:', userPosts);
+                    resolve(userPosts);
                 } else {
                     console.log('No hay usuario autenticado');
                     reject('Usuario no autenticado');

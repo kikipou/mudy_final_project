@@ -1,5 +1,5 @@
 import { Actions, Screens } from '../types/store';
-import { getUser, getUserName } from '../utils/firebase';
+import { getUser, getUserName, getCurrentUserProfile } from '../utils/firebase';
 import { getPostsInfo, getPostsByUser } from '../utils/firebase';
 
 export const navigate = (screen: Screens) => {
@@ -30,6 +30,14 @@ export const getPostsByUserAction = async () => {
 	return {
 		action: Actions.GETPOSTSBYUSER,
 		payload: postsByUser,
+	};
+};
+
+export const getCurrentUserProfileAction = async () => {
+	const currentStateProfile = await getCurrentUserProfile(); //Firestore
+	return {
+		action: Actions.GETCURRENTUSERPROFILE,
+		payload: currentStateProfile,
 	};
 };
 

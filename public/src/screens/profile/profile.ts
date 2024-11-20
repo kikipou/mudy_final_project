@@ -13,6 +13,13 @@ export interface UserProfile {
     [key: string]: any; // Para datos adicionales de Firestore
 }
 
+export interface UserPosts {
+    title: '';
+    genre: '';
+    coverimg: '';
+    tags: string[];
+}
+
 class Profile extends HTMLElement {
 
     constructor() {
@@ -46,7 +53,7 @@ class Profile extends HTMLElement {
 
     async loadUserPosts() {
         try {
-            const userPosts = await getPostsForCurrentUser();
+            const userPosts: any = await getPostsForCurrentUser();
             const postsContainer = this.shadowRoot?.getElementById('posts-container');
 
             if (!postsContainer) {
@@ -55,8 +62,8 @@ class Profile extends HTMLElement {
             }
 
             postsContainer.innerHTML = ''; // Limpiar contenido previo
-
-            userPosts.forEach((post) => {
+            
+            userPosts.forEach((post: any) => {
                 const postElement = document.createElement('div');
                 postElement.classList.add('post');
                 postElement.innerHTML = `
