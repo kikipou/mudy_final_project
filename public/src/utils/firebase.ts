@@ -1,5 +1,7 @@
-import { appState } from '../store';
-import { getAuth } from 'firebase/auth';
+import { appState, dispatch } from '../store';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { navigate, setUserCredentials } from '../store/actions';
+import { Screens } from '../types/store';
 
 let db: any;
 let auth: any;
@@ -30,10 +32,43 @@ export const getFirebaseInstance = async () => {
         measurementId: "G-VQ2SFGPGDF"
     };
 
+
         const app = initializeApp(firebaseConfig);
         db = getFirestore(app);
         auth = getAuth(app);
         storage = getStorage();
+
+        // onAuthStateChanged(auth, async (user) => {
+		// 	if (user) {
+		// 	 // Si el usuario está autenticado, ejecutamos este bloque.
+		// 	  console.log("Usuario autenticado:", user);
+		// 	  console.log('data in appState', appState.user);
+
+		
+		// 	  // Obtener datos adicionales del usuario desde Firestore
+		// 	  const { doc, getDoc } = await import('firebase/firestore');
+		// 	  const userRef = doc(db, 'users', user.uid);
+		// 	  console.log ('id del user' , user.uid)
+		// 	  const userDoc = await getDoc(userRef);
+		// 	  console.log ('userDoc' , userDoc)
+		
+		// 	  if (userDoc.exists()) {
+		// 		// Si el documento existe, extraemos y guardamos los datos del usuario.
+		// 		  const userData = userDoc.data();
+		// 		  localStorage.setItem('user', JSON.stringify(userData));// Guardamos datos en `localStorage`.
+		// 		  console.log("Nombre de usuario:", userData.displayName);
+		// 		  dispatch(setUserCredentials(userData))// Actualizamos el estado de la aplicación con datos del usuario.
+		// 		  console.log('user in appState', appState.user);
+				  
+		// 		  dispatch(navigate(Screens.DASHBOARD))
+		// 	  }
+		//   } else {
+		// 	  // Usuario no está autenticado se va al login
+		// 	  console.log("No hay usuario autenticado.");
+		// 	  localStorage.removeItem('user');
+		// 	  dispatch(navigate(Screens.LOGIN)); // Navega a la pantalla de login
+		//   }
+		//   })
     }
     return { db, auth, storage };
 };
@@ -233,7 +268,8 @@ export const addPost = async (post: any) => {
 			genre: post.genre,
 			tags: post.tags,
 			coverimg: imageUrl,
-			userUid: appState.user,
+			displayName: appState.user.displayName,
+            // userName: appState.user.displayName,
 		};
 		await addDoc(where, registerPost);
 		console.log('Succesfully added');

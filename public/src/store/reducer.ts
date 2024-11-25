@@ -16,7 +16,7 @@ export const reducer = (currentAction: any, currentState: any) => {
 				users: payload,
 			};
 
-		case Actions.GETPOSTS:
+		case Actions.GETPOSTSINFO:
 			return {
 				...currentState,
 				products: payload,

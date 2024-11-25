@@ -1,7 +1,7 @@
 import '../../components/header/header';
 import ArtistPost, { Attribute } from '../../components/userpost/userpost';
 import '../../components/sidebar/sidebar';
-import { getPostsInfo } from '../../utils/firebase';
+import { getPostsInfo, getUserName } from '../../utils/firebase';
 
 class Dashboard extends HTMLElement {
 
@@ -22,7 +22,7 @@ class Dashboard extends HTMLElement {
         if (postListContainer) {
             posts?.forEach((postData) => {
                 const postElement = document.createElement("artist-post") as ArtistPost;
-                postElement.setAttribute(Attribute.username, postData.username|| "Title not found");
+                postElement.setAttribute(Attribute.username, postData.displayName|| "User not found");
                 postElement.setAttribute(Attribute.title, postData.title || "Title not found");
                 postElement.setAttribute(Attribute.genre, postData.genre || "Unknown genre");
                 postElement.setAttribute(Attribute.tags, postData.tags || "Unknown tags");

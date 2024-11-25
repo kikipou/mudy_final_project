@@ -3,8 +3,12 @@ export type Observer = { render: () => void } & HTMLElement;
 export type AppState = {
 	screen: string;
 	posts: [];
-	
-	user: '';
+	user: {
+        displayName: string,
+        email: string,
+        userId: string
+    };
+	userPosts: [],
 	postsByUser: [];
 	currentStateProfile: [];
 	currentUserPosts: [];
@@ -27,11 +31,12 @@ export enum Screens {
 export enum Actions {
 	'NAVIGATE' = 'NAVIGATE',
 	'GETUSERS' = 'GETUSERS',
-	'GETPOSTS' = 'GETPOSTS',
+	'GETPOSTSINFO' = 'GETPOSTSINFO',
 	'GETPOSTSBYUSER' = 'GETPOSTSBYUSER',
 	'SETUSERCREDENTIALS' = 'SETUSERCREDENTIALS',
 	'GETUSERNAME' = 'GETUSERNAME',
 	'GETCURRENTUSERPROFILE' = 'GETCURRENTUSERPROFILE',
 	'GETPOSTSFORCURRENTUSER' = 'GETPOSTSFORCURRENTUSER',
 	'GETUSERGENRE' = 'GETUSERGENRE',
+	
 }
