@@ -51,7 +51,7 @@ class Profile extends HTMLElement {
 
     async loadUserPosts() {
         try {
-            const userPosts: any = await getPostsForCurrentUser();
+            const userPosts: any = await getPostsForCurrentUser() as ArtistPost;
 
             if (!Array.isArray(userPosts)) {
                 console.error('Los posts del usuario no son un array:', userPosts);
