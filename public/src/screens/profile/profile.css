@@ -10,6 +10,8 @@
     margin:0%;
     background-color: rgba(29, 8, 68, 1);
     font-family: 'Montserrat';
+    height: 100%;
+    width: 100%;
 }
 
 .searchbar {
@@ -34,34 +36,42 @@
 }
 
 #posts-container {
-    margin-top: 15rem;
+    margin-top: 5rem;
     border-radius: 0.5rem;
-    background-color: rgba(55, 16, 129, 0.8); /* Fondo con menor opacidad */
+    background-color: rgba(55, 16, 129, 0.8);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Cuadrícula responsiva */
-    gap: 16px; /* Espaciado entre posts */
-    padding: 16px;
-    margin: 0 auto; /* Centra el contenedor */
-    max-width: 1000px; /* Limita el ancho máximo */
+    grid-template-columns: repeat(5, 1fr); /* Máximo 5 columnas */
+    row-gap: 1rem; /* Espaciado entre posts */
+    column-gap: 1rem; /* Espaciado entre posts */
+    padding: 1rem;
+    padding-top: 1.3rem;
+    margin: 0 auto;
+    max-width: 900px; /* Ancho máximo opcional */
+    place-items: center;
+    grid-auto-flow: row; /* Los elementos se agregan en orden de fila */
 }
 
 #photo-container {
     border-radius: 0.5rem;
-    height: 20rem; /* Deja que el tamaño lo defina el contenido */
-    width: 100%; /* Ocupa el ancho completo de la celda */
-    background-color: rgba(55, 16, 129, 1); /* Fondo */
-    overflow: hidden; /* Asegura que la imagen no se salga */
-    display: flex; /* Centra el contenido si hay más elementos */
+    height: 10rem; /* Deja que el tamaño lo defina el contenido */
+    width: 10rem; /* Ocupa el ancho completo de la celda */
+    background-color: none; /* Fondo */
+    display: flex; /* Cambiar display a flex para controlar mejor la alineación */
     justify-content: center;
     align-items: center;
+    overflow: hidden; /* Oculta cualquier contenido desbordado */
+    margin: 0;
+    padding: 0;
 }
 
 .cover-image {
     width: 100%; /* Ocupa el ancho total del contenedor */
-    height: 20rem; /* Ocupa el alto total del contenedor */
+    height: 100%; /* Ocupa el alto total del contenedor */
     object-fit: cover; /* Recorta o ajusta la imagen sin deformarla */
     border-radius: 0.5rem; /* Bordes redondeados */
     display: block; /* Evita comportamientos inline */
+    margin: 0;
+    padding: 0;
 }
 
 .heart-button {
