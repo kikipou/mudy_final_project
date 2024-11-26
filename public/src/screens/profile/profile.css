@@ -35,7 +35,7 @@
 
 #posts-container {
     margin-top: 5rem;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     background-color: rgba(55, 16, 129, 0.8);
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* Máximo 5 columnas */

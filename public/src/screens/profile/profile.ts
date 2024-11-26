@@ -7,9 +7,11 @@ import { getPostsForCurrentUser } from '../../utils/firebase';
 
 export interface UserProfile {
     uid: string;
-    name?: string; // Opcional
-    username?: string; // Opcional
-    avatarUrl?: string; // Opcional
+    name?: string;
+    username?: string;
+    musicgenre?: string;
+    profiledesc?: string;
+    avatarUrl?: string;
     [key: string]: any; // Para datos adicionales de Firestore
 }
 
@@ -37,10 +39,14 @@ class Profile extends HTMLElement {
 
             const userNameElement = this.shadowRoot?.querySelector('#user-name');
             const userUserNameElement = this.shadowRoot?.querySelector('#user-username');
+            const userMusicGenreElement = this.shadowRoot?.querySelector('#user-username');
+            const userProfileDescriptionElement = this.shadowRoot?.querySelector('#user-username');
             const userAvatarElement = this.shadowRoot?.querySelector('#user-avatar');
 
             if (userNameElement) userNameElement.textContent = userProfile.name || 'Unknown name';
             if (userUserNameElement) userUserNameElement.textContent = userProfile.username || 'Unknown username';
+            if (userMusicGenreElement) userMusicGenreElement.textContent = userProfile.musicgenre || 'Unknown music genre';
+            if (userProfileDescriptionElement) userProfileDescriptionElement.textContent = userProfile.profiledesc || 'Profile description not found';
             if (userAvatarElement) userAvatarElement.setAttribute('src', userProfile.avatarUrl || 'default-avatar.png');
         } catch (error) {
             console.error('Error loading user profile:', error);
