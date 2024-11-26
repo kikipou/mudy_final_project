@@ -70,7 +70,7 @@ class Profile extends HTMLElement {
                 postElement.classList.add('post');
                 postElement.innerHTML = `
                 <link rel="stylesheet" href="../public/src/screens/profile/profile.css">
-                    <div id="post-photo">
+                    <div id="photo-container">
                         <img class= "cover-image" src="${post.coverimg}" alt="Cover Image"/>
                     </div>
                 `;
