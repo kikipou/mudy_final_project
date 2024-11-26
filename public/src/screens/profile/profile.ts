@@ -39,8 +39,8 @@ class Profile extends HTMLElement {
 
             const userNameElement = this.shadowRoot?.querySelector('#user-name');
             const userUserNameElement = this.shadowRoot?.querySelector('#user-username');
-            const userMusicGenreElement = this.shadowRoot?.querySelector('#user-username');
-            const userProfileDescriptionElement = this.shadowRoot?.querySelector('#user-username');
+            const userMusicGenreElement = this.shadowRoot?.querySelector('#user-musicgenre');
+            const userProfileDescriptionElement = this.shadowRoot?.querySelector('#user-description');
             const userAvatarElement = this.shadowRoot?.querySelector('#user-avatar');
 
             if (userNameElement) userNameElement.textContent = userProfile.name || 'Unknown name';
@@ -99,10 +99,14 @@ class Profile extends HTMLElement {
                         search="Search"
                     ></nav-component>
                         <h1Your profile</h1>
-                        <div class="profile-info">
+                        <div class="profile-photo">
                             <img id="user-avatar" src="default-avatar.png" alt="User profile img" />
+                        </div>
+                        <div class="profile-info">
                             <h2 id="user-name">Loading...</h2>
                             <h2 id="user-username">Loading...</h2>
+                            <h2 id="user-musicgenre">Loading...</h2>
+                            <h2 id="user-description">Loading...</h2>
                         </div>
                         <div id="posts-container">
                         </div>
