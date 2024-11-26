@@ -42,7 +42,7 @@ class ArtistPost extends HTMLElement {
                 <link rel="stylesheet" href="../public/src/components/userpost/userpost.css">
                 <div class="post">
                     <div id="photo">
-                        <img class="img2" src="${albumCover}" alt="${songName}">
+                        <img class="cover-img" src="${albumCover}" alt="${songName}">
                     </div>
                     <div class="info">
                         <div class="title">

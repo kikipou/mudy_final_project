@@ -69,7 +69,7 @@ class Profile extends HTMLElement {
                 const postElement = document.createElement('div');
                 postElement.classList.add('post');
                 postElement.innerHTML = `
-                    <img src="${post.coverimg}" alt="Cover Image" />
+                    <img src="${post.coverimg}" alt="Cover Image"/>
                 `;
                 postsContainer.appendChild(postElement);
             });
