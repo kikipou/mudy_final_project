@@ -7,7 +7,6 @@ import { getPostsForCurrentUser } from '../../utils/firebase';
 
 export interface UserProfile {
     uid: string;
-    email: string | null;
     name?: string; // Opcional
     username?: string; // Opcional
     avatarUrl?: string; // Opcional
@@ -16,9 +15,7 @@ export interface UserProfile {
 
 export interface UserPosts {
     title: '';
-    genre: '';
     coverimg: '';
-    tags: string[];
 }
 
 class Profile extends HTMLElement {
@@ -55,8 +52,13 @@ class Profile extends HTMLElement {
     async loadUserPosts() {
         try {
             const userPosts: any = await getPostsForCurrentUser();
-            const postsContainer = this.shadowRoot?.getElementById('posts-container');
 
+            if (!Array.isArray(userPosts)) {
+                console.error('Los posts del usuario no son un array:', userPosts);
+                return;
+            }
+        
+            const postsContainer = this.shadowRoot?.getElementById('posts-container');
             if (!postsContainer) {
                 console.error('Contenedor de posts no encontrado');
                 return;
@@ -67,11 +69,14 @@ class Profile extends HTMLElement {
             userPosts.forEach((post: any) => {
                 const postElement = document.createElement('div');
                 postElement.classList.add('post');
+
+                // Renderiza la imagen del post y el título
+                const postImage = post.image || 'default-image.png'; // Cambia "image" por la propiedad correcta si es necesario
+                const postName = post.name || 'Post sin nombre';
+
                 postElement.innerHTML = `
                     <h2>${post.title}</h2>
-                    <p>${post.genre}</p>
                     <img src="${post.coverimg}" alt="Cover Image" />
-                    <p>Tags: ${post.tags.join(', ')}</p>
                 `;
                 postsContainer.appendChild(postElement);
             });
