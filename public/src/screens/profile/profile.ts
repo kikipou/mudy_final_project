@@ -67,18 +67,15 @@ class Profile extends HTMLElement {
             postsContainer.innerHTML = ''; // Limpiar contenido previo
             
             userPosts.forEach((post: any) => {
-                const postElement = document.createElement('div');
-                postElement.classList.add('post');
-
-                // Renderiza la imagen del post y el título
-                const postImage = post.image || 'default-image.png'; // Cambia "image" por la propiedad correcta si es necesario
-                const postName = post.name || 'Post sin nombre';
-
-                postElement.innerHTML = `
-                    <h2>${post.title}</h2>
-                    <img src="${post.coverimg}" alt="Cover Image" />
-                `;
-                postsContainer.appendChild(postElement);
+                // Crea una instancia del componente ArtistPost
+                const artistPostElement = document.createElement('artist-post') as ArtistPost;
+    
+                // Asigna los atributos correspondientes al componente
+                artistPostElement.setAttribute(Attribute.title, post.title || 'Sin título');
+                artistPostElement.setAttribute(Attribute.coverimg, post.coverimg || 'default-image.png');
+                
+                // Agrega el componente al contenedor
+                postsContainer.appendChild(artistPostElement);
             });
         } catch (error) {
             console.error('Error cargando los posts del usuario:', error);
