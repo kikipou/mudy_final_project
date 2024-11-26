@@ -24,7 +24,8 @@
 }
 
 .profile-info {
-    padding-top: 5rem;
+    padding-top: 10rem;
+    padding-bottom: 5rem;
     display: flex;
     padding-left: 25rem;
     justify-content: center;
@@ -32,23 +33,35 @@
     width: 39rem;
 }
 
+#posts-container {
+    margin-top: 15rem;
+    border-radius: 0.5rem;
+    background-color: rgba(55, 16, 129, 0.8); /* Fondo con menor opacidad */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Cuadrícula responsiva */
+    gap: 16px; /* Espaciado entre posts */
+    padding: 16px;
+    margin: 0 auto; /* Centra el contenedor */
+    max-width: 1000px; /* Limita el ancho máximo */
+}
+
 #photo-container {
-    border-radius: 1.5rem;
-    height: auto;
-    width: 25rem;
-    background-color: rgba(55, 16, 129, 1);
-    color: black;
-    margin-bottom: 3rem;
-    margin-left: 5rem;
-    overflow: hidden;
+    border-radius: 0.5rem;
+    height: 20rem; /* Deja que el tamaño lo defina el contenido */
+    width: 100%; /* Ocupa el ancho completo de la celda */
+    background-color: rgba(55, 16, 129, 1); /* Fondo */
+    overflow: hidden; /* Asegura que la imagen no se salga */
+    display: flex; /* Centra el contenido si hay más elementos */
+    justify-content: center;
+    align-items: center;
 }
 
 .cover-image {
-    border-radius: 1.5rem;
-    height: 20rem;
-    width: 100%;
-    margin-left: 0;
-    object-fit: cover;
+    width: 100%; /* Ocupa el ancho total del contenedor */
+    height: 20rem; /* Ocupa el alto total del contenedor */
+    object-fit: cover; /* Recorta o ajusta la imagen sin deformarla */
+    border-radius: 0.5rem; /* Bordes redondeados */
+    display: block; /* Evita comportamientos inline */
 }
 
 .heart-button {

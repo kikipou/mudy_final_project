@@ -62,7 +62,6 @@ class Profile extends HTMLElement {
                 console.error('Posts container not found');
                 return;
             }
-
             postsContainer.innerHTML = ''; // Limpiar contenido previo
             
             userPosts.forEach((post: any) => {
