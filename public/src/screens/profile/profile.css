@@ -32,6 +32,25 @@
     width: 39rem;
 }
 
+#post-photo {
+    border-radius: 1.5rem;
+    height: auto;
+    width: 25rem;
+    background-color: rgba(55, 16, 129, 1);
+    color: black;
+    margin-bottom: 3rem;
+    margin-left: 5rem;
+    overflow: hidden;
+}
+
+.cover-image {
+    border-radius: 1.5rem;
+    height: 20rem;
+    width: 100%;
+    margin-left: 0;
+    object-fit: cover;
+}
+
 .heart-button {
     background:none;
 }

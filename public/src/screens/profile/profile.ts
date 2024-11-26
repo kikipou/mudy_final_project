@@ -69,7 +69,10 @@ class Profile extends HTMLElement {
                 const postElement = document.createElement('div');
                 postElement.classList.add('post');
                 postElement.innerHTML = `
-                    <img src="${post.coverimg}" alt="Cover Image"/>
+                <link rel="stylesheet" href="../public/src/screens/profile/profile.css">
+                    <div id="post-photo">
+                        <img class= "cover-image" src="${post.coverimg}" alt="Cover Image"/>
+                    </div>
                 `;
                 postsContainer.appendChild(postElement);
             });
@@ -77,6 +80,22 @@ class Profile extends HTMLElement {
             console.error('Error loading user posts:', error);
             // Opcional: muestra un mensaje de error en la interfaz
         }
+
+    //     userPosts.forEach((post: any) => {
+    //         // Crea una instancia del componente ArtistPost
+    //         const artistPostElement = document.createElement('artist-post') as ArtistPost;
+
+    //         // Asigna los atributos correspondientes al componente
+    //         artistPostElement.setAttribute(Attribute.title, post.title || 'Sin título');
+    //         artistPostElement.setAttribute(Attribute.coverimg, post.coverimg || 'default-image.png');
+            
+    //         // Agrega el componente al contenedor
+    //         postsContainer.appendChild(artistPostElement);
+    //     });
+    // } catch (error) {
+    //     console.error('Error cargando los posts del usuario:', error);
+    //     // Opcional: muestra un mensaje de error en la interfaz
+    // }
     }
 
     render() {
