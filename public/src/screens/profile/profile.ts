@@ -41,12 +41,10 @@ class Profile extends HTMLElement {
 
             const userNameElement = this.shadowRoot?.querySelector('#user-name');
             const userUserNameElement = this.shadowRoot?.querySelector('#user-username');
-            const userEmailElement = this.shadowRoot?.querySelector('#user-email');
             const userAvatarElement = this.shadowRoot?.querySelector('#user-avatar');
 
             if (userNameElement) userNameElement.textContent = userProfile.name || 'Unknown name';
             if (userUserNameElement) userUserNameElement.textContent = userProfile.username || 'Unknown username';
-            if (userEmailElement) userEmailElement.textContent = userProfile.email || 'Correo no disponible';
             if (userAvatarElement) userAvatarElement.setAttribute('src', userProfile.avatarUrl || 'default-avatar.png');
         } catch (error) {
             console.error('Error loading user profile:', error);
@@ -99,7 +97,6 @@ class Profile extends HTMLElement {
                             <img id="user-avatar" src="default-avatar.png" alt="User profile img" />
                             <h2 id="user-name">Loading...</h2>
                             <h2 id="user-username">Loading...</h2>
-                            <p id="user-email">Loading...</p>
                         </div>
                         <div id="posts-container">
                             <p>Loading posts...</p>
