@@ -14,7 +14,6 @@ export interface UserProfile {
 }
 
 export interface UserPosts {
-    title: '';
     coverimg: '';
 }
 
@@ -60,25 +59,22 @@ class Profile extends HTMLElement {
         
             const postsContainer = this.shadowRoot?.getElementById('posts-container');
             if (!postsContainer) {
-                console.error('Contenedor de posts no encontrado');
+                console.error('Posts container not found');
                 return;
             }
 
             postsContainer.innerHTML = ''; // Limpiar contenido previo
             
             userPosts.forEach((post: any) => {
-                // Crea una instancia del componente ArtistPost
-                const artistPostElement = document.createElement('artist-post') as ArtistPost;
-    
-                // Asigna los atributos correspondientes al componente
-                artistPostElement.setAttribute(Attribute.title, post.title || 'Sin título');
-                artistPostElement.setAttribute(Attribute.coverimg, post.coverimg || 'default-image.png');
-                
-                // Agrega el componente al contenedor
-                postsContainer.appendChild(artistPostElement);
+                const postElement = document.createElement('div');
+                postElement.classList.add('post');
+                postElement.innerHTML = `
+                    <img src="${post.coverimg}" alt="Cover Image" />
+                `;
+                postsContainer.appendChild(postElement);
             });
         } catch (error) {
-            console.error('Error cargando los posts del usuario:', error);
+            console.error('Error loading user posts:', error);
             // Opcional: muestra un mensaje de error en la interfaz
         }
     }
