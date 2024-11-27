@@ -11,6 +11,7 @@ export interface UserProfile {
     uid: string;
     email: string | null;
     name?: string;
+    username?: string | null;
     avatarUrl?: string;
     [key: string]: any; // Esto permite agregar otros campos dinámicos desde Firestore
 }
@@ -269,7 +270,7 @@ export const addPost = async (post: any) => {
 			tags: post.tags,
 			coverimg: imageUrl,
 			userUid: appState.user.userId,
-			userName: appState.user.username,
+			username: appState.user.username,
 		};
 		// Agregamos el post a Firestore.
 		const docRef = await addDoc(where, registerPost);
@@ -343,6 +344,7 @@ export const getCurrentUserProfile = async (): Promise<UserProfile> => {
                         const userData: UserProfile = {
                             uid: user.uid,
                             email: user.email,
+                            username: user.username,
                             ...userDoc.data(),
                         };
                         console.log('Usuario autenticado:', userData);
