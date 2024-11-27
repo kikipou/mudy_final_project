@@ -32,43 +32,43 @@ export const getFirebaseInstance = async () => {
         measurementId: "G-VQ2SFGPGDF"
     };
 
-
         const app = initializeApp(firebaseConfig);
         db = getFirestore(app);
         auth = getAuth(app);
         storage = getStorage();
 
-        // onAuthStateChanged(auth, async (user) => {
-		// 	if (user) {
-		// 	 // Si el usuario está autenticado, ejecutamos este bloque.
-		// 	  console.log("Usuario autenticado:", user);
-		// 	  console.log('data in appState', appState.user);
+        onAuthStateChanged(auth, async (user) => {
+			if (user) {
+			 // Si el usuario está autenticado, ejecutamos este bloque.
+			  console.log("Usuario autenticado:", user);
+			  console.log('data in appState', appState.user);
 
 		
-		// 	  // Obtener datos adicionales del usuario desde Firestore
-		// 	  const { doc, getDoc } = await import('firebase/firestore');
-		// 	  const userRef = doc(db, 'users', user.uid);
-		// 	  console.log ('id del user' , user.uid)
-		// 	  const userDoc = await getDoc(userRef);
-		// 	  console.log ('userDoc' , userDoc)
+			  // Obtener datos adicionales del usuario desde Firestore
+			  const { doc, getDoc } = await import('firebase/firestore');
+			  const userRef = doc(db, 'users', user.uid);
+			  console.log ('id del user' , user.uid)
+			  const userDoc = await getDoc(userRef);
+			  console.log ('userDoc' , userDoc)
 		
-		// 	  if (userDoc.exists()) {
-		// 		// Si el documento existe, extraemos y guardamos los datos del usuario.
-		// 		  const userData = userDoc.data();
-		// 		  localStorage.setItem('user', JSON.stringify(userData));// Guardamos datos en `localStorage`.
-		// 		  console.log("Nombre de usuario:", userData.displayName);
-		// 		  dispatch(setUserCredentials(userData))// Actualizamos el estado de la aplicación con datos del usuario.
-		// 		  console.log('user in appState', appState.user);
+			  if (userDoc.exists()) {
+				// Si el documento existe, extraemos y guardamos los datos del usuario.
+				  const userData: any = userDoc.data();
+				  localStorage.setItem('user', JSON.stringify(userData));// Guardamos datos en `localStorage`.
+				  console.log("Nombre de usuario:", userData.displayName);
+				  dispatch(setUserCredentials(userData))// Actualizamos el estado de la aplicación con datos del usuario.
+				  console.log('user in appState', appState.user);
 				  
-		// 		  dispatch(navigate(Screens.DASHBOARD))
-		// 	  }
-		//   } else {
-		// 	  // Usuario no está autenticado se va al login
-		// 	  console.log("No hay usuario autenticado.");
-		// 	  localStorage.removeItem('user');
-		// 	  dispatch(navigate(Screens.LOGIN)); // Navega a la pantalla de login
-		//   }
-		//   })
+				  dispatch(navigate(Screens.DASHBOARD))
+			  }
+		  } else {
+			  // Usuario no está autenticado se va al login
+
+			  console.log("No hay usuario autenticado.");
+			  localStorage.removeItem('user');
+			  dispatch(navigate(Screens.LOGIN)); // Navega a la pantalla de login
+		  }
+		  })
     }
     return { db, auth, storage };
 };
@@ -268,11 +268,18 @@ export const addPost = async (post: any) => {
 			genre: post.genre,
 			tags: post.tags,
 			coverimg: imageUrl,
-			displayName: appState.user.displayName,
-            // userName: appState.user.displayName,
+			userUid: appState.user.userId,
+			userNamee: appState.user.displayName,
 		};
-		await addDoc(where, registerPost);
-		console.log('Succesfully added');
+		// Agregamos el post a Firestore.
+		const docRef = await addDoc(where, registerPost);
+		console.log('Documento creado con ID:', docRef.id);
+
+		// Si deseas guardar el UID en el documento mismo:
+		const { updateDoc } = await import('firebase/firestore');
+		await updateDoc(docRef, { uid: docRef.id });
+		console.log('UID añadido al documento:', docRef.id);
+
 	} catch (error) {
 		console.error('Error adding document', error);
 	}
