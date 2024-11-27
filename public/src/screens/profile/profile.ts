@@ -9,7 +9,7 @@ export interface UserProfile {
     uid: string;
     email: string | null;
     name?: string; // Opcional
-    username?:string | null; // Opcional
+    displayName?:string | null; // Opcional
     avatarUrl?: string; // Opcional
     [key: string]: any; // Para datos adicionales de Firestore
 }
