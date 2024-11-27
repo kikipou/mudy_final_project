@@ -270,7 +270,7 @@ export const addPost = async (post: any) => {
 			tags: post.tags,
 			coverimg: imageUrl,
 			userUid: appState.user.userId,
-			username: appState.user.username,
+			username: appState.user.displayName,
 		};
 		// Agregamos el post a Firestore.
 		const docRef = await addDoc(where, registerPost);
@@ -344,7 +344,7 @@ export const getCurrentUserProfile = async (): Promise<UserProfile> => {
                         const userData: UserProfile = {
                             uid: user.uid,
                             email: user.email,
-                            username: user.username,
+                            username: user.displayName,
                             ...userDoc.data(),
                         };
                         console.log('Usuario autenticado:', userData);

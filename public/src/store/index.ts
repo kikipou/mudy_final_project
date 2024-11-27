@@ -26,7 +26,7 @@ const initialState: AppState = {
 	screen: 'LOGIN',
 	posts: [],
     user: {
-        username: "",
+        displayName: "",
         email: "",
         userId: ""
       },

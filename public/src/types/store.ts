@@ -4,7 +4,7 @@ export type AppState = {
 	screen: string;
 	posts: [];
 	user: {
-        username: string,
+        displayName: string,
         email: string,
         userId: string
     };
