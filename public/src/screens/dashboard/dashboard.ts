@@ -22,7 +22,7 @@ class Dashboard extends HTMLElement {
         if (postListContainer) {
             posts?.forEach((postData) => {
                 const postElement = document.createElement("artist-post") as ArtistPost;
-                postElement.setAttribute(Attribute.username, postData.userNamee|| "User not found");
+                postElement.setAttribute(Attribute.username, postData.userName|| "User not found");
                 postElement.setAttribute(Attribute.title, postData.title || "Title not found");
                 postElement.setAttribute(Attribute.genre, postData.genre || "Unknown genre");
                 postElement.setAttribute(Attribute.tags, postData.tags || "Unknown tags");

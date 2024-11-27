@@ -55,7 +55,7 @@ export const getFirebaseInstance = async () => {
 				// Si el documento existe, extraemos y guardamos los datos del usuario.
 				  const userData: any = userDoc.data();
 				  localStorage.setItem('user', JSON.stringify(userData));// Guardamos datos en `localStorage`.
-				  console.log("Nombre de usuario:", userData.displayName);
+				  console.log("Nombre de usuario:", userData.username);
 				  dispatch(setUserCredentials(userData))// Actualizamos el estado de la aplicación con datos del usuario.
 				  console.log('user in appState', appState.user);
 				  
@@ -269,7 +269,7 @@ export const addPost = async (post: any) => {
 			tags: post.tags,
 			coverimg: imageUrl,
 			userUid: appState.user.userId,
-			userNamee: appState.user.displayName,
+			userName: appState.user.username,
 		};
 		// Agregamos el post a Firestore.
 		const docRef = await addDoc(where, registerPost);
@@ -435,5 +435,6 @@ export const saveUserGenre = async (userId: string, genre: string) => {
         console.error('Error adding the music genre', error);
     }
 };
+
 
 
