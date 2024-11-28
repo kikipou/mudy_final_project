@@ -1,7 +1,5 @@
 import '../../components/header/header';
-import ArtistPost, { Attribute } from '../../components/userpost/userpost';
 import '../../components/sidebar/sidebar';
-import { getPostsInfo } from '../../utils/firebase';
 import { getCurrentUserProfile } from '../../utils/firebase';
 import { getPostsForCurrentUser } from '../../utils/firebase';
 
