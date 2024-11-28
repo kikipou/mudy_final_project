@@ -1,24 +1,21 @@
 import '../../components/header/header';
-import ArtistPost, { Attribute } from '../../components/userpost/userpost';
 import '../../components/sidebar/sidebar';
-import { getPostsInfo } from '../../utils/firebase';
 import { getCurrentUserProfile } from '../../utils/firebase';
 import { getPostsForCurrentUser } from '../../utils/firebase';
 
 export interface UserProfile {
     uid: string;
-    email: string | null;
-    name?: string; // Opcional
-    displayName?:string | null; // Opcional
-    avatarUrl?: string; // Opcional
+    name?: string;
+    username?: string | null;
+    displayName?: string | null;
+    musicgenre?: string;
+    profiledesc?: string;
+    avatarUrl?: string;
     [key: string]: any; // Para datos adicionales de Firestore
 }
 
 export interface UserPosts {
-    title: '';
-    genre: '';
     coverimg: '';
-    tags: string[];
 }
 
 class Profile extends HTMLElement {
@@ -41,12 +38,14 @@ class Profile extends HTMLElement {
 
             const userNameElement = this.shadowRoot?.querySelector('#user-name');
             const userUserNameElement = this.shadowRoot?.querySelector('#user-username');
-            const userEmailElement = this.shadowRoot?.querySelector('#user-email');
+            const userMusicGenreElement = this.shadowRoot?.querySelector('#user-musicgenre');
+            const userProfileDescriptionElement = this.shadowRoot?.querySelector('#user-description');
             const userAvatarElement = this.shadowRoot?.querySelector('#user-avatar');
 
             if (userNameElement) userNameElement.textContent = userProfile.name || 'Unknown name';
             if (userUserNameElement) userUserNameElement.textContent = userProfile.username || 'Unknown username';
-            if (userEmailElement) userEmailElement.textContent = userProfile.email || 'Correo no disponible';
+            if (userMusicGenreElement) userMusicGenreElement.textContent = userProfile.musicgenre || 'Unknown music genre';
+            if (userProfileDescriptionElement) userProfileDescriptionElement.textContent = userProfile.profiledesc || 'Profile description not found';
             if (userAvatarElement) userAvatarElement.setAttribute('src', userProfile.avatarUrl || 'default-avatar.png');
         } catch (error) {
             console.error('Error loading user profile:', error);
@@ -57,28 +56,32 @@ class Profile extends HTMLElement {
     async loadUserPosts() {
         try {
             const userPosts: any = await getPostsForCurrentUser();
-            const postsContainer = this.shadowRoot?.getElementById('posts-container');
 
-            if (!postsContainer) {
-                console.error('Contenedor de posts no encontrado');
+            if (!Array.isArray(userPosts)) {
+                console.error('Los posts del usuario no son un array:', userPosts);
                 return;
             }
-
+        
+            const postsContainer = this.shadowRoot?.getElementById('posts-container');
+            if (!postsContainer) {
+                console.error('Posts container not found');
+                return;
+            }
             postsContainer.innerHTML = ''; // Limpiar contenido previo
             
             userPosts.forEach((post: any) => {
                 const postElement = document.createElement('div');
                 postElement.classList.add('post');
                 postElement.innerHTML = `
-                    <h2>${post.title}</h2>
-                    <p>${post.genre}</p>
-                    <img src="${post.coverimg}" alt="Cover Image" />
-                    <p>Tags: ${post.tags.join(', ')}</p>
+                <link rel="stylesheet" href="../public/src/screens/profile/profile.css">
+                    <div id="photo-container">
+                        <img class= "cover-image" src="${post.coverimg}" alt="Cover Image"/>
+                    </div>
                 `;
-                postsContainer.appendChild(postElement);
+                postsContainer.prepend(postElement);
             });
         } catch (error) {
-            console.error('Error cargando los posts del usuario:', error);
+            console.error('Error loading user posts:', error);
             // Opcional: muestra un mensaje de error en la interfaz
         }
     }
@@ -95,14 +98,16 @@ class Profile extends HTMLElement {
                         search="Search"
                     ></nav-component>
                         <h1Your profile</h1>
-                        <div class="profile-info">
+                        <div class="profile-photo">
                             <img id="user-avatar" src="default-avatar.png" alt="User profile img" />
+                        </div>
+                        <div class="profile-info">
                             <h2 id="user-name">Loading...</h2>
                             <h2 id="user-username">Loading...</h2>
-                            <p id="user-email">Loading...</p>
+                            <h2 id="user-musicgenre">Loading...</h2>
+                            <h2 id="user-description">Loading...</h2>
                         </div>
                         <div id="posts-container">
-                            <p>Loading posts...</p>
                         </div>
                         <sidebar-component></sidebar-component>
                 </div>

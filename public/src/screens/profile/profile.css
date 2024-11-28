@@ -23,13 +23,94 @@
     font-family: 'Montserrat';
 }
 
-.profile-info {
-    padding-top: 5rem;
+.profile-photo {
     display: flex;
-    padding-left: 25rem;
+    margin-left: 26rem;
+    margin-bottom: -6rem;
+    padding-top: 8rem;
     justify-content: center;
     flex-direction: column;
     width: 39rem;
+}
+
+#user-avatar {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    display: flex;
+    margin-left: -5rem;
+    margin-bottom: -6rem;
+    width: 5rem;
+}
+
+.profile-info {
+    padding-top: 7rem;
+    padding-bottom: 5rem;
+    display: flex;
+    margin-left: 30rem;
+    margin-top: -8rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+    flex-direction: column;
+    width: 39rem;
+}
+
+#user-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#user-username {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+#user-musicgenre {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+#user-description {
+    font-size: 1rem;
+    font-weight: lighter;
+}
+
+#posts-container {
+    margin-top: 5rem;
+    border-radius: 1rem;
+    background-color: rgba(55, 16, 129, 0.8);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Máximo 5 columnas */
+    row-gap: 1rem; /* Espaciado entre posts */
+    column-gap: 1rem; /* Espaciado entre posts */
+    padding: 1rem;
+    padding-top: 1.3rem;
+    margin: 0 auto;
+    max-width: 900px; /* Ancho máximo opcional */
+    place-items: center;
+    grid-auto-flow: row; /* Los elementos se agregan en orden de fila */
+}
+
+#photo-container {
+    border-radius: 0.5rem;
+    height: 10rem; /* Deja que el tamaño lo defina el contenido */
+    width: 10rem; /* Ocupa el ancho completo de la celda */
+    background-color: none; /* Fondo */
+    display: flex; /* Cambiar display a flex para controlar mejor la alineación */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Oculta cualquier contenido desbordado */
+    margin: 0;
+    padding: 0;
+}
+
+.cover-image {
+    width: 100%; /* Ocupa el ancho total del contenedor */
+    height: 100%; /* Ocupa el alto total del contenedor */
+    object-fit: cover; /* Recorta o ajusta la imagen sin deformarla */
+    border-radius: 0.5rem; /* Bordes redondeados */
+    display: block; /* Evita comportamientos inline */
+    margin: 0;
+    padding: 0;
 }
 
 .heart-button {

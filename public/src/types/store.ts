@@ -5,10 +5,10 @@ export type AppState = {
 	posts: [];
 	user: {
         username: string,
-        email: string,
-        userId: string
-    };
-	userPosts: [],
+        name: string,
+		userId: string
+    },
+	userPosts: [];
 	postsByUser: [];
 	currentStateProfile: [];
 	currentUserPosts: [];

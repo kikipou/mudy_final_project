@@ -3,6 +3,7 @@ import './screens/dashboard/dashboard';
 import './screens/login/login';
 import './screens/publish/publish';
 import './screens/profile/profile';
+import './screens/editprofile/editprofile'
 import { addObserver, appState } from './store';
 import { Screens } from './types/store';
 
@@ -47,6 +48,11 @@ class AppContainer extends HTMLElement {
 				case Screens.PROFILE:
 					const profile = this.ownerDocument.createElement('profile-page');
 					this.shadowRoot.appendChild(profile);
+					break;
+
+				case Screens.EDITPROFILE:
+					const editProfile = this.ownerDocument.createElement('editprofile-page');
+					this.shadowRoot.appendChild(editProfile);
 					break;
 
 				default:

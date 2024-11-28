@@ -27,9 +27,9 @@ const initialState: AppState = {
 	posts: [],
     user: {
         username: "",
-        email: "",
+        name: '',
         userId: ""
-      },
+    },
     userPosts: [],
     postsByUser: [],
     currentStateProfile: [],
