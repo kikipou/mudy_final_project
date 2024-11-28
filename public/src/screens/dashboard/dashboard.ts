@@ -18,11 +18,12 @@ class Dashboard extends HTMLElement {
     async loadPosts() {
         const posts = await getPostsInfo(); // Obtiene la lista de posts desde Firebase
         const postListContainer = this.shadowRoot?.querySelector("#artist-post");
+        console.log('posts', posts);
 
         if (postListContainer) {
             posts?.forEach((postData) => {
                 const postElement = document.createElement("artist-post") as ArtistPost;
-                
+                postElement.setAttribute(Attribute.username, postData.username || "User not found");
                 postElement.setAttribute(Attribute.title, postData.title || "Title not found");
                 postElement.setAttribute(Attribute.genre, postData.genre || "Unknown genre");
                 postElement.setAttribute(Attribute.tags, postData.tags || "Unknown tags");

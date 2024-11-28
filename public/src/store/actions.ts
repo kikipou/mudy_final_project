@@ -20,7 +20,7 @@ export const getUsersAction = async () => {
 export const getPostsAction = async () => {
 	const posts = await getPostsInfo(); //Firestore
 	return {
-		action: Actions.GETPOSTS,
+		action: Actions.GETPOSTSINFO,
 		payload: posts,
 	};
 };

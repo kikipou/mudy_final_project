@@ -8,7 +8,7 @@ import { getPostsForCurrentUser } from '../../utils/firebase';
 export interface UserProfile {
     uid: string;
     name?: string;
-    username?: string;
+    displayName?: string | null;
     musicgenre?: string;
     profiledesc?: string;
     avatarUrl?: string;

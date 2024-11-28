@@ -1,5 +1,7 @@
-import { appState } from '../store';
-import { getAuth } from 'firebase/auth';
+import { appState, dispatch } from '../store';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { navigate, setUserCredentials } from '../store/actions';
+import { Screens } from '../types/store';
 
 let db: any;
 let auth: any;
@@ -9,6 +11,7 @@ export interface UserProfile {
     uid: string;
     email: string | null;
     name?: string;
+    username?: string | null;
     avatarUrl?: string;
     [key: string]: any; // Esto permite agregar otros campos dinámicos desde Firestore
 }
@@ -34,7 +37,39 @@ export const getFirebaseInstance = async () => {
         db = getFirestore(app);
         auth = getAuth(app);
         storage = getStorage();
+
+        onAuthStateChanged(auth, async (user) => {
+			if (user) {
+			 // Si el usuario está autenticado, ejecutamos este bloque.
+			    console.log("Usuario autenticado:", user);
+			    console.log('data in appState', appState.user);
+		
+			  // Obtener datos adicionales del usuario desde Firestore
+                const { doc, getDoc } = await import('firebase/firestore');
+                const userRef = doc(db, 'users', user.uid);
+                console.log ('id del user' , user.uid)
+                const userDoc = await getDoc(userRef);
+                console.log ('userDoc' , userDoc)
+		
+			if (userDoc.exists()) {
+				// Si el documento existe, extraemos y guardamos los datos del usuario.
+                const userData: any = userDoc.data();
+                localStorage.setItem('user', JSON.stringify(userData));// Guardamos datos en `localStorage`.
+                console.log("Nombre de usuario:", userData.username);
+                dispatch(setUserCredentials(userData))// Actualizamos el estado de la aplicación con datos del usuario.
+                console.log('user in appState', appState.user);
+                
+                dispatch(navigate(Screens.DASHBOARD))
+			}
+		    } else {
+			    // Usuario no está autenticado se va al login
+			    console.log("No hay usuario autenticado.");
+			    localStorage.removeItem('user');
+			    dispatch(navigate(Screens.LOGIN)); // Navega a la pantalla de login
+		    }
+		});
     }
+
     return { db, auth, storage };
 };
 
@@ -128,12 +163,12 @@ export const signOutUser = async () => {
 export const logOut = async () => {
     const { auth } = await getFirebaseInstance();
     const { signOut } = await import('firebase/auth');
-  
+
     try {
-      await signOut(auth); 
-      console.log("Succesfully log out");
+        await signOut(auth); 
+        console.log("Succesfully log out");
     } catch (error) {
-      console.error("Error logging out:", error);
+        console.error("Error logging out:", error);
     }
 };
 
@@ -233,10 +268,15 @@ export const addPost = async (post: any) => {
 			genre: post.genre,
 			tags: post.tags,
 			coverimg: imageUrl,
-			userUid: appState.user,
+			username: appState.user.username,
 		};
-		await addDoc(where, registerPost);
-		console.log('Succesfully added');
+        
+		console.log('Register post in fb', registerPost);
+        
+		// Agregamos el post a Firestore.
+		const docRef = await addDoc(where, registerPost);
+		console.log('Documento creado con ID:', docRef.id);
+
 	} catch (error) {
 		console.error('Error adding document', error);
 	}
@@ -300,6 +340,7 @@ export const getCurrentUserProfile = async (): Promise<UserProfile> => {
                         const userData: UserProfile = {
                             uid: user.uid,
                             email: user.email,
+                            username: user.username,
                             ...userDoc.data(),
                         };
                         console.log('Usuario autenticado:', userData);

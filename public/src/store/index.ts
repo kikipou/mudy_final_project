@@ -25,7 +25,10 @@ const onAuth = async () => {
 const initialState: AppState = {
 	screen: 'LOGIN',
 	posts: [],
-    user: '',
+    user: {
+        username: "",
+        name: ''
+    },
     userPosts: [],
     postsByUser: [],
     currentStateProfile: [],

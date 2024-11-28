@@ -32,6 +32,11 @@
     width: 39rem;
 }
 
+#artist-post{
+    padding: 5rem;
+    padding-left: 27rem;
+}
+
 .heart-button {
     background:none;
 }
