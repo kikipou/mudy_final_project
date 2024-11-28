@@ -270,7 +270,7 @@ export const addPost = async (post: any) => {
 			tags: post.tags,
 			coverimg: imageUrl,
 			userUid: appState.user.userId,
-			username: appState.user.displayName,
+			username: appState.user.username,
 		};
 		// Agregamos el post a Firestore.
 		const docRef = await addDoc(where, registerPost);
