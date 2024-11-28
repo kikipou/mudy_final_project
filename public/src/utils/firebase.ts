@@ -309,19 +309,16 @@ export const uploadFile = async (file: File, id: string) => {
 };
 
 export const getFile = async (id: string) => {
-	const { storage } = await getFirebaseInstance();
-	const { ref, getDownloadURL } = await import('firebase/storage');
-
+	const {storage} = await getFirebaseInstance();
+	const {ref, getDownloadURL} = await import ('firebase/storage');
 	const storageRef = ref(storage, 'imagesProfile/' + id);
-	const urlImg = await getDownloadURL(ref(storageRef))
-		.then((url) => {
-			return url;
-		})
-		.catch((error) => {
-			console.error(error);
-		});
+	const urlImg= await getDownloadURL(ref(storageRef)).then ((url) => {
+		return url;
+	}).catch((error) => {
+		console.error(error);
+	});
 	return urlImg;
-};
+}
 
 export const getCurrentUserProfile = async (): Promise<UserProfile> => {
     try {

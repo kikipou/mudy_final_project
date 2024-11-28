@@ -4,10 +4,9 @@ import '../../components/buttons/buttons';
 import '../../components/inputs/inputs';
 import { addPost } from "../../utils/firebase";
 import { addObserver, appState, dispatch } from "../../store";
-import { getPostsAction, navigate } from "../../store/actions";
+import { navigate } from "../../store/actions";
 import { Screens } from "../../types/store";
 import { Post } from "../../types/post";
-import { uploadPost, getPost } from "../../utils/firebase";
 
 const post: Post = {
     title: "",
@@ -89,7 +88,7 @@ class Publish extends HTMLElement {
       this.shadowRoot.querySelector('#genre-input')?.addEventListener('change', this.changeGenre.bind(this));
       this.shadowRoot.querySelector('#tags-input')?.addEventListener('change', this.changeTags.bind(this));
       this.shadowRoot.querySelector('#publish-button')?.addEventListener('click', this.submitForm.bind(this));
-      this.shadowRoot.querySelector('#coverimg-input')?.addEventListener('change', this.changeCoverimg.bind(this)) 
+      this.shadowRoot.querySelector('#coverimg-input')?.addEventListener('change', this.changeCoverimg.bind(this));
 
     }
 	}
