@@ -1,9 +1,9 @@
 *{
     margin:0%;
     padding: 0%;
-    color:#ffffff;
     font-family: 'Montserrat';
     background-color: rgba(29, 8, 68, 1);
+    width: 100%;
 }
 
 .dashboard {
@@ -11,19 +11,6 @@
     background-color: rgba(29, 8, 68, 1);
     font-family: 'Montserrat';
     width: auto;
-}
-
-.searchbar {
-    z-index: 2;
-    position: relative;
-}
-
-
-
-.nav {
-    z-index: 1;
-    position: relative;
-    font-family: 'Montserrat';
 }
 
 .posts-list {
@@ -45,15 +32,15 @@
     justify-content: center;
     flex-direction: column;
     display: flex;
+    width: auto;
 }
 
 @media (max-width: 26.875rem) {
     
-    .artist-post {
+    #artist-post {
+        padding-left: 1rem;
         justify-content: center;
         flex-direction: column;
         display: flex;
-        padding-right: 50rem;
-        margin-right: 50rem;
     }
 }

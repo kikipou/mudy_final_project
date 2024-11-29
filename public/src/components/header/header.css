@@ -79,7 +79,7 @@
 @media (max-width: 26.875rem) {
 
     .body {
-        display: flexbox;
+        display: flex;
         width: 40rem;
     }
 

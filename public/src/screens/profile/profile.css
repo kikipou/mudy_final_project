@@ -134,11 +134,10 @@
 
 @media (max-width: 26.875rem) {
     
-    .posts-container {
-        justify-content: center;
-        flex-direction: column;
+    .section-completo{
         display: flex;
-        padding-left: 0rem;
-        padding-right: 1rem;
+        padding-top: 8rem;
+        padding-right: 30rem;
+
     }
 }

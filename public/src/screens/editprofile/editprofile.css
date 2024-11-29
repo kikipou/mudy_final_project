@@ -50,3 +50,15 @@ input::placeholder {
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
     margin: 1rem 1rem 1rem 1rem;
 }
+
+@media (max-width: 26.875rem) {
+
+    .maincontainer {
+        margin-bottom: -10rem;
+        padding: 0;
+    }
+
+    .edit-profile-container {
+        padding-top: 5rem;
+    }
+}

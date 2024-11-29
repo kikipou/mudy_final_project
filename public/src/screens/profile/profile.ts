@@ -101,8 +101,6 @@ class Profile extends HTMLElement {
                         img="https://github.com/kikipou/mudy_final_project/blob/cata/mudy-logo.png?raw=true"
                         search="Search"
                     ></nav-component>
-
-
                     <div class="section-completo">
                         <div class="profile-photo">
                             <img id="user-img" src=${urlImg} alt="User profile img" />

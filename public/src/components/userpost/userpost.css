@@ -118,3 +118,11 @@
     display: flex;
     gap: 1.5rem;
 }
+
+@media (max-width: 26.875rem) {
+
+    .post {
+        margin: 0;
+        padding: 0;
+    }
+}

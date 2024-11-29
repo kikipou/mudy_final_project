@@ -14,17 +14,6 @@
     width: 100%;
 }
 
-.searchbar {
-    z-index: 2;
-    position: relative;
-}
-
-.nav {
-    z-index: 1;
-    position: relative;
-    font-family: 'Montserrat';
-}
-
 .form {
     display: flex;
     flex-direction: column;
@@ -80,11 +69,9 @@ input::placeholder {
 
 @media (max-width: 26.875rem) {
     
-    .posts-container {
-        justify-content: center;
-        flex-direction: column;
-        display: flex;
-        padding-left: 0rem;
-        padding-right: 1rem;
+    .form {
+        margin-bottom: -10rem;
+        padding-top: 5rem;
+        margin-left: 2rem;
     }
 }
