@@ -1,14 +1,16 @@
 import '../../components/header/header';
-import ArtistPost, { Attribute } from '../../components/userpost/userpost';
 import '../../components/sidebar/sidebar';
-import { getPostsInfo } from '../../utils/firebase';
+import { dispatch } from '../../store';
+import { navigate } from '../../store/actions';
+import { Screens } from '../../types/store';
 import { getCurrentUserProfile } from '../../utils/firebase';
 import { getPostsForCurrentUser } from '../../utils/firebase';
 
 export interface UserProfile {
     uid: string;
     name?: string;
-    username?: string;
+    username?: string | null;
+    displayName?: string | null;
     musicgenre?: string;
     profiledesc?: string;
     avatarUrl?: string;
@@ -107,12 +109,16 @@ class Profile extends HTMLElement {
                             <h2 id="user-username">Loading...</h2>
                             <h2 id="user-musicgenre">Loading...</h2>
                             <h2 id="user-description">Loading...</h2>
+                    <button-component id="edit-button" text="Edit"></button-component>
                         </div>
                         <div id="posts-container">
                         </div>
                         <sidebar-component></sidebar-component>
                 </div>
             `;
+            const editButton = this.shadowRoot.querySelector('#edit-button') as HTMLButtonElement;
+            
+            editButton?.addEventListener('click', () => dispatch(navigate(Screens.EDITPROFILE)));
         }
     }
     

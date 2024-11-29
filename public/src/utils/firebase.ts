@@ -393,4 +393,22 @@ export const saveUserGenre = async (userId: string, genre: string) => {
     }
 };
 
-
+export async function updateUserData(userId: string, updatedName: string) {
+	try {
+	  const { db } = await getFirebaseInstance();
+	  const { doc, updateDoc } = await import('firebase/firestore');
+	  const userRef = doc(db, 'users', userId);
+	  
+	  // Asegurarse de que el valor no sea undefined o vacío
+	  if (updatedName) {
+		// Actualizamos el campo "name" en la base de datos
+		await updateDoc(userRef, {
+		  name: updatedName,
+		});
+	  } else {
+		console.error('El nombre no puede estar vacío.');
+	  }
+	} catch (error) {
+	  console.error(error);
+	}
+  }
