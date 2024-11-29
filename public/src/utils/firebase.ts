@@ -1,3 +1,4 @@
+import { uploadBytes } from 'firebase/storage';
 import { appState } from '../store';
 import { getAuth } from 'firebase/auth';
 
@@ -258,30 +259,57 @@ export const getPost = async (fileName: string) => {
     }
 };
 
-export const uploadFile = async (file: File, id: string) => {
-	const { storage } = await getFirebaseInstance();
-	const { ref, uploadBytes } = await import('firebase/storage');
+// export const uploadFile = async (file: File, id: string) => {
+// 	const { storage } = await getFirebaseInstance();
+// 	const { ref, uploadBytes } = await import('firebase/storage');
+
+// 	const storageRef = ref(storage, 'imagesProfile/' + id);
+// 	uploadBytes(storageRef, file).then((snapshot) => {
+// 		console.log('File uploaded');
+// 	});
+// };
+
+// export const getFile = async (id: string) => {
+// 	const { storage } = await getFirebaseInstance();
+// 	const { ref, getDownloadURL } = await import('firebase/storage');
+
+// 	const storageRef = ref(storage, 'imagesProfile/' + id);
+// 	const urlImg = await getDownloadURL(ref(storageRef))
+// 		.then((url) => {
+// 			return url;
+// 		})
+// 		.catch((error) => {
+// 			console.error(error);
+// 		});
+// 	return urlImg;
+// };
+
+
+export const upLoadFile = async (file: File, id: string) => {
+	const {storage} = await getFirebaseInstance();
+	const {ref} = await import ('firebase/storage');
 
 	const storageRef = ref(storage, 'imagesProfile/' + id);
-	uploadBytes(storageRef, file).then((snapshot) => {
-		console.log('File uploaded');
-	});
-};
+	uploadBytes(storageRef, file).then((snapshot)=> {
+		console.log('file uploaded');
+	})
+
+}
+
 
 export const getFile = async (id: string) => {
-	const { storage } = await getFirebaseInstance();
-	const { ref, getDownloadURL } = await import('firebase/storage');
-
+	const {storage} = await getFirebaseInstance();
+	const {ref, getDownloadURL} = await import ('firebase/storage');
 	const storageRef = ref(storage, 'imagesProfile/' + id);
-	const urlImg = await getDownloadURL(ref(storageRef))
-		.then((url) => {
-			return url;
-		})
-		.catch((error) => {
-			console.error(error);
-		});
-	return urlImg;
-};
+	const urlImg= await getDownloadURL(ref(storageRef)).then ((url) => {
+		return url;
+	}).catch((error) => {
+		console.error(error);
+	});
+	return urlImg;
+}
+
+
 
 export const getCurrentUserProfile = async (): Promise<UserProfile> => {
     try {

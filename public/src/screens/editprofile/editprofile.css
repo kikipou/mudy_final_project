@@ -1,11 +1,11 @@
+
 .maincontainer {
-   background-color:  rgba(29, 8, 68, 1);
-    padding-top: 10rem;
-height: 35rem;
-padding-left: 25rem;
-
-
+    background-color:  rgba(29, 8, 68, 1);
+    padding-top: 15rem;
+    height: 35rem;
+    padding-left: 25rem;
 }   
+
 .edit-profile-container {
     background-color: #551BC280;
     color: #ffffff;
@@ -13,13 +13,12 @@ padding-left: 25rem;
     font-weight: 500;
     border: none;
     border-radius: 10px 10px 10px 10px;
-    padding: 0.5rem 5rem 0.5rem 1rem;
+    padding: 3rem 2rem 2rem 3rem;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
     flex-direction: column;
     display: flex;
-    height: 20rem;
+    height: 7rem;
     width: 35rem;
-    
 }
 
 input::placeholder {
@@ -38,5 +37,16 @@ input::placeholder {
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
     justify-content: center;
     flex-direction: column;
+}
 
+.input {
+    background-color: #551BC280;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+    padding: 0.5rem 5rem 0.5rem 1rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    margin: 1rem 1rem 1rem 1rem;
 }

@@ -1,9 +1,9 @@
 import '../../components/header/header';
 import '../../components/sidebar/sidebar';
-import { dispatch } from '../../store';
+import { appState, dispatch } from '../../store';
 import { navigate } from '../../store/actions';
 import { Screens } from '../../types/store';
-import { getCurrentUserProfile } from '../../utils/firebase';
+import { getCurrentUserProfile, getFile } from '../../utils/firebase';
 import { getPostsForCurrentUser } from '../../utils/firebase';
 
 export interface UserProfile {
@@ -28,8 +28,9 @@ class Profile extends HTMLElement {
         this.attachShadow({ mode: 'open' });
     }
 
-    connectedCallback() {
-        this.render();
+    async connectedCallback() {
+        const urlImg = await getFile(appState.user)
+        this.render(urlImg);
         this.loadUserProfile();
         this.loadUserPosts();
     }
@@ -89,7 +90,7 @@ class Profile extends HTMLElement {
         }
     }
 
-    render() {
+    render(urlImg: any) {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
                 <link rel="stylesheet" href="../public/src/screens/profile/profile.css">
@@ -100,17 +101,21 @@ class Profile extends HTMLElement {
                         img="https://github.com/kikipou/mudy_final_project/blob/cata/mudy-logo.png?raw=true"
                         search="Search"
                     ></nav-component>
-                        <h1Your profile</h1>
+
+
+                    <div class="section-completo">
                         <div class="profile-photo">
-                            <img id="user-avatar" src="default-avatar.png" alt="User profile img" />
+                            <img id="user-img" src=${urlImg} alt="User profile img" />
                         </div>
                         <div class="profile-info">
                             <h2 id="user-name">Loading...</h2>
                             <h2 id="user-username">Loading...</h2>
                             <h2 id="user-musicgenre">Loading...</h2>
                             <h2 id="user-description">Loading...</h2>
-                    <button-component id="edit-button" text="Edit"></button-component>
+                            <button-component id="edit-button" text="Edit"></button-component>
                         </div>
+                    </div>
+
                         <div id="posts-container">
                         </div>
                         <sidebar-component></sidebar-component>
