@@ -34,7 +34,7 @@ export const getPostsByUserAction = async () => {
 };
 
 export const getCurrentUserProfileAction = async () => {
-	const currentStateProfile = await getCurrentUserProfile(); //Firestore
+	const currentStateProfile = await getCurrentUserProfile();
 	return {
 		action: Actions.GETCURRENTUSERPROFILE,
 		payload: currentStateProfile,
@@ -56,14 +56,6 @@ export const getUserNameAction = async () => {
 		payload: user,
 	};
 };
-
-// export const getUserGenreAction = async () => {
-// 	const userGenre = await getUserGenre();
-// 	return {
-// 		action: Actions.GETUSERGENRE,
-// 		payload: userGenre,
-// 	};
-// };
 
 export const setUserCredentials = (user: string) => {
 	return {
