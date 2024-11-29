@@ -3,6 +3,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { navigate, setUserCredentials } from '../store/actions';
 import { Screens } from '../types/store';
 
+
 let db: any;
 let auth: any;
 let storage: any;
@@ -272,11 +273,18 @@ export const addPost = async (post: any) => {
             UserUid: appState.user.userId,
 		};
         
-		console.log('Register post in fb', registerPost);
         
-		// Agregamos el post a Firestore.
 		const docRef = await addDoc(where, registerPost);
 		console.log('Documento creado con ID:', docRef.id);
+
+		// Si deseas guardar el UID en el documento mismo:
+		const { updateDoc } = await import('firebase/firestore');
+		await updateDoc(docRef, { uid: docRef.id });
+		console.log('UID añadido al documento:', docRef.id);
+
+		// Agregamos el post a Firestore.
+		
+		
 
 	} catch (error) {
 		console.error('Error adding document', error);

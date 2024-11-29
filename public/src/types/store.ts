@@ -6,7 +6,8 @@ export type AppState = {
 	user: {
         username: string,
         name: string,
-		userId: string
+		userId: string 
+		
     },
 	userPosts: [];
 	postsByUser: [];
