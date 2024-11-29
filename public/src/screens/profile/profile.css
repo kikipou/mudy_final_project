@@ -4,6 +4,7 @@
     color:#ffffff;
     font-family: 'Montserrat';
     background-color: rgba(29, 8, 68, 1);
+    padding-bottom: 0.5rem;
 }
 
 .profile {
@@ -43,12 +44,10 @@
 }
 
 .profile-info {
-    padding-top: 7rem;
-    padding-bottom: 5rem;
+    padding-top: 5rem;
     display: flex;
     margin-left: 30rem;
-    margin-top: -8rem;
-    margin-bottom: 1rem;
+    margin-top: -3rem;
     justify-content: center;
     flex-direction: column;
     width: 39rem;
@@ -75,7 +74,9 @@
 }
 
 #posts-container {
-    margin-top: 5rem;
+    margin-top: 3rem;
+    margin-bottom: 12rem;
+    margin-left: 15rem;
     border-radius: 1rem;
     background-color: rgba(55, 16, 129, 0.8);
     display: grid;
@@ -83,8 +84,8 @@
     row-gap: 1rem; /* Espaciado entre posts */
     column-gap: 1rem; /* Espaciado entre posts */
     padding: 1rem;
-    padding-top: 1.3rem;
-    margin: 0 auto;
+    padding-top: 1rem;
+    /* margin: 0 auto; */
     max-width: 900px; /* Ancho máximo opcional */
     place-items: center;
     grid-auto-flow: row; /* Los elementos se agregan en orden de fila */
@@ -111,6 +112,11 @@
     display: block; /* Evita comportamientos inline */
     margin: 0;
     padding: 0;
+}
+
+.post {
+    padding: 0;
+    border-radius: 1;
 }
 
 .heart-button {
