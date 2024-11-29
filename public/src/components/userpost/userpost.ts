@@ -1,5 +1,6 @@
 export enum Attribute {
     'username' = 'username',
+    'userUid' = 'userUid',
     'title' = 'title',
     'genre' = 'genre',
     'tags' = 'tags',

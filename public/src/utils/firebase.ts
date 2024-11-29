@@ -270,7 +270,7 @@ export const addPost = async (post: any) => {
 			tags: post.tags,
 			coverimg: imageUrl,
             username: appState.user.username,
-            UserUid: appState.user.userId,
+            userUid: appState.user.userId,
 		};
         
         
@@ -284,7 +284,7 @@ export const addPost = async (post: any) => {
 
 		// Agregamos el post a Firestore.
 		
-		
+		console.log('Documento creado con ID:', docRef.id);
 
 	} catch (error) {
 		console.error('Error adding document', error);
