@@ -22,7 +22,7 @@
     position: relative;
     font-family: 'Montserrat';
 }
-
+/* 
 .posts-list {
     padding-top: 5rem;
     display: flex;
@@ -30,12 +30,12 @@
     justify-content: center;
     flex-direction: column;
     width: 39rem;
-}
+} */
 
-#artist-post{
+/* #artist-post{
     padding: 5rem;
     padding-left: 27rem;
-}
+} */
 
 .heart-button {
     background:none;
@@ -43,12 +43,12 @@
 
 @media (max-width: 26.875rem) {
     
-    .posts-container {
+    #artist-post {
         justify-content: center;
         flex-direction: column;
         display: flex;
         padding-left: 0rem;
-        padding-right: 1rem;
+        padding-right: 0rem;
     }
 }
 

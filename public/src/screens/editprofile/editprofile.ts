@@ -1,96 +1,180 @@
-import '../../components/header/header';
-import '../../components/sidebar/sidebar';
-import '../../components/buttons/buttons';
-import '../../components/inputs/inputs';
-import { uploadFile } from "../../utils/firebase";
-import { addObserver, appState, dispatch } from "../../store";
-import { navigate } from "../../store/actions";
-import { Screens } from "../../types/store";
+import { addObserver, appState, dispatch } from '../../store';
+import { navigate } from '../../store/actions';
+import { Screens } from '../../types/store';
+import { uploadFile,  updateUserData } from '../../utils/firebase';
 
-const profileInformation = {
-    name: '',
-    username: '',
-    genre: '',
-    tags: '',
-    profiledsc: '',
+const profileData = {
+  name: '',
 };
 
 class EditProfile extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+    addObserver(this);
+  }
 
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open'});
-        addObserver(this);
-    }
+  async connectedCallback() {
+    const userId = appState.user.userId;
+    console.log('ID del usuario:', userId);
 
-    connectedCallback() {
-        this.render();
-    }
-
-    changeName(e: any) {
-        profileInformation.name = e.target.value;
-    }
-
-    changeUserName(e: any) {
-    profileInformation.name = e.target.value;
-    }
+  
     
-    changeGenre(e: any) {
-    profileInformation.genre = e.target.value;
-    }
 
-    changeTags(e: any) {
-    profileInformation.tags = e.target.value;
-    }
+    this.render();
+  }
 
-    changeCoverimg(e: any) {
-    profileInformation.profiledsc= e.target.value;
-    }
+  async changeScreen() {
+    dispatch(navigate(Screens.PROFILE));
+  }
 
-    submitForm() {        
-        dispatch(navigate(Screens.PROFILE))
-        }
-
-    async render() {
-		if (this.shadowRoot) {
-            this.shadowRoot.innerHTML = `
-            <link rel="stylesheet" href="../public/src/screens/publish/publish.css">
-                <div class="editprofile">
-                    <nav-component class="nav"
-                        explore="Explore" 
-                        create="Create"
-                        img="https://github.com/kikipou/mudy_final_project/blob/cata/mudy-logo.png?raw=true"
-                        search="Search"
-                    ></nav-component>
-                        <form class="form">
-                            <input id="name-input" placeholder="Name" required>
-                            <input id="username-input" placeholder="Username" required>
-                            <input id="genre-input" placeholder="Genre" required>
-                            <input id="tags-input" placeholder="Tags" required>
-                            <input id="profiledesc-input" placeholder="Description" required>
-                            <input id="profileimg-input" type="file" required>
-                            <button-component id="save-button" text="Save"></button-component>
-                        </form>
-                </div>
-            `;
-
-            const pImage = this.shadowRoot?.querySelector("#profileimg-input") as HTMLInputElement;
-            pImage?.addEventListener("change", () => {
-            console.log(pImage);
-            const file = pImage.files?.[0];
-            if (file) uploadFile(file, appState.user.userId);
-            });
-
-            // Asignación de eventos
-            this.shadowRoot.querySelector('#name-input')?.addEventListener('change', this.changeName.bind(this));
-            this.shadowRoot.querySelector('#genre-input')?.addEventListener('change', this.changeGenre.bind(this));
-            this.shadowRoot.querySelector('#tags-input')?.addEventListener('change', this.changeTags.bind(this));
-            this.shadowRoot.querySelector('#profiledesc-input')?.addEventListener('change', this.changeCoverimg.bind(this));
-            this.shadowRoot.querySelector('#save-button')?.addEventListener('click', this.submitForm.bind(this));
-        }
-	}
+  render() {
+    if (this.shadowRoot) {
+      this.shadowRoot.innerHTML = `
+         <style>
+.maincontainer {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: #FCF6F6;
 }
 
-console.log (EditProfile)
+
+
+.edit-profile-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 20rem;
+  width: 35rem;
+  justify-content: center;
+  gap: 2rem;
+  margin: auto;
+  margin-top: 8rem;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.profile-section img {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fddde6;
+}
+
+.profile-section h2 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  gap: 1rem;
+}
+
+.form-section label {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.form-section input {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.form-section input[type="password"] {
+  letter-spacing: 0.3em;
+}
+
+.save-button {
+  padding: 0.8rem 2rem;
+  background-color: #FFC7BE;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.save-button:hover {
+  background-color: #FFADA0;
+}
+        </style>
+      `;
+
+      // Contenedor principal
+      const mainContainer = document.createElement('section');
+      mainContainer.classList.add('maincontainer');
+
+  const container = document.createElement('section');
+      container.classList.add('edit-profile-container');
+      mainContainer.appendChild(container);
+
+      // Sección de perfil
+      const profileSection = document.createElement('div');
+      profileSection.classList.add('profile-section');
+      container.appendChild(profileSection);
+
+      // Sección del formulario
+      const formSection = document.createElement('div');
+      formSection.classList.add('form-section');
+      container.appendChild(formSection);
+
+      // Campo de la imagen
+      const pImage = this.ownerDocument.createElement('input');
+      pImage.type = 'file';
+      pImage.addEventListener('change', async () => {
+        const file = pImage.files?.[0];
+        if (file) {
+          await uploadFile(file, appState.user.userId);
+          alert('Foto de perfil actualizada.');
+        }
+      });
+      formSection.appendChild(pImage);
+
+      // Campo de nombre
+      const nameLabel = document.createElement('label');
+      nameLabel.innerText = 'User name';
+      formSection.appendChild(nameLabel);
+
+      const nameInput = document.createElement('input');
+      nameInput.value = profileData.name;
+      formSection.appendChild(nameInput);
+
+      // Botón de guardar cambios
+      const saveButton = document.createElement('button');
+      saveButton.innerText = 'Save Changes';
+      saveButton.classList.add('save-button');
+      saveButton.addEventListener('click', async () => {
+        const updatedName = nameInput.value;
+        const userId = appState.user.userId;
+
+        // Actualizar en Firebase
+       await updateUserData (userId, updatedName)
+      
+        alert('Información actualizada exitosamente.');
+      });
+      formSection.appendChild(saveButton);
+
+      this.shadowRoot.appendChild(mainContainer);
+    }
+  }
+}
+
 customElements.define('editprofile-page', EditProfile);
-export default EditProfile;
